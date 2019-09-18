@@ -8,8 +8,11 @@ import { CandidateDetailsComponent } from './candidate-details/candidate-details
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  exports: [CandidatesListComponent, CandidateDetailsComponent]
+  exports: [
+    CandidatesListComponent,
+    CandidateDetailsComponent
+  ]
 })
 export class CandidateModule { }

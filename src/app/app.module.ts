@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CandidateModule} from './candidate/candidate.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import {CandidateModule} from './candidate/candidate.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule,
     CandidateModule
   ],
