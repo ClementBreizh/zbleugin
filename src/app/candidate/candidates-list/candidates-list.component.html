@@ -9,12 +9,13 @@
     <th>Tel. Fix</th>
     <th>Rang</th>
   </tr>
-  <tr *ngFor="let candidate of candidates">
-    <td>{{candidate.firstname}}</td>
-    <td>{{candidate.lastname}}</td>
-    <td>{{candidate.email}}</td>
-    <td>{{candidate.cellPhone}}</td>
-    <td>{{candidate.homePhone}}</td>
-    <td>{{candidate.rankingCandidate}}</td>
+  <tr *ngFor="let candidate of candidates"  [routerLink]='"/candidate/" + candidate.id'>
+
+      <td>{{candidate.firstname}}</td>
+      <td>{{candidate.lastname}}</td>
+      <td>{{candidate.email}}</td>
+      <td>{{candidate.cellPhone}}</td>
+      <td>{{candidate.homePhone}}</td>
+      <td>{{candidate.rankingCandidate}}</td>
   </tr>
 </table>
