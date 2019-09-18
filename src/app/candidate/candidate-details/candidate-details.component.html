@@ -1,14 +1,14 @@
-<h2  *ngIf="(candidate$ | async) as candidate">Page du candidate n°{{ candidate.id }}</h2>
-
-<div>
-  <!-- <ul>
-    <li>{{ candidate.firstname }}</li>
-    <li>{{ candidate.lastname }}</li>
-    <li>{{ candidate.cellPhone }}</li>
-    <li>{{ candidate.homePhone }}</li>
-    <li>{{ candidate.email }}</li>
-    <li>{{ candidate.rankingCandidate }}</li>
-    <li>{{ candidate.commentary }}</li>
-  </ul> -->
-
-</div>
+<ng-container *ngIf="(candidate$ | async) as candidate">
+  <h2>Page du candidate n°{{ candidate.id }}</h2>
+  <div>
+     <ul>
+      <li>{{ candidate.firstname }}</li>
+      <li>{{ candidate.lastname }}</li>
+      <li>{{ candidate.cellPhone }}</li>
+      <li>{{ candidate.homePhone }}</li>
+      <li>{{ candidate.email }}</li>
+      <li>{{ candidate.rankingCandidate }}</li>
+      <li>{{ candidate.commentary }}</li>
+    </ul>
+  </div>
+</ng-container>
