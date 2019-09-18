@@ -1,0 +1,20 @@
+<h1>Liste des candidats</h1>
+
+<table class="mat-elevation-z8">
+  <tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Email</th>
+    <th>Tel. Mobile</th>
+    <th>Tel. Fix</th>
+    <th>Rang</th>
+  </tr>
+  <tr *ngFor="let candidate of candidates">
+    <td>{{candidate.firstname}}</td>
+    <td>{{candidate.lastname}}</td>
+    <td>{{candidate.email}}</td>
+    <td>{{candidate.cellPhone}}</td>
+    <td>{{candidate.homePhone}}</td>
+    <td>{{candidate.rankingCandidate}}</td>
+  </tr>
+</table>
