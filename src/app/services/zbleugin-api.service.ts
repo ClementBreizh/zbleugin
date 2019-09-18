@@ -1,9 +1,6 @@
-import {Injectable, Type} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Candidate} from '../models/candidate';
-import {Observable} from 'rxjs';
-import {Generic} from '../models/generic';
 
 @Injectable({
   providedIn: 'root'

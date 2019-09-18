@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
-import {Generic} from '../../models/generic';
 
 
 @Component({
@@ -16,7 +15,6 @@ export class CandidatesListComponent implements OnInit {
   constructor(private api: ZbleuginAPIService) { }
 
   ngOnInit() {
-    // this.getAll(this.entityPath);
     this.getAll(this.entityPath);
   }
 

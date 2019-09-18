@@ -3,10 +3,9 @@ import {Degree} from './degree';
 import {Feedback} from './feedback';
 import {Matter} from './matter';
 import {Session} from './session';
-import {Generic} from './generic';
 
 // Candidate model
-export class Candidate extends Generic {
+export class Candidate {
   id: number;
   firstname: string;
   lastname: string;
