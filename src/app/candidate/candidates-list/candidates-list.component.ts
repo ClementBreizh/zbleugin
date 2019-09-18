@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
 
-
 @Component({
   selector: 'app-candidates-list',
   templateUrl: './candidates-list.component.html',
