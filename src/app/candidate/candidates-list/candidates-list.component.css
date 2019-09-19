@@ -10,3 +10,12 @@ table {
 mat-card {
   margin: 0 0 20px 0;
 }
+
+.example-first-header-row th {
+  border-bottom: none;
+}
+
+.example-second-header-row {
+  font-style: italic;
+}
+

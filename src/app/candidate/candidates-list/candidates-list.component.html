@@ -4,12 +4,6 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<mat-card *ngIf="dataSource">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
-  </mat-form-field>
-</mat-card>
-
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource">
 
   <!-- Icon Column -->
@@ -37,7 +31,9 @@
 
   <!-- Lastname Column -->
   <ng-container matColumnDef="lastname">
-    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <th mat-header-cell *matHeaderCellDef>
+      <input matInput (keyup)="applyFilterAsync($event.target.value)" placeholder="LOUPE Nom">
+    </th>
     <td mat-cell *matCellDef="let candidate"> {{ candidate.lastname }} </td>
   </ng-container>
 

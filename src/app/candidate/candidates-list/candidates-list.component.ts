@@ -35,8 +35,12 @@ export class CandidatesListComponent implements OnInit {
     return this.api.getAll(this.entityPath);
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilterAsync(value) {
+    // TODO: Récupérer le nb d'item par page depuis le pageable (viewchild doc angular)
+    // TODO: Req à l'api en passant en param lastname, nb d'item
+    // TODO: Màj dataSource (cf ngoninit)
+    // TODO: Check clean des subscribe dans le code de succès du subscribe
+    // TODO: temporiser le lancement (setTimeout ou delais sur le subscribe)
   }
 
 }
