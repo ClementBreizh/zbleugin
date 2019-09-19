@@ -1,14 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CandidatesListComponent} from './candidates-list/candidates-list.component';
-import {MatTableModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatTableModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [CandidatesListComponent],
   imports: [
     CommonModule,
-    MatTableModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  exports: [CandidatesListComponent]
+  exports: [
+    CandidatesListComponent
+  ]
 })
 export class CandidateModule { }
