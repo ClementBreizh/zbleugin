@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
+import {Degree} from '../../models/degree';
 
 @Component({
   selector: 'app-candidate-details',
@@ -11,25 +12,24 @@ import {Candidate} from '../../models/candidate';
 })
 export class CandidateDetailsComponent implements OnInit {
 
-  candidate$: Observable<Candidate>;
+  candidate: Candidate;
 
   private entityPath = 'candidates';
 
   constructor(private api: ZbleuginAPIService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getOne(this.entityPath);
+  }
+
+  getOne(entityPath) {
     this.route
       .params
       .subscribe(param => {
         if (param.id) {
-          // this.getOne(this.entityPath, param.id)
-          this.candidate$ = this.api.getOne(this.entityPath, param.id);
-
-      }
-    });
-  }
-
-  // getOne(entityPath, id) {
-  //   this.api.getOne(this.entityPath, id).subscribe(data => {this.candidate = data});
-  // }
+          // this.candidate$ = this.api.getOne(this.entityPath, param.id);
+          this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => this.candidate = value);
+          // this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => console.log(value));
+        }
+      });  }
 }
