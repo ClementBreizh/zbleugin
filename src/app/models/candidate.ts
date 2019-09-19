@@ -19,4 +19,6 @@ export class Candidate {
   feedback?: Feedback;
   matters?: Matter[];
   sessions?: Session[];
+  sexCandidate: string;
+  statusCandidate: string;
 }

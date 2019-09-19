@@ -3,6 +3,7 @@ import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
 import {MatIconRegistry, MatTableDataSource} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import {map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-candidates-list',
@@ -10,11 +11,11 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./candidates-list.component.css']
 })
 export class CandidatesListComponent implements OnInit {
-  private candidates: Candidate[];
   private entityPath = 'candidates';
 
-  private displayedColumns: string[] = ['icon', 'firstname', 'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate'];
-  private dataSource;
+  displayedColumns: string[] = ['icon', 'sexCandidate' , 'firstname',
+    'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate'];
+  dataSource: MatTableDataSource<Candidate>;
 
   constructor(private api: ZbleuginAPIService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
@@ -23,14 +24,15 @@ export class CandidatesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll(this.entityPath);
-    this.dataSource = new MatTableDataSource(this.candidates);
+    this.getAll(this.entityPath)
+      .pipe(map(data => data.content))
+      .subscribe(data => {
+      this.dataSource = new MatTableDataSource<Candidate>(data);
+    });
   }
 
   getAll(entityPath) {
-    this.api.getAll(this.entityPath).subscribe(data => {
-      this.candidates = data;
-    });
+    return this.api.getAll(this.entityPath);
   }
 
   applyFilter(filterValue: string) {

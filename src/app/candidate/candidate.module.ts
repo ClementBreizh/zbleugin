@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CandidatesListComponent} from './candidates-list/candidates-list.component';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -19,7 +19,8 @@ import {
     MatTableModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   exports: [
     CandidatesListComponent
