@@ -21,26 +21,37 @@ export class CandidatesListComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'candidate-folder',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/candidateFolder.svg'));
+    iconRegistry.addSvgIcon(
+      'search',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
   }
 
   ngOnInit() {
-    this.getAll(this.entityPath)
-      .pipe(map(data => data.content))
-      .subscribe(data => {
-      this.dataSource = new MatTableDataSource<Candidate>(data);
-    });
+    this.getAll(this.entityPath);
   }
 
   getAll(entityPath) {
-    return this.api.getAll(this.entityPath);
+    return this.api.getAll(this.entityPath).pipe(map(data => data.content))
+      .subscribe(data => {
+        this.dataSource = new MatTableDataSource<Candidate>(data);
+      });
+  }
+
+  checkFilter(value) {
+    if (!value) {
+      this.getAll(this.entityPath);
+    } else {
+      this.applyFilterAsync(value);
+    }
   }
 
   applyFilterAsync(value) {
-    // TODO: Récupérer le nb d'item par page depuis le pageable (viewchild doc angular)
-    // TODO: Req à l'api en passant en param lastname, nb d'item
-    // TODO: Màj dataSource (cf ngoninit)
-    // TODO: Check clean des subscribe dans le code de succès du subscribe
-    // TODO: temporiser le lancement (setTimeout ou delais sur le subscribe)
+    console.log('Send request ...');
+    return this.api.getAll(this.entityPath + '/filtered?lastname=' + value).pipe(map(data => data.content))
+      .subscribe(data => {
+        this.dataSource = new MatTableDataSource<Candidate>(data);
+      });
+
   }
 
 }
