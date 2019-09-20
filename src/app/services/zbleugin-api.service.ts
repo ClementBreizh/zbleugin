@@ -10,7 +10,7 @@ export class ZbleuginAPIService {
   constructor(private http: HttpClient) { }
 
   getAll(entityPath) {
-    return this.http.get<any[]>(environment.apiUrl + entityPath);
+    return this.http.get<any>(environment.apiUrl + entityPath);
   }
 
   getOne(entityPath, id) {
