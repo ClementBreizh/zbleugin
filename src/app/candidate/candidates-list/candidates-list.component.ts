@@ -37,21 +37,17 @@ export class CandidatesListComponent implements OnInit {
       });
   }
 
-  checkFilter(value) {
+  applyFilter(value) {
+    let r;
     if (!value) {
-      this.getAll(this.entityPath);
+      r = this.getAll(this.entityPath);
     } else {
-      this.applyFilterAsync(value);
+      r = this.api.getAll(this.entityPath + '/filtered?' + value).pipe(map(data => data.content))
+        .subscribe(data => {
+          this.dataSource = new MatTableDataSource<Candidate>(data);
+        });
     }
-  }
-
-  applyFilterAsync(value) {
-    console.log('Send request ...');
-    return this.api.getAll(this.entityPath + '/filtered?lastname=' + value).pipe(map(data => data.content))
-      .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data);
-      });
-
+    return r;
   }
 
 }
