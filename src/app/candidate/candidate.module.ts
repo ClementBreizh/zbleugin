@@ -11,6 +11,8 @@ import {
 } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
@@ -24,7 +26,9 @@ import { CandidateDetailsComponent } from './candidate-details/candidate-details
     MatButtonModule,
     MatCardModule,
     AppRoutingModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     CandidatesListComponent,

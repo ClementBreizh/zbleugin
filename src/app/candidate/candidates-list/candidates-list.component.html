@@ -15,31 +15,29 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    // TODO: Pour chaque formulaire, définir une variable et quand la requête est lancée
-    // récupérer les données puis lancer la requête.
-    <form class="candidate-form">
+    <form class="candidate-form" (submit)="onSubmit($event)">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Prénom">
+        <input matInput placeholder="Prénom" type="firstname" name="firstname" (change)="change($event.target)" [(ngModel)]="firstnameValue">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Nom">
+        <input matInput placeholder="Nom" type="lastname" name="lastname" (change)="change($event.target)" [(ngModel)]="lastnameValue">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email">
+        <input matInput placeholder="Email" type="email" name="email" (change)="change($event.target)" [(ngModel)]="emailValue">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Tél. Mobile">
+        <input matInput placeholder="Tél. Mobile" type="cellPhone" name="cellPhone" (change)="change($event.target)" [(ngModel)]="cellPhoneValue">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Tél. Fix">
+        <input matInput placeholder="Tél. Fix" type="homePhone" name="homePhone" (change)="change($event.target)" [(ngModel)]="homePhoneValue">
       </mat-form-field>
 
-      // TODO: Gérer le lancement de la recherche avec l'appel à la fonction, le prévent default ...
-      <button mat-raised-button color="primary" class="example-button-row">Rechercher</button>
+      <button type="submit" mat-raised-button color="primary" class="example-button-row">Rechercher</button>
+      <button mat-raised-button color="default" class="example-button-row" (click)="onReset()">Reset</button>
     </form>
   </mat-expansion-panel>
 </mat-card>
@@ -110,7 +108,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  // TODO: Permettre de changer de page, avec la même requete qui a pour default page = 1, et chaque bouton de page
-  // reset la page
-  // TODO: Permettre de choisir le nombre d'élément par page http request parameter
+  <!--  TODO: Changement de page (fonction avec page = 1 en param, et changement du numero de page au clique sur le numéro) -->
+  <!--  TODO: Choix du nombre d'élément par page -->
 </mat-card>
