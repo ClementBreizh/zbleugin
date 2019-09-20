@@ -9,9 +9,11 @@ import {
   MatProgressSpinnerModule,
   MatTableModule
 } from '@angular/material';
+import { AppRoutingModule } from '../app-routing.module';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 
 @NgModule({
-  declarations: [CandidatesListComponent],
+  declarations: [CandidatesListComponent, CandidateDetailsComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -20,10 +22,12 @@ import {
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule
   ],
   exports: [
-    CandidatesListComponent
+    CandidatesListComponent,
+    CandidateDetailsComponent
   ]
 })
 export class CandidateModule { }

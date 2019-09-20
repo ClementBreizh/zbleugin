@@ -13,10 +13,10 @@ export class Candidate {
   cellPhone: string;
   homePhone: string;
   rankingCandidate;
-  address?: Address;
+  address_id?: Address;
   commentary?: string;
   degrees?: Degree[];
-  feedback?: Feedback;
+  feedback_id?: Feedback;
   matters?: Matter[];
   sessions?: Session[];
   sexCandidate: string;

@@ -1,0 +1,74 @@
+<ng-container *ngIf="candidate">
+  <h2>Page du candidate n°{{ candidate.id }}</h2>
+  <div>
+     <ul>
+       <li>{{ candidate.sexCandidate }}</li>
+       <li>{{ candidate.firstname }}</li>
+       <li>{{ candidate.lastname }}</li>
+       <li>{{ candidate.cellPhone }}</li>
+       <li>{{ candidate.homePhone }}</li>
+       <li>{{ candidate.email }}</li>
+       <li>{{ candidate.rankingCandidate }}</li>
+       <li>{{ candidate.commentary }}</li>
+       <li>{{ candidate.statusCandidate }}</li>
+    </ul>
+  </div>
+
+<h2>Addresse</h2>
+  {{ candidate.address_id.street }} <br/>
+  {{ candidate.address_id.postalCode }} {{ candidate.address_id.city }}
+
+  <h2>Degrees</h2>
+  <table>
+    <tr>
+      <th>Intitulé</th>
+      <th>Niveau</th>
+      <th>Date d'obtention</th>
+    </tr>
+    <tr *ngFor="let degree of candidate.degrees">
+      <td>{{ degree.name }}</td>
+      <td>{{ degree.level }}</td>
+      <td>{{ degree.validation_date }}</td>
+    </tr>
+  </table>
+
+  <h2>Matières maitrisées</h2>
+<ul>
+  <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
+</ul>
+
+  <h2>Session(s)</h2>
+  <table>
+    <tr>
+      <th></th>
+    </tr>
+    <tr *ngFor="let session of candidate.sessions">
+      <td>{{ session.name }}</td>
+      <td>{{ session.start_date }}</td>
+      <td>{{ session.end_date }}</td>
+    </tr>
+  </table>
+
+  <h2>Feedback</h2>
+  <table>
+    <tr>
+      <th>Mise à jour</th>
+      <th>Type de contrat</th>
+      <th>Durée du contrat (mois)</th>
+      <th>Commentaire</th>
+    </tr>
+    <tr>
+      <td>{{ candidate.feedback_id.updated_at }}</td>
+      <td>{{ candidate.feedback_id.typeOfContract }}</td>
+      <td>{{ candidate.feedback_id.durationOfContract }}</td>
+      <td>{{ candidate.feedback_id.comment }}</td>
+
+    </tr>
+  </table>
+
+
+</ng-container>
+
+<ng-container *ngIf="!candidate">
+  <p>Aucun candidat sélectionné</p>
+</ng-container>
