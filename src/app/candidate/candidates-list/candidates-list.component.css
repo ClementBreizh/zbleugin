@@ -1,15 +1,12 @@
 table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+th {
+  padding: 0 20px 0 0;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }
