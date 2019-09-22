@@ -28,7 +28,7 @@ export class CandidateDetailsComponent implements OnInit {
       .subscribe(param => {
         if (param.id) {
           // this.candidate$ = this.api.getOne(this.entityPath, param.id);
-          this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => {this.candidate = value; console.log(value);});
+          this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => {this.candidate = value; });
           // this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => console.log(value));
         }
       });  }
