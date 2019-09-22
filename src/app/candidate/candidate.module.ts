@@ -5,8 +5,8 @@ import {
   MatButtonModule, MatCardModule, MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
+  MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSortModule,
   MatTableModule
 } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
@@ -28,7 +28,9 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     MatExpansionModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
     CandidatesListComponent,

@@ -3,9 +3,8 @@ import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
 import {MatIconRegistry, MatTableDataSource} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {map, tap} from 'rxjs/operators';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Form} from '@angular/forms';
+import {HttpParams} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-candidates-list',
@@ -14,16 +13,30 @@ import {Form} from '@angular/forms';
 })
 export class CandidatesListComponent implements OnInit {
   private entityPath = 'candidates';
-  private data: {[key: string]: string} = {};
+  private data: { [key: string]: string } = {};
   private firstnameValue: string;
   private lastnameValue: string;
   private emailValue: string;
   private cellPhoneValue: string;
   private homePhoneValue: string;
-  private elementsByPage = '20';
+  resultNb: number;
 
+  baseSize = '20';
+  basePage = '0';
 
-  displayedColumns: string[] = ['icon', 'sexCandidate' , 'firstname',
+  httpParamsSetted = {
+    size: this.baseSize,
+    page: this.basePage,
+    order_by: '',
+    order_direction: '',
+    firstname: '',
+    lastname: '',
+    email: '',
+    cellPhone: '',
+    homePhone: ''
+  };
+
+  displayedColumns: string[] = ['icon', 'sexCandidate', 'firstname',
     'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate'];
   dataSource: MatTableDataSource<Candidate>;
 
@@ -37,16 +50,34 @@ export class CandidatesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll(this.entityPath);
+    this.getAll();
   }
 
-  getAll(entityPath) {
-    const params = new HttpParams()
-      .set('size', this.elementsByPage);
+  getAll() {
 
-    return this.api.getAll(this.entityPath, params).pipe(map(data => data.content))
+    // Set params
+    this.httpParamsSetted = {
+      size : this.httpParamsSetted.size || this.baseSize,
+      page: this.httpParamsSetted.page || this.basePage,
+      order_by: this.httpParamsSetted.order_by || '',
+      order_direction: this.httpParamsSetted.order_direction || '',
+      firstname: this.data.firstname || '',
+      lastname: this.data.lastname || '',
+      email: this.data.email || '',
+      cellPhone: this.data.cellPhone || '',
+      homePhone: this.data.homePhone || ''
+    };
+
+    const params = new HttpParams()
+      .set('size', this.httpParamsSetted.size)
+      .set('page', this.httpParamsSetted.page )
+      .set('order_by', this.httpParamsSetted.order_by)
+      .set('order_direction', this.httpParamsSetted.order_direction);
+
+    return this.api.getAll(this.entityPath, params)/*.pipe(map(data => data.content))*/
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data);
+        this.dataSource = new MatTableDataSource<Candidate>(data.content);
+        this.resultNb = data.totalElements;
       });
   }
 
@@ -57,31 +88,60 @@ export class CandidatesListComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
 
-    let r;
+    // Set params
+    this.httpParamsSetted = {
+      size : this.httpParamsSetted.size || this.baseSize,
+      page: this.basePage,
+      order_by: this.httpParamsSetted.order_by || '',
+      order_direction: this.httpParamsSetted.order_direction || '',
+      firstname: this.data.firstname || '',
+      lastname: this.data.lastname || '',
+      email: this.data.email || '',
+      cellPhone: this.data.cellPhone || '',
+      homePhone: this.data.homePhone || ''
+    };
+
     const params = new HttpParams()
-      .set('size', this.elementsByPage)
-      .set('firstname', this.data.firstname ? this.data.firstname : '')
-      .set('lastname', this.data.lastname ? this.data.lastname : '')
-      .set('email', this.data.email ? this.data.email : '')
-      .set('cellPhone', this.data.cellPhone ? this.data.cellPhone : '')
-      .set('homePhone', this.data.homePhone ? this.data.homePhone : '');
+      .set('size', this.httpParamsSetted.size)
+      .set('page', this.httpParamsSetted.page)
+      .set('order_by', this.httpParamsSetted.order_by)
+      .set('order_direction', this.httpParamsSetted.order_direction)
+      .set('firstname', this.httpParamsSetted.firstname)
+      .set('lastname', this.httpParamsSetted.lastname)
+      .set('email', this.httpParamsSetted.email)
+      .set('cellPhone', this.httpParamsSetted.cellPhone)
+      .set('homePhone', this.httpParamsSetted.homePhone);
 
-    r = this.api.getAll(this.entityPath + '/filtered', params).pipe(map(data => data.content))
+    return this.api.getAll(this.entityPath + '/filtered', params)/*.pipe(map(data => data.content))*/
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data);
+        this.dataSource = new MatTableDataSource<Candidate>(data.content);
+        this.resultNb = data.totalElements;
       });
-
-    return r;
   }
 
   onReset() {
     event.preventDefault();
+
     this.firstnameValue = '';
     this.lastnameValue = '';
     this.emailValue = '';
     this.cellPhoneValue = '';
     this.homePhoneValue = '';
-    this.getAll(this.entityPath);
+
+    this.resetParamsData();
+
+    this.getAll();
   }
 
+  private resetParamsData() {
+    this.data = {};
+    this.httpParamsSetted.page = '';
+  }
+
+  getAllPageEvent($event) {
+    this.httpParamsSetted.size = $event.pageSize;
+    this.httpParamsSetted.page = $event.pageIndex;
+
+    this.getAll();
+  }
 }
