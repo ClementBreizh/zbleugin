@@ -36,15 +36,6 @@
         <input matInput placeholder="Tél. Fix" type="text" name="homePhone" (change)="change($event.target)" [(ngModel)]="homePhoneValue">
       </mat-form-field>
 
-      <mat-form-field class="formFiled">
-        <select matNativeControl name="resultNb" (change)="change($event.target)" [(ngModel)]="resultNbValue">
-          <option value="20">Nombre de résultat par page</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-      </mat-form-field>
-
       <button type="submit" mat-raised-button color="primary" class="example-button-row">Rechercher</button>
       <button mat-raised-button color="default" class="example-button-row" (click)="onReset()">Reset</button>
     </form>
