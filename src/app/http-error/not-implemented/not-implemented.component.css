@@ -1,5 +1,11 @@
+#errorpage {
+  background-color: #CFD8DC;
+  max-width: 950px;
+  margin: auto;
+  padding: 15px
+  }
 p {
   font-size: 5em;
   text-align: center;
-  color: rgb(211, 132, 132);
+  color: #5D99C6;
 }

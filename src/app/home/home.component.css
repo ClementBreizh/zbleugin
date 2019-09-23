@@ -1,3 +1,14 @@
+#homepage {
+background-color: #CFD8DC;
+max-width: 950px;
+margin: auto;
+padding: 15px
+}
+h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
 .panel {
   display: flex;
   flex-flow: row wrap;

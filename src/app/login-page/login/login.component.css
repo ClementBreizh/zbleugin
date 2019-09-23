@@ -1,4 +1,9 @@
-
+#errorpage {
+  background-color: #CFD8DC;
+  max-width: 950px;
+  margin: auto;
+  padding: 15px
+  }
 
 h1 {
   padding-top: 25px;
