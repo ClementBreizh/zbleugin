@@ -64,13 +64,13 @@
 
     <!-- Firstname Column -->
     <ng-container matColumnDef="firstname">
-      <th mat-header-cell *matHeaderCellDef> Prénom</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="firstname"> Prénom</th>
       <td mat-cell *matCellDef="let candidate"> {{ candidate.firstname }} </td>
     </ng-container>
 
     <!-- Lastname Column -->
     <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef> Nom</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="lastname"> Nom</th>
       <td mat-cell *matCellDef="let candidate"> {{ candidate.lastname }} </td>
     </ng-container>
 
@@ -108,9 +108,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [length]='resultNb'
-                 [pageSize]='basePage'
+  <mat-paginator [length]="resultNb"
+                 [pageSize]="candidatesListForm.controls['size'].value"
                  [pageSizeOptions]="[20, 50, 100]"
+                 [pageIndex]="candidatesListForm.controls['page'].value"
                  (page)="getAllPageEvent($event)">
   </mat-paginator>
 </mat-card>
