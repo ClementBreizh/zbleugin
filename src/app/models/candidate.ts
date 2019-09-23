@@ -18,7 +18,7 @@ export class Candidate {
   degrees?: Degree[];
   feedback_id?: Feedback;
   matters?: Matter[];
-  sessions?: Session[];
+  sessions?: any;
   sexCandidate: string;
   statusCandidate: string;
 }

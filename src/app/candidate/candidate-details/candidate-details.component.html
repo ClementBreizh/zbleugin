@@ -1,14 +1,19 @@
 <ng-container *ngIf="candidate">
   <h2>Page du candidate n°{{ candidate.id }}</h2>
 
-  <button mat-raised-button>Accueil</button>
-  <button mat-raised-button>Rendez-vous</button>
-  <button mat-raised-button>Entreprise</button>
+  <div class="detailsNav">
+    <button mat-raised-button>Accueil</button>
+    <button mat-raised-button>Rendez-vous</button>
+    <button mat-raised-button>Entreprise</button>
+  </div>
 
   <br />
 
-  <mat-card>
-    {{ candidate.sexCandidate }}
+  <mat-card class="infoCard">
+    <mat-form-field appearance="outline">
+      <mat-label>Civilité</mat-label>
+      <input matInput value='{{ candidate.sexCandidate }}'>
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Prénom</mat-label>
@@ -49,6 +54,34 @@
       <mat-label>Code postal</mat-label>
       <input matInput value='{{candidate.address_id.postalCode}}'>
     </mat-form-field>
+  </mat-card>
+
+  <mat-card class="detailsCard1">
+    <mat-tab-group>
+      <mat-tab label="Session(s)">
+        <h3>Session de formation</h3>
+        <div *ngIf="actualSession; else noSession">
+          <p>{{actualSession.name}} ({{actualSession.startDate | date : "dd-MM-y"}} au {{actualSession.endDate | date : "dd-MM-y"}})'</p>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Voir les autres sessions
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container *ngIf="this.candidate.sessions.length > 1">
+              <p *ngFor="let session of this.candidate.sessions ">
+                {{session.name}}
+              </p>
+            </ng-container>
+          </mat-expansion-panel>
+        </div>
+        <ng-template #noSession>Aucune session actuellement</ng-template>
+      </mat-tab>
+
+      <mat-tab label="Diplôme(s)"> Content 2 </mat-tab>
+
+      <mat-tab label="Matières maitrisées"> Content 3 </mat-tab>
+    </mat-tab-group>
   </mat-card>
 
 

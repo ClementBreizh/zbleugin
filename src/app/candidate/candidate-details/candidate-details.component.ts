@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
-import {Degree} from '../../models/degree';
+import {Session} from '../../models/session';
 
 @Component({
   selector: 'app-candidate-details',
@@ -15,6 +14,7 @@ export class CandidateDetailsComponent implements OnInit {
   candidate: Candidate;
 
   private entityPath = 'candidates';
+  private actualSession: Session;
 
   constructor(private api: ZbleuginAPIService, private route: ActivatedRoute) { }
 
@@ -27,9 +27,11 @@ export class CandidateDetailsComponent implements OnInit {
       .params
       .subscribe(param => {
         if (param.id) {
-          // this.candidate$ = this.api.getOne(this.entityPath, param.id);
-          this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => {this.candidate = value; });
-          // this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => console.log(value));
+          this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => {
+            this.candidate = value;
+            this.actualSession = this.candidate.sessions[this.candidate.sessions.length - 1].session;
+            console.log(this.candidate.sessions);
+          });
         }
       });  }
 }

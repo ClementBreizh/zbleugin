@@ -7,7 +7,7 @@ import {
   MatIconModule,
   MatInputModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSortModule,
-  MatTableModule
+  MatTableModule, MatTabsModule
 } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
@@ -30,7 +30,8 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
   ],
   exports: [
     CandidatesListComponent,
