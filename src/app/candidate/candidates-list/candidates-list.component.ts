@@ -17,9 +17,6 @@ export class CandidatesListComponent implements OnInit {
 
   resultNb: number;
 
-  // baseSize = '20';
-  // basePage = '0';
-
   candidatesListForm = this.fb.group({
     firstname:  '',
     lastname: '',
@@ -28,8 +25,7 @@ export class CandidatesListComponent implements OnInit {
     homePhone: '',
     page: 0,
     size: 20,
-    order_by: 'id',
-    order_direction: 'asc'
+    sort: ''
   });
 
   displayedColumns: string[] = ['icon', 'sexCandidate', 'firstname',
@@ -59,22 +55,34 @@ export class CandidatesListComponent implements OnInit {
   }
 
   onSubmit() {
-      event.preventDefault();
+    event.preventDefault();
 
-      this.candidatesListForm.patchValue({
-        page: 0
-      });
+    this.candidatesListForm.patchValue({
+      page: 0
+    });
 
-      return this.getAll();
+    return this.getAll();
   }
 
+  // Reset candidatesListForm all values for httpPrams but elements number & sorting.
   onReset() {
     event.preventDefault();
-    // TODO: A FAIRE
+
+    this.candidatesListForm.patchValue({
+        firstname: '',
+        lastname: '',
+        email: '',
+        cellPhone: '',
+        homePhone: '',
+        page: 0
+      }
+    );
+
+    this.getAll();
   }
 
   getAllPageEvent($event: PageEvent) {
-    this.candidatesListForm.patchValue({ // Envoi des valeurs dans le formulaire
+    this.candidatesListForm.patchValue({
       page: $event.pageIndex,
       size: $event.pageSize
     });
@@ -86,43 +94,16 @@ export class CandidatesListComponent implements OnInit {
     return Object.keys(this.candidatesListForm.controls)
       .filter(k => this.candidatesListForm.value[k] !== '')
       .reduce((acc, k) => ({...acc, [k]: this.candidatesListForm.value[k]}), {});
-
-    // return {
-    //   size: this.candidatesListForm.value.size || null,
-    //   page: this.candidatesListForm.value.page || null,
-    //   order_by: this.candidatesListForm.value.order_by || null,
-    //   order_direction: this.candidatesListForm.value.order_direction || null,
-    //   firstname: this.candidatesListForm.value.firstname || null,
-    //   lastname: this.candidatesListForm.value.lastname || null,
-    //   email: this.candidatesListForm.value.email || null,
-    //   cellPhone: this.candidatesListForm.value.cellPhone || null,
-    //   homePhone: this.candidatesListForm.value.homePhone || null
-    // };
   }
 
-/*    setHttpParams(httpParams) {
-      return new HttpParams()
-        .set('size', this.httpParams.size)
-        .set('page', this.httpParams.page)
-        .set('order_by', this.httpParams.order_by)
-        .set('order_direction', this.httpParams.order_direction)
-        .set('firstname', this.httpParams.firstname)
-        .set('lastname', this.httpParams.lastname)
-        .set('email', this.httpParams.email)
-        .set('cellPhone', this.httpParams.cellPhone)
-        .set('homePhone', this.httpParams.homePhone);
-    }
-  }*/
   sortData($event: Sort) {
     if ($event.direction === '') {
       this.candidatesListForm.patchValue({
-        order_by: '',
-        order_direction: ''
+        sort: ''
       });
     } else {
       this.candidatesListForm.patchValue({
-        order_by: $event.active,
-        order_direction: $event.direction
+        sort: $event.active + ',' + $event.direction
       });
     }
 
