@@ -15,25 +15,25 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <form class="candidate-form" (submit)="onSubmit($event)">
+    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit()">
       <mat-form-field class="formFiled">
-        <input matInput placeholder="Prénom" type="text" name="firstname" (change)="change($event.target)" [(ngModel)]="firstnameValue">
+        <input matInput placeholder="Prénom" type="text" name="firstname" formControlName="firstname">
       </mat-form-field>
 
       <mat-form-field class="formFiled">
-        <input matInput placeholder="Nom" type="text" name="lastname" (change)="change($event.target)" [(ngModel)]="lastnameValue">
+        <input matInput placeholder="Nom" type="text" name="lastname" formControlName="lastname" >
       </mat-form-field>
 
       <mat-form-field class="formFiled">
-        <input matInput placeholder="Email" type="email" name="email" (change)="change($event.target)" [(ngModel)]="emailValue">
+        <input matInput placeholder="Email" type="email" name="email" formControlName="email">
       </mat-form-field>
 
       <mat-form-field class="formFiled">
-        <input matInput placeholder="Tél. Mobile" type="text" name="cellPhone" (change)="change($event.target)" [(ngModel)]="cellPhoneValue">
+        <input matInput placeholder="Tél. Mobile" type="text" name="cellPhone" formControlName="cellPhone">
       </mat-form-field>
 
       <mat-form-field class="formFiled">
-        <input matInput placeholder="Tél. Fix" type="text" name="homePhone" (change)="change($event.target)" [(ngModel)]="homePhoneValue">
+        <input matInput placeholder="Tél. Fix" type="text" name="homePhone" formControlName="homePhone">
       </mat-form-field>
 
       <button type="submit" mat-raised-button color="primary" class="example-button-row">Rechercher</button>

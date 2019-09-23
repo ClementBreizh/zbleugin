@@ -12,7 +12,7 @@ import {
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
@@ -30,7 +30,8 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   exports: [
     CandidatesListComponent,
