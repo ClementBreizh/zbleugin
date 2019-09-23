@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CandidatesListComponent} from './candidates-list/candidates-list.component';
 import {
-  MatButtonModule, MatCardModule,
+  MatButtonModule, MatCardModule, MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
+  MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSortModule,
   MatTableModule
 } from '@angular/material';
+import { AppRoutingModule } from '../app-routing.module';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [CandidatesListComponent],
+  declarations: [CandidatesListComponent, CandidateDetailsComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -20,10 +24,17 @@ import {
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule,
+    MatExpansionModule,
+    HttpClientModule,
+    FormsModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
-    CandidatesListComponent
+    CandidatesListComponent,
+    CandidateDetailsComponent
   ]
 })
 export class CandidateModule { }

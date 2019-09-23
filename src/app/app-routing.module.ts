@@ -4,11 +4,12 @@ import {CandidatesListComponent} from './candidate/candidates-list/candidates-li
 import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
 import { LoginComponent } from './login-page/login/login.component';
+import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
 
 
 const routes: Routes = [
   {
-    path: 'candidates', component: CandidatesListComponent
+    path: 'candidates/list', component: CandidatesListComponent
   },
   {
     path: 'home', component: HomeComponent
@@ -24,9 +25,11 @@ const routes: Routes = [
   },
   {
     path: 'adminpanel', component: NotImplementedComponent
+  },
+  {
+    path: 'candidate/:id', component: CandidateDetailsComponent
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

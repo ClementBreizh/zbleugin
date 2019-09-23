@@ -1,0 +1,120 @@
+<ng-container *ngIf="candidate">
+  <h2>Page du candidate n°{{ candidate.id }}</h2>
+
+  <button mat-raised-button>Accueil</button>
+  <button mat-raised-button>Rendez-vous</button>
+  <button mat-raised-button>Entreprise</button>
+
+  <br />
+
+  <mat-card>
+    {{ candidate.sexCandidate }}
+
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput value='{{candidate.firstname}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput value='{{candidate.lastname}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tél. Fix</mat-label>
+      <input matInput value='{{candidate.homePhone}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tél Mobile</mat-label>
+      <input matInput value='{{candidate.cellPhone}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput value='{{candidate.email}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Adresse</mat-label>
+      <input matInput value='{{candidate.address_id.street}}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ville</mat-label>
+      <input matInput value='{{ candidate.address_id.city }}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Code postal</mat-label>
+      <input matInput value='{{candidate.address_id.postalCode}}'>
+    </mat-form-field>
+  </mat-card>
+
+
+  <div>
+     <ul>
+       <li>{{ candidate.rankingCandidate }}</li>
+       <li>{{ candidate.commentary }}</li>
+       <li>{{ candidate.statusCandidate }}</li>
+    </ul>
+  </div>
+
+<h2>Addresse</h2>
+  {{ candidate.address_id.street }} <br/>
+  {{ candidate.address_id.postalCode }} {{ candidate.address_id.city }}
+
+  <h2>Degrees</h2>
+  <table>
+    <tr>
+      <th>Intitulé</th>
+      <th>Niveau</th>
+      <th>Date d'obtention</th>
+    </tr>
+    <tr *ngFor="let degree of candidate.degrees">
+      <td>{{ degree.name }}</td>
+      <td>{{ degree.level }}</td>
+      <td>{{ degree.validation_date }}</td>
+    </tr>
+  </table>
+
+  <h2>Matières maitrisées</h2>
+<ul>
+  <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
+</ul>
+
+  <h2>Session(s)</h2>
+  <table>
+    <tr>
+      <th></th>
+    </tr>
+    <tr *ngFor="let session of candidate.sessions">
+      <td>{{ session.name }}</td>
+      <td>{{ session.start_date }}</td>
+      <td>{{ session.end_date }}</td>
+    </tr>
+  </table>
+
+  <h2>Feedback</h2>
+  <table>
+    <tr>
+      <th>Mise à jour</th>
+      <th>Type de contrat</th>
+      <th>Durée du contrat (mois)</th>
+      <th>Commentaire</th>
+    </tr>
+    <tr>
+      <td>{{ candidate.feedback_id.updated_at }}</td>
+      <td>{{ candidate.feedback_id.typeOfContract }}</td>
+      <td>{{ candidate.feedback_id.durationOfContract }}</td>
+      <td>{{ candidate.feedback_id.comment }}</td>
+
+    </tr>
+  </table>
+
+
+</ng-container>
+
+<ng-container *ngIf="!candidate">
+  <p>Aucun candidat sélectionné</p>
+</ng-container>

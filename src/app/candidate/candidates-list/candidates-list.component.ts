@@ -3,7 +3,8 @@ import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
 import {MatIconRegistry, MatTableDataSource} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {map, tap} from 'rxjs/operators';
+import {HttpParams} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-candidates-list',
@@ -12,12 +13,34 @@ import {map, tap} from 'rxjs/operators';
 })
 export class CandidatesListComponent implements OnInit {
   private entityPath = 'candidates';
+  private data: { [key: string]: string } = {};
+  private firstnameValue: string;
+  private lastnameValue: string;
+  private emailValue: string;
+  private cellPhoneValue: string;
+  private homePhoneValue: string;
+  resultNb: number;
 
-  displayedColumns: string[] = ['icon', 'sexCandidate' , 'firstname',
+  baseSize = '20';
+  basePage = '0';
+
+  httpParamsSetted = {
+    size: this.baseSize,
+    page: this.basePage,
+    order_by: '',
+    order_direction: '',
+    firstname: '',
+    lastname: '',
+    email: '',
+    cellPhone: '',
+    homePhone: ''
+  };
+
+  displayedColumns: string[] = ['icon', 'sexCandidate', 'firstname',
     'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate'];
   dataSource: MatTableDataSource<Candidate>;
 
-  constructor(private api: ZbleuginAPIService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(private api: ZbleuginAPIService, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'candidate-folder',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/candidateFolder.svg'));
@@ -27,31 +50,98 @@ export class CandidatesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll(this.entityPath);
+    this.getAll();
   }
 
-  getAll(entityPath) {
-    return this.api.getAll(this.entityPath).pipe(map(data => data.content))
+  getAll() {
+
+    // Set params
+    this.httpParamsSetted = {
+      size : this.httpParamsSetted.size || this.baseSize,
+      page: this.httpParamsSetted.page || this.basePage,
+      order_by: this.httpParamsSetted.order_by || '',
+      order_direction: this.httpParamsSetted.order_direction || '',
+      firstname: this.data.firstname || '',
+      lastname: this.data.lastname || '',
+      email: this.data.email || '',
+      cellPhone: this.data.cellPhone || '',
+      homePhone: this.data.homePhone || ''
+    };
+
+    const params = new HttpParams()
+      .set('size', this.httpParamsSetted.size)
+      .set('page', this.httpParamsSetted.page )
+      .set('order_by', this.httpParamsSetted.order_by)
+      .set('order_direction', this.httpParamsSetted.order_direction);
+
+    return this.api.getAll(this.entityPath, params)/*.pipe(map(data => data.content))*/
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data);
+        this.dataSource = new MatTableDataSource<Candidate>(data.content);
+        this.resultNb = data.totalElements;
       });
   }
 
-  checkFilter(value) {
-    if (!value) {
-      this.getAll(this.entityPath);
-    } else {
-      this.applyFilterAsync(value);
-    }
+  change(target: any) {
+    this.data[target.name] = target.value;
   }
 
-  applyFilterAsync(value) {
-    console.log('Send request ...');
-    return this.api.getAll(this.entityPath + '/filtered?lastname=' + value).pipe(map(data => data.content))
+  onSubmit(event: Event) {
+    event.preventDefault();
+
+    // Set params
+    this.httpParamsSetted = {
+      size : this.httpParamsSetted.size || this.baseSize,
+      page: this.basePage,
+      order_by: this.httpParamsSetted.order_by || '',
+      order_direction: this.httpParamsSetted.order_direction || '',
+      firstname: this.data.firstname || '',
+      lastname: this.data.lastname || '',
+      email: this.data.email || '',
+      cellPhone: this.data.cellPhone || '',
+      homePhone: this.data.homePhone || ''
+    };
+
+    const params = new HttpParams()
+      .set('size', this.httpParamsSetted.size)
+      .set('page', this.httpParamsSetted.page)
+      .set('order_by', this.httpParamsSetted.order_by)
+      .set('order_direction', this.httpParamsSetted.order_direction)
+      .set('firstname', this.httpParamsSetted.firstname)
+      .set('lastname', this.httpParamsSetted.lastname)
+      .set('email', this.httpParamsSetted.email)
+      .set('cellPhone', this.httpParamsSetted.cellPhone)
+      .set('homePhone', this.httpParamsSetted.homePhone);
+
+    return this.api.getAll(this.entityPath + '/filtered', params)/*.pipe(map(data => data.content))*/
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data);
+        this.dataSource = new MatTableDataSource<Candidate>(data.content);
+        this.resultNb = data.totalElements;
       });
-
   }
 
+  onReset() {
+    event.preventDefault();
+
+    this.firstnameValue = '';
+    this.lastnameValue = '';
+    this.emailValue = '';
+    this.cellPhoneValue = '';
+    this.homePhoneValue = '';
+
+    this.resetParamsData();
+
+    this.getAll();
+  }
+
+  private resetParamsData() {
+    this.data = {};
+    this.httpParamsSetted.page = '';
+  }
+
+  getAllPageEvent($event) {
+    this.httpParamsSetted.size = $event.pageSize;
+    this.httpParamsSetted.page = $event.pageIndex;
+
+    this.getAll();
+  }
 }

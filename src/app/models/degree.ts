@@ -1,5 +1,5 @@
 export class Degree {
   name: string;
   level: string;
-  validationDate: string;
+  validation_date: string;
 }
