@@ -45,10 +45,10 @@ export class CandidatesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll();
+    this.getAll(this.httpParams);
   }
 
-  getAll() {
+  getAll(httpParams) {
 
     return this.api.getAll(this.entityPath, this.setParams())
       .subscribe(data => {
@@ -60,9 +60,7 @@ export class CandidatesListComponent implements OnInit {
 onSubmit() {
     event.preventDefault();
 
-    console.log(this.candidatesListForm.value);
-
-    return this.getAll();
+    return this.getAll(this.httpParams);
   }
 
 onReset() {
@@ -87,7 +85,7 @@ getAllPageEvent($event) {
 
   setParams() {
     this.httpParams = {
-      size : this.candidatesListForm.value.size || this.baseSize,
+      size: this.candidatesListForm.value.size || this.baseSize,
       page: this.candidatesListForm.value.basePage || this.basePage,
       order_by: this.candidatesListForm.value.order_by || '',
       order_direction: this.candidatesListForm.value.order_direction || '',
@@ -97,16 +95,19 @@ getAllPageEvent($event) {
       cellPhone: this.candidatesListForm.value.cellPhone || '',
       homePhone: this.candidatesListForm.value.homePhone || ''
     };
+  }
 
-    return new HttpParams()
-      .set('size', this.httpParams.size)
-      .set('page', this.httpParams.page)
-      .set('order_by', this.httpParams.order_by)
-      .set('order_direction', this.httpParams.order_direction)
-      .set('firstname', this.httpParams.firstname)
-      .set('lastname', this.httpParams.lastname)
-      .set('email', this.httpParams.email)
-      .set('cellPhone', this.httpParams.cellPhone)
-      .set('homePhone', this.httpParams.homePhone);
+    setHttpParams(httpParams) {
+      return new HttpParams()
+        .set('size', this.httpParams.size)
+        .set('page', this.httpParams.page)
+        .set('order_by', this.httpParams.order_by)
+        .set('order_direction', this.httpParams.order_direction)
+        .set('firstname', this.httpParams.firstname)
+        .set('lastname', this.httpParams.lastname)
+        .set('email', this.httpParams.email)
+        .set('cellPhone', this.httpParams.cellPhone)
+        .set('homePhone', this.httpParams.homePhone);
+    }
   }
 }
