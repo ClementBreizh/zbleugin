@@ -7,18 +7,34 @@ import {HttpClientModule} from '@angular/common/http';
 import {CandidateModule} from './candidate/candidate.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material';
+import { HomeComponent } from './home/home.component';
+import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
+import { LoginComponent } from './login-page/login/login.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { SkeletonModule } from './skeleton/skeleton.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NotImplementedComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
     HttpClientModule,
-    CandidateModule
+    CandidateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    SkeletonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

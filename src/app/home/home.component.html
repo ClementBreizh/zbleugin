@@ -1,0 +1,9 @@
+<div id="homepage">
+  <h1>ZblungIn Recrutement</h1>
+  <div class="panel">
+    <div routerLink="../candidates/list"><p>Candidats</p></div>
+    <div routerLink="../entreprises"><p>Entreprises</p></div>
+    <div routerLink="../rendezvous"><p>Rendez-vous</p></div>
+    <div routerLink="../adminpanel" *ngIf="!last || user.admin"><p>Admin Panel</p></div>
+  </div>
+</div>
