@@ -11,7 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
 import { LoginComponent } from './login-page/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { SkeletonModule } from './skeleton/skeleton.module';
+
 
 @NgModule({
   declarations: [
@@ -25,10 +27,14 @@ import { MatInputModule } from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
     HttpClientModule,
     CandidateModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    SkeletonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
