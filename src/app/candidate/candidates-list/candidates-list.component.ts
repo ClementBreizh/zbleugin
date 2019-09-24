@@ -5,7 +5,6 @@ import {MatIconRegistry, MatTableDataSource, PageEvent, Sort} from '@angular/mat
 import {DomSanitizer} from '@angular/platform-browser';
 import {FormBuilder} from '@angular/forms';
 
-
 @Component({
   selector: 'app-candidates-list',
   templateUrl: './candidates-list.component.html',

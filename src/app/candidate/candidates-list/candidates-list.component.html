@@ -51,23 +51,22 @@
       <td mat-cell *matCellDef="let candidate"> {{ candidate.sexCandidate }} </td>
     </ng-container>
 
-
     <!-- Firstname Column -->
     <ng-container matColumnDef="firstname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="firstname" class="sortedHeader"> Prénom</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.firstname }} </td>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.firstname }}</a> </td>
     </ng-container>
 
     <!-- Lastname Column -->
     <ng-container matColumnDef="lastname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="lastname" class="sortedHeader"> Nom</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.lastname }} </td>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.lastname }}</a> </td>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.email }} </td>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.email }}</a> </td>
     </ng-container>
 
     <!-- Cell Phone Column -->
@@ -98,9 +97,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
       <td mat-cell *matCellDef="let candidate">
-        <mat-icon svgIcon="show" [routerLink]='"/candidate/" + candidate.id' class="actions actionShow" title="Voir le dossier"></mat-icon>
-        <mat-icon svgIcon="edit" class="actions actionEdit" title="Editer le dossier"></mat-icon>
-        <mat-icon svgIcon="delete" class="actions actionDelete" title="Supprimer le candidat"></mat-icon>
+        <a [routerLink]='"/candidate/" + candidate.id' title="Voir le dossier"><mat-icon svgIcon="show" class="actions actionShow"></mat-icon></a>
+        <a [routerLink]=''  title="Editer le dossier"><mat-icon svgIcon="edit" class="actions actionEdit"></mat-icon></a>
+        <a [routerLink]=''  title="Supprimer le candidat"><mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon></a>
       </td>
     </ng-container>
 
