@@ -1,9 +1,16 @@
 <div id="homepage">
   <h1>ZblungIn Recrutement</h1>
+  <h2>Bonjour {{currentUser.firstName}}!</h2>
+<!-- <ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul> -->
   <div class="panel">
-    <div routerLink="../candidates"><p>Candidats</p></div>
-    <div routerLink="../entreprises"><p>Entreprises</p></div>
-    <div routerLink="../rendezvous"><p>Rendez-vous</p></div>
+    <div routerLink="../candidates/list"><p>Candidats</p></div>
+    <div routerLink="../company/list"><p>Entreprises</p></div>
+    <div routerLink="../appointment"><p>Rendez-vous</p></div>
     <div routerLink="../adminpanel" *ngIf="!last || user.admin"><p>Admin Panel</p></div>
   </div>
 </div>

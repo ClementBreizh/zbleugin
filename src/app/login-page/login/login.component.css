@@ -1,52 +1,9 @@
-#errorpage {
-  background-color: #CFD8DC;
-  max-width: 950px;
-  margin: auto;
-  padding: 15px
+form > div > input {
+    border: 1px solid black;
+    margin-bottom: 10px;
   }
-
-h1 {
-  padding-top: 25px;
-  text-align: center;
-}
-#log {
-  background-color: #5D99C6;
-  margin: auto;
-  height: 400px;
-  width: 500px;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 10px 10px 5px grey;
-
-}
-div>div {
-background-color: #CFD8DC;
-display: flex;
-flex-direction: column;
-padding-top: 20px;
-padding-bottom: 20px;
-margin: auto;
-width: 300px;
-height: auto;
-border: 1px solid black;
-border-radius: 10px;
-
-}
-
-p{
-  margin: auto;
-  background-color: #FFFFFF;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-button {
-  background-color:#90CAF9;
-  width: 100px;
-  margin: auto;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 10px;
-}
+  
+  button {
+    display: flex;
+    border: 1px solid black;
+  }
