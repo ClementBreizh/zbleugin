@@ -22,10 +22,9 @@ export class CompanyFormComponent implements OnInit {
     apeCode: '',
     // contacts: Person[];
     // address: Address;
-    address: this.fb.group({
-
-    })
+    address: []
   });
+
 
   constructor(
       private readonly fb: FormBuilder,

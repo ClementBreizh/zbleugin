@@ -3,7 +3,7 @@
     <mat-form-field>
       <mat-label>Nom</mat-label>
       <mat-error *ngIf="name.invalid">Ce champ est requis</mat-error>
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" required>
     </mat-form-field>
 
     <mat-form-field>
@@ -25,11 +25,8 @@
       <input type="text" matInput formControlName="apeCode">
     </mat-form-field>
 
-    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+    <app-address formControlName="address"></app-address>
 
-    <button *ngIf="isNew; else other" routerLink="home"></button>
-    <ng-template #other>
-        <button  routerLink="/company"></button>
-    </ng-template>
+    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
   </form>
 </mat-card>

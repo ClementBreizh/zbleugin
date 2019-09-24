@@ -10,11 +10,14 @@ import {
 } from '@angular/material';
 import { LoaderComponent } from './loader/loader.component';
 import { PersonPipe } from './person/person.pipe';
+import { AddressComponent } from './address/address.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [LoaderComponent, PersonPipe],
+  declarations: [LoaderComponent, PersonPipe, AddressComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
@@ -38,7 +41,8 @@ import { PersonPipe } from './person/person.pipe';
     MatSortModule,
     MatPaginatorModule,
     LoaderComponent,
-    PersonPipe
+    PersonPipe,
+    AddressComponent
   ]
 })
 export class SharedModule { }

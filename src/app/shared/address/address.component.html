@@ -1,0 +1,19 @@
+<ng-container [formGroup]="form">
+  <mat-form-field>
+    <mat-label>N° et nom de la rue</mat-label>
+    <input type="text" matInput formControlName="street" required>
+    <mat-error *ngIf="street.invalid">Champ requis</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Code postal</mat-label>
+    <input type="text" matInput formControlName="postalCode" required>
+    <mat-error *ngIf="postalCode.invalid">Champ requis</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ville</mat-label>
+    <input type="text" matInput formControlName="city" required>
+    <mat-error *ngIf="city.invalid">Champ requis</mat-error>
+  </mat-form-field>
+</ng-container>
