@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { AppRoutingModule } from '../app-routing.module';
-import {MaterialModule} from '../material';
 import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
 
 
@@ -11,7 +10,6 @@ import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from
   imports: [
     CommonModule,
     AppRoutingModule,
-    MaterialModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
