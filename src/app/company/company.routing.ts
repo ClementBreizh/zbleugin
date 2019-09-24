@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { CompanyListComponent } from './company-list/company-list.component';
-import { CandidateDetailsComponent } from '../candidate/candidate-details/candidate-details.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
+import { CompanyListComponent } from './company-list/company-list.component';
 
 export const routes: Routes = [{
   path: 'list',
@@ -15,7 +15,7 @@ export const routes: Routes = [{
   children: [{
     path: '',
     pathMatch: 'full',
-    component: CandidateDetailsComponent
+    component: CompanyDetailsComponent
   }, {
     path: 'edit',
     component: CompanyFormComponent

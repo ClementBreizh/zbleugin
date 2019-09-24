@@ -1,8 +1,8 @@
 <h1>Liste des candidats</h1>
 
-<div class="spinner-container" *ngIf="!dataSource">
-  <mat-spinner></mat-spinner>
-</div>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 
 <mat-card>
   <mat-expansion-panel>
@@ -43,7 +43,7 @@
 </mat-card>
 
 <mat-card>
-  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource" (matSortChange)="sortData($event)">
+  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource; else loading" (matSortChange)="sortData($event)">
 
     <!-- Icon Column -->
     <ng-container matColumnDef="icon">

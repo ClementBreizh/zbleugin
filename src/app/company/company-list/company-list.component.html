@@ -1,3 +1,37 @@
-<p>
-  company-list works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Liste des entreprises</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-template #loading><app-loader></app-loader></ng-template>
+
+    <a routerLink="/create">Ajouter</a>
+
+    <table mat-table [dataSource]="datasource" *ngIf="datasource; else loading" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let company"> <a [routerLink]="['..', company.id]">{{company.name}}</a> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apeCode">
+        <th mat-header-cell *matHeaderCellDef>Code APE</th>
+        <td mat-cell *matCellDef="let company"> {{company.apeCode}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="mainContact">
+        <th mat-header-cell *matHeaderCellDef>Contact principal</th>
+        <td mat-cell *matCellDef="let company"> {{drawMainContact(company)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="_actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let company">
+          <button (click)="onDelete(company)">Supprimer</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

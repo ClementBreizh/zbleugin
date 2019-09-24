@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
 import { LoginComponent } from './login-page/login/login.component';
 import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
-import {NavComponent} from './skeleton/nav/nav.component';
 import { routes as companyRoutes } from './company/company.routing';
 
 const routes: Routes = [

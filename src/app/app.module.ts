@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CompanyModule } from './company/company.module';
     MatFormFieldModule,
     MatInputModule,
     SkeletonModule,
-    CompanyModule
+    CompanyModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
