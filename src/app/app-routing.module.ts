@@ -7,6 +7,7 @@ import { LoginComponent } from './login-page/login/login.component';
 import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth/guard.guard';
+import {NavComponent} from './skeleton/nav/nav.component';
 
 
 const routes: Routes = [

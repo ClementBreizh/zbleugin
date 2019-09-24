@@ -18,6 +18,8 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { fakeBackendProvider } from './utils/fake-backend';
 import { RegisterComponent } from './register/register.component';
+import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { SkeletonModule } from './skeleton/skeleton.module';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,15 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
     HttpClientModule,
     CandidateModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SkeletonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
