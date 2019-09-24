@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -11,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
 import { LoginComponent } from './login-page/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
 import { AlertComponent } from './http-error/alert/alert.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './utils/jwt.interceptor';
