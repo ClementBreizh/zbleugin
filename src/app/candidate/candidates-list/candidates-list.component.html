@@ -15,24 +15,24 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit()">
-      <mat-form-field class="formFiled">
+    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit($event)">
+      <mat-form-field class="formField">
         <input matInput placeholder="Prénom" type="text" name="firstname" formControlName="firstname">
       </mat-form-field>
 
-      <mat-form-field class="formFiled">
+      <mat-form-field class="formField">
         <input matInput placeholder="Nom" type="text" name="lastname" formControlName="lastname" >
       </mat-form-field>
 
-      <mat-form-field class="formFiled">
+      <mat-form-field class="formField">
         <input matInput placeholder="Email" type="email" name="email" formControlName="email">
       </mat-form-field>
 
-      <mat-form-field class="formFiled">
+      <mat-form-field class="formField">
         <input matInput placeholder="Tél. Mobile" type="text" name="cellPhone" formControlName="cellPhone">
       </mat-form-field>
 
-      <mat-form-field class="formFiled">
+      <mat-form-field class="formField">
         <input matInput placeholder="Tél. Fix" type="text" name="homePhone" formControlName="homePhone">
       </mat-form-field>
 
@@ -45,39 +45,28 @@
 <mat-card>
   <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource; else loading" (matSortChange)="sortData($event)">
 
-    <!-- Icon Column -->
-    <ng-container matColumnDef="icon">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let candidate">
-        <button mat-raised-button [routerLink]='"/candidate/" + candidate.id'>
-          <mat-icon svgIcon="candidate-folder"></mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
     <!-- Gender Column -->
     <ng-container matColumnDef="sexCandidate">
       <th mat-header-cell *matHeaderCellDef> Sexe </th>
       <td mat-cell *matCellDef="let candidate"> {{ candidate.sexCandidate }} </td>
     </ng-container>
 
-
     <!-- Firstname Column -->
     <ng-container matColumnDef="firstname">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="firstname"> Prénom</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.firstname }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="firstname" class="sortedHeader"> Prénom</th>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.firstname }}</a> </td>
     </ng-container>
 
     <!-- Lastname Column -->
     <ng-container matColumnDef="lastname">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="lastname"> Nom</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.lastname }} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="lastname" class="sortedHeader"> Nom</th>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.lastname }}</a> </td>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email</th>
-      <td mat-cell *matCellDef="let candidate"> {{ candidate.email }} </td>
+      <td mat-cell *matCellDef="let candidate"> <a [routerLink]='"/candidate/" + candidate.id' title="Accèder au dossier">{{ candidate.email }}</a> </td>
     </ng-container>
 
     <!-- Cell Phone Column -->
@@ -104,6 +93,16 @@
       <td mat-cell *matCellDef="let candidate"> {{ candidate.statusCandidate }} </td>
     </ng-container>
 
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions</th>
+      <td mat-cell *matCellDef="let candidate">
+        <a [routerLink]='"/candidate/" + candidate.id' title="Voir le dossier"><mat-icon svgIcon="show" class="actions actionShow"></mat-icon></a>
+        <a [routerLink]=''  title="Editer le dossier"><mat-icon svgIcon="edit" class="actions actionEdit"></mat-icon></a>
+        <a [routerLink]=''  title="Supprimer le candidat"><mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon></a>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
@@ -112,6 +111,6 @@
                  [pageSize]="candidatesListForm.controls['size'].value"
                  [pageSizeOptions]="[20, 50, 100]"
                  [pageIndex]="candidatesListForm.controls['page'].value"
-                 (page)="getAllPageEvent($event)">
+                 (page)="pageEvent($event)">
   </mat-paginator>
 </mat-card>

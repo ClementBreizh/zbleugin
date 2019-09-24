@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CandidateModule} from './candidate/candidate.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material';
 import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
 import { LoginComponent } from './login-page/login/login.component';
@@ -28,7 +27,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

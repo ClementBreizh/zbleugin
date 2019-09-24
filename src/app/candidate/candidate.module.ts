@@ -4,20 +4,38 @@ import {CandidatesListComponent} from './candidates-list/candidates-list.compone
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import {
+  MatButtonModule, MatCardModule, MatExpansionModule,
+  MatIconModule,
+  MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSortModule,
+  MatTableModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
 
     // Ours.
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    MatInputModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSortModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   exports: [
     CandidatesListComponent,
