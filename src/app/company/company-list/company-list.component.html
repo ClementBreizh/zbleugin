@@ -5,7 +5,7 @@
   <mat-card-content>
     <ng-template #loading><app-loader></app-loader></ng-template>
 
-    <a routerLink="/create">Ajouter</a>
+    <a routerLink="../create">Ajouter</a>
 
     <table mat-table [dataSource]="datasource" *ngIf="datasource; else loading" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
