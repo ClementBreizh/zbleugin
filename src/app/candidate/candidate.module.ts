@@ -12,6 +12,7 @@ import {
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
@@ -28,7 +29,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   exports: [
     CandidatesListComponent,

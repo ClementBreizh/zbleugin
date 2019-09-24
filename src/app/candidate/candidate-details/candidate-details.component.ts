@@ -31,5 +31,6 @@ export class CandidateDetailsComponent implements OnInit {
           this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => {this.candidate = value; });
           // this.api.getOne(entityPath, param.id).subscribe((value: Candidate) => console.log(value));
         }
-      });  }
+      });
+  }
 }
