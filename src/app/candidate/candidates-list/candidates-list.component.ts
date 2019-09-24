@@ -86,7 +86,7 @@ export class CandidatesListComponent implements OnInit {
     this.getAll();
   }
 
-  getAllPageEvent($event: PageEvent) {
+  pageEvent($event: PageEvent) {
     this.candidatesListForm.patchValue({
       page: $event.pageIndex,
       size: $event.pageSize
