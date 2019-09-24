@@ -1,5 +1,10 @@
-<mat-card>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations personnelles</mat-card-title>
+    </mat-card-header>
+
     <mat-form-field>
       <mat-label>Nom</mat-label>
       <mat-error *ngIf="name.invalid">Ce champ est requis</mat-error>
@@ -24,9 +29,24 @@
       <mat-label>Code APE</mat-label>
       <input type="text" matInput formControlName="apeCode">
     </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Adresse</mat-card-title>
+    </mat-card-header>
 
     <app-address formControlName="address"></app-address>
+  </mat-card>
 
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Contacts</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card class="actions">
     <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
-  </form>
-</mat-card>
+  </mat-card>
+
+</form>
