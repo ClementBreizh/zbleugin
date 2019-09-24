@@ -9,10 +9,9 @@ import {
   MatProgressSpinnerModule, MatSortModule,
   MatTableModule
 } from '@angular/material';
-import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [CandidatesListComponent, CandidateDetailsComponent],
@@ -25,12 +24,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    AppRoutingModule,
     MatExpansionModule,
-    HttpClientModule,
-    FormsModule,
     MatSortModule,
     MatPaginatorModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   exports: [

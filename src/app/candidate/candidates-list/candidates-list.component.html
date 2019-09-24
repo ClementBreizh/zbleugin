@@ -15,7 +15,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit($event)">
       <mat-form-field class="formFiled">
         <input matInput placeholder="Prénom" type="text" name="firstname" formControlName="firstname">
       </mat-form-field>

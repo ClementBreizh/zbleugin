@@ -59,8 +59,8 @@ export class CandidatesListComponent implements OnInit {
       });
   }
 
-  onSubmit() {
-    event.preventDefault();
+  onSubmit($event) {
+    $event.preventDefault();
 
     this.candidatesListForm.patchValue({
       page: 0
