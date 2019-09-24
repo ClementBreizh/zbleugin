@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
-import {MatIconRegistry, MatTableDataSource, PageEvent, Sort} from '@angular/material';
+import {MatIconRegistry, PageEvent, Sort} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {FormBuilder} from '@angular/forms';
+import {CandidateApiService} from '../../services/candidate-api.service';
 
 @Component({
   selector: 'app-candidates-list',
@@ -11,7 +11,13 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./candidates-list.component.css']
 })
 export class CandidatesListComponent implements OnInit {
-  private entityPath = 'candidates';
+
+  displayedColumns: string[] = ['sexCandidate', 'firstname',
+    'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate', 'actions'];
+
+  dataSource: Candidate[];
+
+  // private entityPath = 'candidates';
 
   resultNb: number;
 
@@ -26,11 +32,7 @@ export class CandidatesListComponent implements OnInit {
     sort: ''
   });
 
-  displayedColumns: string[] = ['sexCandidate', 'firstname',
-      'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate', 'actions'];
-  dataSource: MatTableDataSource<Candidate>;
-
-  constructor(private api: ZbleuginAPIService, private iconRegistry: MatIconRegistry,
+  constructor(private api: CandidateApiService, private iconRegistry: MatIconRegistry,
               private sanitizer: DomSanitizer, private fb: FormBuilder) {
     iconRegistry.addSvgIcon(
       'search',
@@ -47,13 +49,24 @@ export class CandidatesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAll();
+    this.refresh();
   }
 
-  getAll() {
-    return this.api.getAll(`${this.entityPath}/filtered`, this.params())
+  onDelete(candidate: Candidate): void {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ' + candidate.firstname + ' ' + candidate.lastname + '?')) {
+      this.api
+        .deleteOne(candidate.id)
+        .subscribe(_ => this.refresh()); // TODO: Use notification to show success OR failure.
+    }
+  }
+
+  private refresh() {
+    // Provoque le rechargement du tableau
+    // this.dataSource = null;
+    this.api
+      .getAll(this.params())
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource<Candidate>(data.content);
+        this.dataSource = data.content;
         this.resultNb = data.totalElements;
       });
   }
@@ -65,7 +78,7 @@ export class CandidatesListComponent implements OnInit {
       page: 0
     });
 
-    return this.getAll();
+    return this.refresh();
   }
 
   // Reset candidatesListForm all values for httpPrams but elements number & sorting.
@@ -82,7 +95,7 @@ export class CandidatesListComponent implements OnInit {
       }
     );
 
-    this.getAll();
+    this.refresh();
   }
 
   pageEvent($event: PageEvent) {
@@ -91,7 +104,7 @@ export class CandidatesListComponent implements OnInit {
       size: $event.pageSize
     });
 
-    this.getAll();
+    this.refresh();
   }
 
   params() {
@@ -111,6 +124,6 @@ export class CandidatesListComponent implements OnInit {
       });
     }
 
-    this.getAll();
+    this.refresh();
   }
 }

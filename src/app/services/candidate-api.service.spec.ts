@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ZbleuginAPIService } from './zbleugin-api.service';
+import { CandidateApiService } from './candidate-api.service';
 
-describe('ZbleuginAPIService', () => {
+describe('CandidateApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ZbleuginAPIService = TestBed.get(ZbleuginAPIService);
+    const service: CandidateApiService = TestBed.get(CandidateApiService);
     expect(service).toBeTruthy();
   });
 });
