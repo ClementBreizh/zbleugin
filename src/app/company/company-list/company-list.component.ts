@@ -32,9 +32,11 @@ export class CompanyListComponent implements OnInit {
   }
 
   onDelete(company: Company): void {
-    this.api
-        .deleteOne(company.id)
-        .subscribe(_ => this.refresh()); // TODO: Use notification to show success OR failure.
+    if (confirm('Êtes-vous sûr de vouloir supprimer ' + company.name)) {
+      this.api
+          .deleteOne(company.id)
+          .subscribe(_ => this.refresh()); // TODO: Use notification to show success OR failure.
+    }
   }
 
   private refresh() {

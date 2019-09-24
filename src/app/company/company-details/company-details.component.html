@@ -8,6 +8,15 @@
   </mat-card-header>
 
   <mat-card-content>
+    <div class="actions">
+      <a mat-button routerLink="edit">Modifier</a>
+      <button mat-button (click)="onDelete()" color="warn">Supprimer</button>
+    </div>
+
+    <p class="text text-danger" *ngIf="error">
+      {{ error }}
+    </p>
+
     <table>
       <tr>
         <td scope="col">Antenne</td>

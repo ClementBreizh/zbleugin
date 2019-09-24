@@ -11,7 +11,6 @@ export const routes: Routes = [{
   component: CompanyFormComponent
 }, {
   path: ':id',
-  pathMatch: 'full',
   children: [{
     path: '',
     pathMatch: 'full',
