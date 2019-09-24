@@ -13,6 +13,7 @@ import { LoginComponent } from './login-page/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
 import { SkeletonModule } from './skeleton/skeleton.module';
+import { CompanyModule } from './company/company.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SkeletonModule } from './skeleton/skeleton.module';
     CandidateModule,
     MatFormFieldModule,
     MatInputModule,
-    SkeletonModule
+    SkeletonModule,
+    CompanyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
