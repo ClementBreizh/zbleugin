@@ -2,7 +2,7 @@ form > div > input {
     border: 1px solid black;
     margin-bottom: 10px;
   }
-  
+
   button {
     display: flex;
     border: 1px solid black;

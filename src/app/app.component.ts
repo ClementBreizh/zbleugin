@@ -24,4 +24,13 @@ export class AppComponent {
       this.authenticationService.logout();
       this.router.navigate(['/login']);
   }
+
+  // Method to switch between login/logout button
+  switchButton() {
+    if (this.authenticationService.currentUserValue == null) {
+      return true;
+    } else {
+        return false;
+        }
+  }
 }
