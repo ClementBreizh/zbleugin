@@ -3,7 +3,6 @@ import {ZbleuginAPIService} from '../../services/zbleugin-api.service';
 import {Candidate} from '../../models/candidate';
 import {MatIconRegistry, MatTableDataSource, PageEvent, Sort} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {HttpParams} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
 
 
@@ -28,18 +27,24 @@ export class CandidatesListComponent implements OnInit {
     sort: ''
   });
 
-  displayedColumns: string[] = ['icon', 'sexCandidate', 'firstname',
-      'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate'];
+  displayedColumns: string[] = ['sexCandidate', 'firstname',
+      'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate', 'actions'];
   dataSource: MatTableDataSource<Candidate>;
 
   constructor(private api: ZbleuginAPIService, private iconRegistry: MatIconRegistry,
               private sanitizer: DomSanitizer, private fb: FormBuilder) {
     iconRegistry.addSvgIcon(
-      'candidate-folder',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/candidateFolder.svg'));
-    iconRegistry.addSvgIcon(
       'search',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
+    iconRegistry.addSvgIcon(
+      'show',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/show.svg'));
+    iconRegistry.addSvgIcon(
+      'edit',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'));
+    iconRegistry.addSvgIcon(
+      'delete',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
   }
 
   ngOnInit() {
