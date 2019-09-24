@@ -6,7 +6,7 @@ import { NotImplementedComponent } from './http-error/not-implemented/not-implem
 import { LoginComponent } from './login-page/login/login.component';
 import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
 import {NavComponent} from './skeleton/nav/nav.component';
-
+import { routes as companyRoutes } from './company/company.routing';
 
 const routes: Routes = [
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'candidate/:id', component: CandidateDetailsComponent
-  }
+  }, { path: 'company', children: companyRoutes }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
