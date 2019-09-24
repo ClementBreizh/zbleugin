@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+}
+
+th.mat-header-cell{
+  text-align: center;
+}
+
+td.mat-cell{
+  text-align: center;
+}
+
+th {
+  padding: 0 20px 0 0;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  margin: 0 0 20px 0;
+}
+
+.mat-sort-header-container {
+  padding-right: 30px;
+  align-items: center;
+}
+
+td a,
+td a:visited {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}

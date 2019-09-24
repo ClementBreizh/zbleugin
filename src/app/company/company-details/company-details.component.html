@@ -1,0 +1,53 @@
+<ng-template #loading>
+
+</ng-template>
+
+<mat-card *ngIf="company; else loading">
+  <mat-card-header>
+    <mat-card-title>Détails de l'entreprise {{company.name}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="actions">
+      <a mat-button routerLink="edit">Modifier</a>
+      <button mat-button (click)="onDelete()" color="warn">Supprimer</button>
+    </div>
+
+    <p class="text text-danger" *ngIf="error">
+      {{ error }}
+    </p>
+
+    <table>
+      <tr>
+        <td scope="col">Antenne</td>
+        <td>{{ company.antennaName }}</td>
+      </tr>
+      <tr>
+        <td scope="col">Siret</td>
+        <!-- Maybe format siret with a pipe. -->
+        <td>{{ company.siret }}</td>
+      </tr>
+      <tr>
+        <td scope="col">Code APE</td>
+        <!-- Maybe format ape with a pipe. -->
+        <td>{{ company.apeCode }}</td>
+      </tr>
+      <tr>
+        <td scope="col">Contacts</td>
+        <td>
+          <ng-container *ngFor="let p of company.contacts; first as first">
+            <ng-container *ngIf="!first">, </ng-container>{{ p|person }}
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td scope="col">Adresse</td>
+        <td>{{ company.address.street }} {{ company.address.postalCode }} {{ company.address.city }}</td>
+      </tr>
+      <!-- <tr>
+        <td scope="col"></td>
+        <td><app-address-details [address]="company.address"></app-address-details></td>
+      </tr> -->
+    </table>
+  </mat-card-content>
+</mat-card>

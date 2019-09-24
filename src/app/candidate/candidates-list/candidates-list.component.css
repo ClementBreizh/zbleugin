@@ -2,21 +2,23 @@ table {
   width: 100%;
 }
 
+th.mat-header-cell{
+  text-align: center;
+}
+td.mat-cell{
+  text-align: center;
+}
+
 th {
   padding: 0 20px 0 0;
 }
 
 .mat-form-field {
-  font-size: 14px;
   width: 100%;
 }
 
 mat-card {
   margin: 0 0 20px 0;
-}
-
-mat-form-field {
-  margin-right: 12px;
 }
 
 .candidate-form {
@@ -25,10 +27,37 @@ mat-form-field {
   width: 100%;
 }
 
-.formFiled {
+.formField {
   width: 100%;
 }
 
-.mat-sort-header-container {
-  align-items: center;
+.actions {
+  cursor: pointer;
+  transition: all, 0.3s;
+}
+
+.actions:hover {
+  transform: scale(1.2);
+}
+
+.actionShow:hover {
+  color: green;
+}
+
+.actionEdit:hover {
+  color: orange;
+}
+
+.actionDelete:hover {
+  color: red;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

@@ -1,0 +1,28 @@
+mat-form-field,
+app-address {
+  display: block;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+mat-card {
+  margin: 10px;
+  flex-grow: 1;
+}
+
+mat-card:nth-child(3n),
+.actions {
+  width: 100%;
+  flex-grow: 2;
+}
+
+.actions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

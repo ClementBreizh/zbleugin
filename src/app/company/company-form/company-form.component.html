@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations personnelles</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <mat-error *ngIf="name.invalid">Ce champ est requis</mat-error>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Antenne</mat-label>
+      <input type="text" matInput formControlName="antennaName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Numéro de siret</mat-label>
+      <mat-error *ngIf="siret.invalid">
+        <ng-container *ngIf="siret.errors['required']">Champs requis</ng-container>
+        <ng-container *ngIf="siret.errors['pattern']">Doit contenir 14 chiffres (espaces accéptés)</ng-container>
+      </mat-error>
+      <input type="text" matInput formControlName="siret">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Code APE</mat-label>
+      <input type="text" matInput formControlName="apeCode">
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Adresse</mat-card-title>
+    </mat-card-header>
+
+    <app-address formControlName="address"></app-address>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Contacts</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card class="actions">
+    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+  </mat-card>
+
+</form>
