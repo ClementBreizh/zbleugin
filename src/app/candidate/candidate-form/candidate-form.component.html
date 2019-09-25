@@ -6,9 +6,10 @@
     </mat-card-header>
 
     <mat-form-field>
-      <mat-select placeholder="Selectionnez une civilité">
-        <mat-option value="option">M.</mat-option>
-        <mat-option value="option">Me.</mat-option>
+      <mat-select formControlName="sexCandidate" placeholder="Selectionnez une civilité">
+        <mat-option value="-">-</mat-option>
+        <mat-option value="Mr">Mr</mat-option>
+        <mat-option value="Mme">Me</mat-option>
       </mat-select>
       <mat-hint align="end"></mat-hint>
     </mat-form-field>
@@ -43,13 +44,13 @@
     </mat-form-field>
   </mat-card>
 
-  <mat-card>
+<!--  <mat-card>
     <mat-card-header>
       <mat-card-title>Adresse</mat-card-title>
     </mat-card-header>
 
     <app-address formControlName="address_id"></app-address>
-  </mat-card>
+  </mat-card> -->
 
   <mat-card>
     <mat-card-header>
@@ -59,32 +60,32 @@
     <mat-form-field>
       <mat-label>Rang</mat-label>
       <select formControlName="rankingCandidate" matNativeControl>
-        <option value="0">Rang 0</option>
-        <option value="1">Rang 1</option>
-        <option value="2">Rang 2</option>
-        <option value="3">Rang 3</option>
-        <option value="4">Rang 4</option>
+        <option value="0 - statut non déterminé">0 - statut non déterminé</option>
+        <option value="1 - tout est ok">1 - tout est ok</option>
+        <option value="2 - ok sauf documents à revoir">2 - ok sauf documents à revoir</option>
+        <option value="3 - pas mal de choses à revoir">3 - pas mal de choses à revoir</option>
+        <option value="4 - ne correspond pas au poste">4 - ne correspond pas au poste</option>
       </select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Statut</mat-label>
       <select formControlName="statusCandidate" matNativeControl>
-        <option value="0">Aucune action effectuée</option>
-        <option value="1">Appel téléphonique effectué</option>
-        <option value="2">Rendez-vous physique effectué</option>
-        <option value="3">A rappeler</option>
-        <option value="4">Annoncer résultats</option>
-        <option value="5">Recherche entreprise</option>
-        <option value="6">En poste</option>
-        <option value="7">En formation</option>
-        <option value="8">Abandon</option>
+        <option value="Aucune action effectuée">Aucune action effectuée</option>
+        <option value="Appel téléphonique effectué">Appel téléphonique effectué</option>
+        <option value="Rendez-vous physique effectué">Rendez-vous physique effectué</option>
+        <option value="A rappeler">A rappeler</option>
+        <option value="Annoncer résultats">Annoncer résultats</option>
+        <option value="Recherche entreprise">Recherche entreprise</option>
+        <option value="En poste">En poste</option>
+        <option value="En formation">En formation</option>
+        <option value="Abandon">Abandon</option>
       </select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Commentaire</mat-label>
-      <textarea matInput placeholder="Textarea"></textarea>
+      <textarea matInput formControlName="commentary" placeholder="Textarea"></textarea>
     </mat-form-field>
   </mat-card>
 

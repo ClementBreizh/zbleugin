@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Candidate} from '../../models/candidate';
 import {CandidateApiService} from '../../services/candidate-api.service';
@@ -14,7 +14,8 @@ export class CandidateFormComponent implements OnInit {
 
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,
-              private readonly api: CandidateApiService) { }
+              private readonly api: CandidateApiService,
+              private readonly router: Router) { }
 
   get isNew(): boolean { return this.id === null; }
 
@@ -24,6 +25,7 @@ export class CandidateFormComponent implements OnInit {
   get cellPhone(): AbstractControl { return this.form.controls.cellPhone; }
 
   id: number = null;
+  newCandidate: Candidate;
 
   form = this.fb.group({
     // id: null,
@@ -49,10 +51,10 @@ export class CandidateFormComponent implements OnInit {
 
     const candidate: Candidate = this.form.value;
 
-    return this.api.create(candidate).subscribe(console.log);
-
-    // console.log(candidate);
-    // console.log('Valid');
+    return this.api.create(candidate).subscribe(data => {
+      this.newCandidate = data;
+      this.router.navigate(['candidate', this.newCandidate.id]);
+    });
   }
 
   /** Initializes from route parameters. */
