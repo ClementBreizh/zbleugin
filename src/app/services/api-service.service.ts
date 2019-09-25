@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Optional } from '@angular/core';
 
 /** Generalizes our common processes about HTTP requests. */
@@ -16,10 +16,14 @@ export abstract class ApiServiceService<T> {
   protected get(url: string|number = '', params: HttpParams = null) {
     return this.http.get<any>(this.buildUrl(url), {params});
   }
-
   /** Proxy to perform POST HTTP requests. */
-  protected post(url: string = '', data: {[key: string]: any}) {
-    return this.http.get<any>(this.buildUrl(url), data);
+  protected post(data: {[key: string]: any}, url: string = '') {
+    return this.http.post<any>(this.buildUrl(url), data);
+  }
+
+  /** Proxy to perform PUT HTTP requests. */
+  protected put(data: {[key: string]: any}, url: string = '') {
+    return this.http.put<any>(this.buildUrl(url), data);
   }
 
   /** Proxy to perform DELETE HTTP requests. */

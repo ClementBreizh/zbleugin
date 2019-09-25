@@ -1,0 +1,95 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations personnelles</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-select placeholder="Selectionnez une civilité">
+        <mat-option value="option">M.</mat-option>
+        <mat-option value="option">Me.</mat-option>
+      </mat-select>
+      <mat-hint align="end"></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <mat-error *ngIf="lastname.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="lastname" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Prénom</mat-label>
+      <mat-error *ngIf="firstname.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="firstname" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <mat-error *ngIf="email.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tél. mobile</mat-label>
+      <mat-error *ngIf="cellPhone.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="cellPhone" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tél. fixe</mat-label>
+      <input type="text" matInput formControlName="homePhone">
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Adresse</mat-card-title>
+    </mat-card-header>
+
+    <app-address formControlName="address_id"></app-address>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Autre</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Rang</mat-label>
+      <select formControlName="rankingCandidate" matNativeControl>
+        <option value="0">Rang 0</option>
+        <option value="1">Rang 1</option>
+        <option value="2">Rang 2</option>
+        <option value="3">Rang 3</option>
+        <option value="4">Rang 4</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Statut</mat-label>
+      <select formControlName="statusCandidate" matNativeControl>
+        <option value="0">Aucune action effectuée</option>
+        <option value="1">Appel téléphonique effectué</option>
+        <option value="2">Rendez-vous physique effectué</option>
+        <option value="3">A rappeler</option>
+        <option value="4">Annoncer résultats</option>
+        <option value="5">Recherche entreprise</option>
+        <option value="6">En poste</option>
+        <option value="7">En formation</option>
+        <option value="8">Abandon</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Commentaire</mat-label>
+      <textarea matInput placeholder="Textarea"></textarea>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card class="actions">
+    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+  </mat-card>
+
+</form>
