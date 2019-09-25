@@ -11,7 +11,8 @@ import {
   MatIconModule,
   MatInputModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSortModule,
-  MatTableModule, MatTabsModule
+  MatTableModule, MatTabsModule, MatListModule,
+  MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -33,7 +34,9 @@ import {
     MatExpansionModule,
     MatSortModule,
     MatPaginatorModule,
+    MatListModule,
     MatTabsModule,
+    MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule
