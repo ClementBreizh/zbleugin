@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'candidate', children: candidateRoutes },
   { path: 'company', children: companyRoutes },
 
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'entreprises', component: NotImplementedComponent },
   { path: 'rendezvous', component: NotImplementedComponent },
