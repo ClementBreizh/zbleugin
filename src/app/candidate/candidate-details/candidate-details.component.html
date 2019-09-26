@@ -70,7 +70,7 @@
         <table>
           <tr>
             <th>Date du rendez-vous</th>
-            <th>Lieu</th>
+            <th>Statut</th>
             <th>Type du rendez-vous</th>
             <th>Organisateur</th>
           </tr>
@@ -78,30 +78,13 @@
             <td>{{ appointment.appointmentDate}}</td>
             <td>{{ appointment.status }}</td>
             <td>{{ appointment.appointmentType }}</td>
-            <td>{{ appointment.organizer }}</td>
+            <td>{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</td>
           </tr>
         </table>
       </mat-card>
     </mat-tab>
+
     <mat-tab label="Informations complémentaires">
-
-      <table>
-        <tr>
-          <th>Intitulé</th>
-          <th>Niveau</th>
-          <th>Date d'obtention</th>
-        </tr>
-        <tr *ngFor="let degree of candidate.degrees">
-          <td>{{ degree.name }}</td>
-          <td>{{ degree.level }}</td>
-          <td>{{ degree.validation_date }}</td>
-        </tr>
-      </table>
-
-
-
-
-
      <h2>Situation actuelle</h2>
      <table>
        <tr>
@@ -116,6 +99,28 @@
          <td>{{ candidate.feedback_id.durationOfContract }}</td>
          <td>{{ candidate.feedback_id.comment }}</td>
        </tr>
+     </table>
+     <div>
+        <ul>
+          <li>Avis sur le candidat: {{ candidate.rankingCandidate }}</li>
+          <li>Commentaire: {{ candidate.commentary }}</li>
+       </ul>
+     </div>
+    </mat-tab>
+
+    <mat-tab label="Tests">
+     <h2>Situation actuelle</h2>
+     <table>
+      <tr>
+        <th>Thème</th>
+        <th>Score</th>
+        <th>Date de validation</th>
+      </tr>
+      <tr *ngFor="let assessment of candidate.assessments">
+        <td>{{ assessment.category }}</td>
+        <td>{{ assessment.score }}</td>
+        <td>{{ assessment.validationDate }}</td>
+      </tr>
      </table>
      <div>
         <ul>
