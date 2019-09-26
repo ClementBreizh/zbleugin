@@ -4,14 +4,13 @@ import {CandidateListComponent} from './candidate-list/candidate-list.component'
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import {
   MatButtonModule, MatCardModule, MatExpansionModule,
-  MatIconModule,
-  MatInputModule, MatPaginatorModule,
-  MatProgressSpinnerModule, MatSelectModule, MatSliderModule, MatSortModule,
-  MatTableModule, MatTabsModule, MatListModule,
+  MatIconModule, MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
+  MatSortModule, MatTableModule, MatTabsModule, MatListModule,
   MatGridListModule
 } from '@angular/material';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
@@ -22,7 +21,6 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-
     // Ours.
     AppRoutingModule,
     SharedModule,
@@ -40,10 +38,10 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     MatSelectModule,
     MatSliderModule
-
   ],
   exports: [
     CandidateListComponent,

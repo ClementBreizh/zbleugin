@@ -14,7 +14,7 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { fakeBackendProvider } from './utils/fake-backend';
 import { RegisterComponent } from './register/register.component';
-import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
 import { SharedModule } from './shared/shared.module';
@@ -39,6 +39,7 @@ import { SharedModule } from './shared/shared.module';
     CandidateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSidenavModule,
     SkeletonModule,
     CompanyModule,
     SharedModule
