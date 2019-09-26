@@ -2,7 +2,7 @@ import {Address} from './address';
 import {Degree} from './degree';
 import {Feedback} from './feedback';
 import {Matter} from './matter';
-import {Session} from './session';
+import {Appointment} from './appointment';
 
 // Candidate model
 export class Candidate {

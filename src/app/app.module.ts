@@ -10,28 +10,29 @@ import { NotImplementedComponent } from './http-error/not-implemented/not-implem
 import { LoginComponent } from './login-page/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AlertComponent } from './http-error/alert/alert.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { fakeBackendProvider } from './utils/fake-backend';
 import { RegisterComponent } from './register/register.component';
-import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
 import { SharedModule } from './shared/shared.module';
 import { AppointmentModule } from './appointment/appointment.module';
+import {LoginPageModule} from './login-page/login-page.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotImplementedComponent,
-    LoginComponent,
     AlertComponent,
     RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    LoginPageModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -45,6 +46,7 @@ import { AppointmentModule } from './appointment/appointment.module';
     CompanyModule,
     SharedModule,
     AppointmentModule,
+    MatSidenavModule,
     ReactiveFormsModule
   ],
   providers: [

@@ -1,10 +1,12 @@
-import { Address } from './address';
-import { Person} from './person';
+import {Person} from './person';
 
 export class Appointment {
   id: number;
-  appointmentType: string;
-  appointmentDate: string;
+  appointmentDate: Date;
+  appointmentType;
+  informations: string;
+  report: string;
+  status: boolean;
   persons: Person[];
   organizer: Person;
 }

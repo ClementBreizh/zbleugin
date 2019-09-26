@@ -13,7 +13,7 @@ export class CandidateDetailsComponent implements OnInit {
 
   candidate: Candidate;
 
-  private actualSession: Session;
+  actualSession: Session;
 
   constructor(private api: CandidateApiService, private route: ActivatedRoute) { }
 
@@ -29,7 +29,6 @@ export class CandidateDetailsComponent implements OnInit {
           .subscribe((value: Candidate) => {
             this.candidate = value;
             this.actualSession = this.candidate.sessions[this.candidate.sessions.length - 1].session;
-            console.log(this.candidate.sessions);
           });
       }
     });

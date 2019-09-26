@@ -6,11 +6,11 @@ import {FormBuilder} from '@angular/forms';
 import {CandidateApiService} from '../../services/candidate-api.service';
 
 @Component({
-  selector: 'app-candidates-list',
-  templateUrl: './candidates-list.component.html',
-  styleUrls: ['./candidates-list.component.css']
+  selector: 'app-candidate-list',
+  templateUrl: './candidate-list.component.html',
+  styleUrls: ['./candidate-list.component.css']
 })
-export class CandidatesListComponent implements OnInit {
+export class CandidateListComponent implements OnInit {
 
   displayedColumns: string[] = ['sexCandidate', 'firstname',
     'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate', 'actions'];
@@ -46,6 +46,9 @@ export class CandidatesListComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'delete',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
+    iconRegistry.addSvgIcon(
+      'add',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
   }
 
   ngOnInit() {
@@ -82,8 +85,8 @@ export class CandidatesListComponent implements OnInit {
   }
 
   // Reset candidatesListForm all values for httpPrams but elements number & sorting.
-  onReset() {
-    event.preventDefault();
+  onReset($event) {
+    $event.preventDefault();
 
     this.candidatesListForm.patchValue({
         firstname: '',
