@@ -3,7 +3,6 @@ import { User } from '../models/user';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../services/authentification.service';
 import { UserService } from '../services/user.service';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -16,18 +15,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   users: User[] = [];
 
   constructor(
-      private authenticationService: AuthenticationService,
-      private userService: UserService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) {
-      this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-          this.currentUser = user;
-      });
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
+      user => {
+        this.currentUser = user;
+      }
+    );
   }
   ngOnInit() {
   }
 
   ngOnDestroy() {
-      // unsubscribe to ensure no memory leaks
-      this.currentUserSubscription.unsubscribe();
+    // unsubscribe to ensure no memory leaks
+    this.currentUserSubscription.unsubscribe();
   }
 }
