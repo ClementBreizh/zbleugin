@@ -1,53 +1,22 @@
-<ng-template #loading>
-
-</ng-template>
-
-<mat-card *ngIf="company; else loading">
-  <mat-card-header>
-    <mat-card-title>Détails de l'entreprise {{company.name}}</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content>
-    <div class="actions">
-      <a mat-button routerLink="edit">Modifier</a>
-      <button mat-button (click)="onDelete()" color="warn">Supprimer</button>
-    </div>
-
-    <p class="text text-danger" *ngIf="error">
-      {{ error }}
-    </p>
-
-    <table>
-      <tr>
-        <td scope="col">Antenne</td>
-        <td>{{ company.antennaName }}</td>
-      </tr>
-      <tr>
-        <td scope="col">Siret</td>
-        <!-- Maybe format siret with a pipe. -->
-        <td>{{ company.siret }}</td>
-      </tr>
-      <tr>
-        <td scope="col">Code APE</td>
-        <!-- Maybe format ape with a pipe. -->
-        <td>{{ company.apeCode }}</td>
-      </tr>
-      <tr>
-        <td scope="col">Contacts</td>
-        <td>
-          <ng-container *ngFor="let p of company.contacts; first as first">
-            <ng-container *ngIf="!first">, </ng-container>{{ p|person }}
-          </ng-container>
-        </td>
-      </tr>
-      <tr>
-        <td scope="col">Adresse</td>
-        <td>{{ company.address.street }} {{ company.address.postalCode }} {{ company.address.city }}</td>
-      </tr>
-      <!-- <tr>
-        <td scope="col"></td>
-        <td><app-address-details [address]="company.address"></app-address-details></td>
-      </tr> -->
-    </table>
-  </mat-card-content>
-</mat-card>
+<ng-container *ngIf="company">
+    <h2>{{ company.name}}</h2>
+    <mat-card class="infos">
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>
+              <mat-list>
+                <mat-list-item class="address" >Adresse:</mat-list-item>
+                <mat-list-item >{{company.address_id.street}}</mat-list-item>
+                <mat-list-item >{{company.address_id.postalCode}} {{company.address_id.city}}</mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+            <mat-grid-tile class="div-contact">
+              <mat-list>
+                <mat-list-item class="contact" >Contact:</mat-list-item>
+                <mat-list-item >Tel mobile: {{company.name}}</mat-list-item>
+                <mat-list-item >Tel fixe: {{company.name}}</mat-list-item>
+                <mat-list-item >Email: {{company.name}}</mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </mat-card>
+  </ng-container>

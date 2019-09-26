@@ -1,5 +1,52 @@
-.actions {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+h2, .status {
+  text-align: center;
 }
+
+.address, .contact {
+  text-decoration: underline;
+}
+
+.infos{
+  border: 3px solid #d5d5d5;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  width: 80%;
+  margin: auto;
+}
+
+.div-contact{
+  border-left: 2px solid #63b5f6;
+}
+
+mat-tab-group {
+  margin: 3em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.detailsNav {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.infoCard {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
