@@ -14,7 +14,10 @@ export abstract class ApiServiceService<T> {
 
   /** Proxy to perform GET HTTP requests. */
   protected get(url: string|number = '', params: HttpParams = null) {
-    return this.http.get<any>(this.buildUrl(url), {params});
+    let headers = new HttpHeaders()
+    headers.set('Content-Type', 'application/json');
+    headers.set('Authorization', 'Basic YWRtaW46YWRtaW5hZG1pbg==');
+    return this.http.get<any>(this.buildUrl(url), {params: params, headers: headers});
   }
   /** Proxy to perform POST HTTP requests. */
   protected post(data: {[key: string]: any}, url: string = '') {
