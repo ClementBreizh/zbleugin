@@ -25,10 +25,10 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
-  { path: 'company', children: companyRoutes
+  { path: 'company', children: companyRoutes, canActivate: [AuthGuard]
   },
   {
-    path: 'appointment/list', children: appointmentRoutes
+    path: 'appointment', children: appointmentRoutes, canActivate: [AuthGuard]
   },
   {
     path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]
