@@ -5,45 +5,58 @@
 </ng-template>
 
 <mat-card>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <mat-icon svgIcon="search"></mat-icon> Recherche
-      </mat-panel-title>
-      <mat-panel-description>
-        Cliquez pour accéder à la zone de recherche.
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon svgIcon="search"></mat-icon> Recherche
+        </mat-panel-title>
+        <mat-panel-description>
+          Cliquez pour accéder à la zone de recherche.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-    <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit($event)">
-      <mat-form-field class="formField">
-        <input matInput placeholder="Prénom" type="text" name="firstname" formControlName="firstname">
-      </mat-form-field>
+      <form [formGroup]="candidatesListForm" class="candidate-form" (ngSubmit)="onSubmit($event)">
+        <mat-form-field class="formField">
+          <input matInput placeholder="Prénom" type="text" name="firstname" formControlName="firstname">
+        </mat-form-field>
 
-      <mat-form-field class="formField">
-        <input matInput placeholder="Nom" type="text" name="lastname" formControlName="lastname" >
-      </mat-form-field>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Nom" type="text" name="lastname" formControlName="lastname" >
+        </mat-form-field>
 
-      <mat-form-field class="formField">
-        <input matInput placeholder="Email" type="email" name="email" formControlName="email">
-      </mat-form-field>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Email" type="email" name="email" formControlName="email">
+        </mat-form-field>
 
-      <mat-form-field class="formField">
-        <input matInput placeholder="Tél. Mobile" type="text" name="cellPhone" formControlName="cellPhone">
-      </mat-form-field>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Tél. Mobile" type="text" name="cellPhone" formControlName="cellPhone">
+        </mat-form-field>
 
-      <mat-form-field class="formField">
-        <input matInput placeholder="Tél. Fix" type="text" name="homePhone" formControlName="homePhone">
-      </mat-form-field>
+        <mat-form-field class="formField">
+          <input matInput placeholder="Tél. Fix" type="text" name="homePhone" formControlName="homePhone">
+        </mat-form-field>
 
-      <button type="submit" mat-raised-button color="primary" class="example-button-row">Rechercher</button>
-      <button mat-raised-button color="default" class="example-button-row" (click)="onReset($event)">Remise à zéro</button>
-    </form>
-  </mat-expansion-panel>
+        <button type="submit" mat-raised-button color="primary" class="example-button-row">Rechercher</button>
+        <button mat-raised-button color="default" class="example-button-row" (click)="onReset($event)">Remise à zéro</button>
+      </form>
+    </mat-expansion-panel>
 
-  <br />
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon svgIcon="add"></mat-icon> Ajouter un candidat
+        </mat-panel-title>
+        <mat-panel-description>
+          Cliquez pour accéder à l'ajout de candidat.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-  <button mat-raised-button routerLink="../create">Ajouter</button>
+      <app-candidate-form></app-candidate-form>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
 
 </mat-card>
 

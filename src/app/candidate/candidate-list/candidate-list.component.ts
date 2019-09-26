@@ -46,6 +46,9 @@ export class CandidateListComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'delete',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
+    iconRegistry.addSvgIcon(
+      'add',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
   }
 
   ngOnInit() {
