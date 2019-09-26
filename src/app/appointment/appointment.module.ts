@@ -7,6 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatExpansionModule,
+  MatIconModule,
+  MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSortModule,
+  MatTableModule, MatTabsModule
+} from '@angular/material';
+import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppointmentListComponent, AppointmentDetailsComponent, AppointmentFormComponent],
@@ -16,7 +25,21 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     ReactiveFormsModule,
     SharedModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AppRoutingModule,
+    MatInputModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTabsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
 
   ],
   exports: [AppointmentListComponent, AppointmentDetailsComponent, AppointmentFormComponent]

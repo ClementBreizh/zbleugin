@@ -7,6 +7,7 @@ import { LoginComponent } from './login-page/login/login.component';
 import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
 import { routes as companyRoutes } from './company/company.routing';
 import { routes as appointmentRoutes } from './appointment/appointment.routing';
+import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
 
 const routes: Routes = [
   {
@@ -19,10 +20,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'entreprises', component: NotImplementedComponent
-  },
-  {
-    path: 'rendezvous', component: NotImplementedComponent
+    path: 'rendezvous', component: AppointmentListComponent
   },
   {
     path: 'adminpanel', component: NotImplementedComponent
