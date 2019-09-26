@@ -13,7 +13,7 @@ export class CandidateDetailsComponent implements OnInit {
 
   candidate: Candidate;
 
-  private actualSession: Session;
+  actualSession: Session;
 
   constructor(private api: CandidateApiService, private route: ActivatedRoute) { }
 

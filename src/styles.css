@@ -8,3 +8,7 @@
 .lastname {
   text-transform: uppercase;
 }
+
+body {
+  margin: Auto;
+}

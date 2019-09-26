@@ -11,7 +11,8 @@ import {
   MatIconModule,
   MatInputModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSelectModule, MatSliderModule, MatSortModule,
-  MatTableModule, MatTabsModule
+  MatTableModule, MatTabsModule, MatListModule,
+  MatGridListModule
 } from '@angular/material';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
 
@@ -34,7 +35,9 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     MatExpansionModule,
     MatSortModule,
     MatPaginatorModule,
+    MatListModule,
     MatTabsModule,
+    MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
