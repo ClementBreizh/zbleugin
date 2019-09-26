@@ -8,27 +8,34 @@ import {CandidateDetailsComponent} from './candidate/candidate-details/candidate
 import { routes as companyRoutes } from './company/company.routing';
 import { routes as appointmentRoutes } from './appointment/appointment.routing';
 import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth/guard.guard';
+import {NavComponent} from './skeleton/nav/nav.component';
 
 const routes: Routes = [
   {
-    path: 'candidates/list', component: CandidatesListComponent
+    path: 'candidates/list', component: CandidatesListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent
   },
   {
-    path: 'rendezvous', component: AppointmentListComponent
+    path: 'register', component: RegisterComponent
+  },
+  { path: 'company', children: companyRoutes
   },
   {
-    path: 'adminpanel', component: NotImplementedComponent
+    path: 'appointment/list', children: appointmentRoutes
   },
   {
-    path: 'candidate/:id', component: CandidateDetailsComponent
-  }, { path: 'company', children: companyRoutes },
-  { path: 'appointment', children: appointmentRoutes }
+    path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'candidate/:id', component: CandidateDetailsComponent, canActivate: [AuthGuard]
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
