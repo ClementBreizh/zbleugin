@@ -24,6 +24,10 @@ export class CandidateApiService extends ApiServiceService<Candidate> {
     return this.post(data);
   }
 
+  edit(id, data) {
+    return this.put(id, data);
+  }
+
   protected url(): string {
     return 'candidates';
   }

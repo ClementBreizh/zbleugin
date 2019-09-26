@@ -22,7 +22,7 @@ export abstract class ApiServiceService<T> {
   }
 
   /** Proxy to perform PUT HTTP requests. */
-  protected put(data: {[key: string]: any}, url: string = '') {
+  protected put(url: string|number = '', data: {[key: string]: any}) {
     return this.http.put<any>(this.buildUrl(url), data);
   }
 

@@ -82,8 +82,8 @@ export class CandidateListComponent implements OnInit {
   }
 
   // Reset candidatesListForm all values for httpPrams but elements number & sorting.
-  onReset() {
-    event.preventDefault();
+  onReset($event) {
+    $event.preventDefault();
 
     this.candidatesListForm.patchValue({
         firstname: '',

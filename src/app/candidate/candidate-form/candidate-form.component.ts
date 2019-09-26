@@ -25,10 +25,10 @@ export class CandidateFormComponent implements OnInit {
   get cellPhone(): AbstractControl { return this.form.controls.cellPhone; }
 
   id: number = null;
-  newCandidate: Candidate;
+  editedCandidate: Candidate;
 
   form = this.fb.group({
-    // id: null,
+    // id: [''],
     sexCandidate: [''],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
@@ -37,8 +37,7 @@ export class CandidateFormComponent implements OnInit {
     homePhone: [''],
     commentary: [''],
     rankingCandidate: [''],
-    statusCandidate: [''],
-    address_id: []
+    statusCandidate: ['']
   });
 
   ngOnInit() {
@@ -49,12 +48,23 @@ export class CandidateFormComponent implements OnInit {
     // TODO: determine post/put
     // TODO: send api
 
-    const candidate: Candidate = this.form.value;
+    const candidate = this.form.value;
 
-    return this.api.create(candidate).subscribe(data => {
-      this.newCandidate = data;
-      this.router.navigate(['candidate', this.newCandidate.id]);
-    });
+    let request = null;
+
+    if (this.isNew) {
+      request = this.api.create(candidate).subscribe(data => {
+        this.editedCandidate = data;
+        this.router.navigate(['candidate', this.editedCandidate.id]);
+      });
+    } else {
+      request = this.api.edit(this.id, candidate).subscribe(data => {
+        this.editedCandidate = data;
+        this.router.navigate(['candidate', this.editedCandidate.id]);
+      });
+    }
+
+    return request;
   }
 
   /** Initializes from route parameters. */
