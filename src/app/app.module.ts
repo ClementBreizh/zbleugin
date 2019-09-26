@@ -14,6 +14,7 @@ import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule } from
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
 import { SharedModule } from './shared/shared.module';
+import { AppointmentModule } from './appointment/appointment.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SharedModule } from './shared/shared.module';
     MatInputModule,
     SkeletonModule,
     CompanyModule,
-    SharedModule
+    SharedModule,
+    AppointmentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

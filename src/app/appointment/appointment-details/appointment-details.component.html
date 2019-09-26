@@ -1,0 +1,38 @@
+<ng-container *ngIf="appointment">
+  <h2>Page du rendez-vous n°{{ appointement.id }}</h2>
+
+  <div class="detailsNav">
+    <button mat-raised-button>Accueil</button>
+    <button mat-raised-button>Rendez-vous</button>
+    <button mat-raised-button>Entreprise</button>
+  </div>
+
+  <br />
+
+  <mat-card class="infoCard">
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput value="{{ appointment.appointmentDate| date: 'dd/MM/yyyy hh:mm'}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Organisateur/trice</mat-label>
+      <input matInput value='{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}'>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <input matInput value='{{ appointment.appointmentType}}'>
+    </mat-form-field>
+
+  </mat-card>
+
+<h2>Addresse</h2>
+<h2>Informations</h2>
+<h2>Report</h2>
+
+</ng-container>
+
+<ng-container *ngIf="!appointment">
+  <p>Aucun rendez-vous sélectionné</p>
+</ng-container>
