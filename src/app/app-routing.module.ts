@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth/guard.guard';
 
 const routes: Routes = [
-  { path: 'candidate', children: candidateRoutes, canActivate: [AuthGuard] },
+  { path: 'candidate', children: candidateRoutes},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

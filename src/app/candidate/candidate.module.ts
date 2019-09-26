@@ -4,7 +4,7 @@ import {CandidateListComponent} from './candidate-list/candidate-list.component'
 import { AppRoutingModule } from '../app-routing.module';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import {
   MatButtonModule, MatCardModule, MatExpansionModule,
@@ -38,7 +38,6 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
     AppRoutingModule,
     MatSelectModule,
     MatSliderModule
