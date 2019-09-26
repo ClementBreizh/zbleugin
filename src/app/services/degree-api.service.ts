@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {ApiServiceService} from './api-service.service';
-import {Candidate} from '../models/candidate';
+import {Degree} from '../models/degree';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CandidateApiService extends ApiServiceService<Candidate> {
+export class DegreeApiService extends ApiServiceService<Degree> {
   getAll(params) {
-    return this.get('filtered', params);
+    return this.get('', params);
   }
 
   getOne(id: number) {
@@ -27,6 +27,6 @@ export class CandidateApiService extends ApiServiceService<Candidate> {
   }
 
   protected url(): string {
-    return 'candidates';
+    return 'degrees';
   }
 }

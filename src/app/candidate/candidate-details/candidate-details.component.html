@@ -36,6 +36,21 @@
             <td>{{ degree.level }}</td>
             <td>{{ degree.validation_date }}</td>
           </tr>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Ajouter un diplôme
+                </mat-panel-title>
+                <mat-panel-description>
+                  Cliquez pour ajouter
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <app-degree-form></app-degree-form>
+            </mat-expansion-panel>
+          </mat-accordion>
+
         </table>
         <h2>Les matières maitrisées</h2>
         <ul>
