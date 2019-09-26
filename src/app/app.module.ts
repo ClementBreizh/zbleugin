@@ -18,18 +18,20 @@ import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSi
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
 import { SharedModule } from './shared/shared.module';
+import {LoginPageModule} from './login-page/login-page.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotImplementedComponent,
-    LoginComponent,
     AlertComponent,
     RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    LoginPageModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -42,7 +44,8 @@ import { SharedModule } from './shared/shared.module';
     MatSidenavModule,
     SkeletonModule,
     CompanyModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

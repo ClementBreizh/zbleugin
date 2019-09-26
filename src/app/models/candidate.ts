@@ -21,5 +21,4 @@ export class Candidate {
   sessions?: any;
   sexCandidate: string;
   statusCandidate: string;
-  appointments?: Appointment[];
 }
