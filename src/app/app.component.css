@@ -1,3 +1,7 @@
-.nav {
-  background-color: #63b5f6;
+#login {
+    color: green;
+}
+
+#logout {
+    color: red;
 }

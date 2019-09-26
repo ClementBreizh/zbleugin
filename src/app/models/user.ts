@@ -2,5 +2,7 @@ export class User {
   id: number;
   username: string;
   password: string;
-  admin = false;
+  firstName: string;
+  lastName: string;
+  token: string;
 }

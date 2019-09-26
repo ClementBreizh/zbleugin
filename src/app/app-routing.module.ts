@@ -6,29 +6,17 @@ import { NotImplementedComponent } from './http-error/not-implemented/not-implem
 import { LoginComponent } from './login-page/login/login.component';
 import {CandidateDetailsComponent} from './candidate/candidate-details/candidate-details.component';
 import { routes as companyRoutes } from './company/company.routing';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth/guard.guard';
 
 const routes: Routes = [
-  {
-    path: 'candidates/list', component: CandidatesListComponent
-  },
-  {
-    path: 'home', component: HomeComponent
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'entreprises', component: NotImplementedComponent
-  },
-  {
-    path: 'rendezvous', component: NotImplementedComponent
-  },
-  {
-    path: 'adminpanel', component: NotImplementedComponent
-  },
-  {
-    path: 'candidate/:id', component: CandidateDetailsComponent
-  }, { path: 'company', children: companyRoutes }
+  { path: 'candidates/list', component: CandidatesListComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'appointment', component: NotImplementedComponent, canActivate: [AuthGuard] },
+  { path: 'candidate/:id', component: CandidateDetailsComponent },
+  { path: 'company', children: companyRoutes, canActivate: [AuthGuard] }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

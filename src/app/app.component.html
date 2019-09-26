@@ -1,3 +1,15 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<ng-container>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a *ngIf="switchButton(); else other" mat-button [routerLink]='"login"'>Connexion<mat-icon id="login">check_circle_outline</mat-icon></a>
+      <ng-template #other>
+        <a mat-button (click)="logout()">Bonjour {{currentUser.firstName}}!  <mat-icon id="logout">exit_to_app</mat-icon></a>
+      </ng-template>
+  </div>
+</nav>
+</ng-container>
 
 <div class="container">
 
