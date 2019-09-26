@@ -65,7 +65,7 @@
       </mat-tab>
 
     <mat-tab label="Rendez-vous">
-      <mat-card>
+      <mat-card class="rdv">
         <h2>Ses Rendez-vous:</h2>
         <table>
           <tr>
@@ -74,16 +74,33 @@
             <th>Type du rendez-vous</th>
             <th>Organisateur</th>
           </tr>
-          <tr>
-            <td>11/05/2019</td>
-            <td>TactFactory</td>
-            <td>Rendez-vous physique</td>
-            <td>Mickaël Gaillard</td>
+          <tr *ngFor="let appointment of candidate.appointments">
+            <td>{{ appointment.appointmentDate}}</td>
+            <td>{{ appointment.status }}</td>
+            <td>{{ appointment.appointmentType }}</td>
+            <td>{{ appointment.organizer }}</td>
           </tr>
         </table>
       </mat-card>
     </mat-tab>
     <mat-tab label="Informations complémentaires">
+
+      <table>
+        <tr>
+          <th>Intitulé</th>
+          <th>Niveau</th>
+          <th>Date d'obtention</th>
+        </tr>
+        <tr *ngFor="let degree of candidate.degrees">
+          <td>{{ degree.name }}</td>
+          <td>{{ degree.level }}</td>
+          <td>{{ degree.validation_date }}</td>
+        </tr>
+      </table>
+
+
+
+
 
      <h2>Situation actuelle</h2>
      <table>
