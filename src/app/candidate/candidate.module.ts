@@ -14,6 +14,8 @@ import {
   MatGridListModule
 } from '@angular/material';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
+import {DegreeModule} from '../degree/degree.module';
+import {AssessmentModule} from '../assessment/assessment.module';
 
 @NgModule({
   declarations: [CandidateListComponent, CandidateDetailsComponent, CandidateFormComponent],
@@ -40,7 +42,9 @@ import { CandidateFormComponent } from './candidate-form/candidate-form.componen
     ReactiveFormsModule,
     AppRoutingModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    DegreeModule,
+    AssessmentModule
   ],
   exports: [
     CandidateListComponent,

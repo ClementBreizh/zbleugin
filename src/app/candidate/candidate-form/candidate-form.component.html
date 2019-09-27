@@ -51,28 +51,30 @@
 
     <mat-form-field>
       <mat-label>Rang</mat-label>
-      <select formControlName="rankingCandidate" matNativeControl>
-        <option value="0 - statut non déterminé">0 - statut non déterminé</option>
-        <option value="1 - tout est ok">1 - tout est ok</option>
-        <option value="2 - ok sauf documents à revoir">2 - ok sauf documents à revoir</option>
-        <option value="3 - pas mal de choses à revoir">3 - pas mal de choses à revoir</option>
-        <option value="4 - ne correspond pas au poste">4 - ne correspond pas au poste</option>
-      </select>
+      <mat-select formControlName="rankingCandidate" matNativeControl>
+        <mat-option value="0 - statut non déterminé">0 - statut non déterminé</mat-option>
+        <mat-option value="1 - tout est ok">1 - tout est ok</mat-option>
+        <mat-option value="2 - ok sauf documents à revoir">2 - ok sauf documents à revoir</mat-option>
+        <mat-option value="3 - pas mal de choses à revoir">3 - pas mal de choses à revoir</mat-option>
+        <mat-option value="4 - ne correspond pas au poste">4 - ne correspond pas au poste</mat-option>
+      </mat-select>
+      <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Statut</mat-label>
-      <select formControlName="statusCandidate" matNativeControl>
-        <option value="Aucune action effectuée">Aucune action effectuée</option>
-        <option value="Appel téléphonique effectué">Appel téléphonique effectué</option>
-        <option value="Rendez-vous physique effectué">Rendez-vous physique effectué</option>
-        <option value="A rappeler">A rappeler</option>
-        <option value="Annoncer résultats">Annoncer résultats</option>
-        <option value="Recherche entreprise">Recherche entreprise</option>
-        <option value="En poste">En poste</option>
-        <option value="En formation">En formation</option>
-        <option value="Abandon">Abandon</option>
-      </select>
+      <mat-select formControlName="statusCandidate" matNativeControl>
+        <mat-option value="Aucune action effectuée">Aucune action effectuée</mat-option>
+        <mat-option value="Appel téléphonique effectué">Appel téléphonique effectué</mat-option>
+        <mat-option value="Rendez-vous physique effectué">Rendez-vous physique effectué</mat-option>
+        <mat-option value="A rappeler">A rappeler</mat-option>
+        <mat-option value="Annoncer résultats">Annoncer résultats</mat-option>
+        <mat-option value="Recherche entreprise">Recherche entreprise</mat-option>
+        <mat-option value="En poste">En poste</mat-option>
+        <mat-option value="En formation">En formation</mat-option>
+        <mat-option value="Abandon">Abandon</mat-option>
+      </mat-select>
+      <mat-hint align="end"></mat-hint>
     </mat-form-field>
 
     <mat-form-field>

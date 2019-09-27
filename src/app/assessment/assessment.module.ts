@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AssessmentComponent } from './assessment.component';
-import { MatButtonModule, MatCardModule, MatInputModule, MatFormField } from '@angular/material';
+import { AssessmentFormComponent } from './assessment-form.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatInputModule, MatNativeDateModule, MatSelectModule
+} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [AssessmentComponent],
+  declarations: [AssessmentFormComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatFormField
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  exports: [AssessmentComponent]
+  exports: [AssessmentFormComponent]
 })
 export class AssessmentModule { }

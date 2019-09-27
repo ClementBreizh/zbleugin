@@ -15,8 +15,8 @@ export class CandidateApiService extends ApiServiceService<Candidate> {
     return this.get(id)
       .pipe(map((c: Candidate) => {
         if (c.assessments && c.assessments.length) {
-          for (let a of c.assessments) {
-            a.validationDate = new Date(a['validationDate']);
+          for (const a of c.assessments) {
+            a.validationDate = new Date(a.validationDate);
           }
         }
         // if (c.assessments && c.assessments.length) {
