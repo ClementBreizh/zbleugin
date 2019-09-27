@@ -14,7 +14,7 @@ export class Candidate {
   email: string;
   cellPhone: string;
   homePhone: string;
-  rankingCandidate;
+  ranking: string;
   address?: Address;
   commentary?: string;
   degrees?: Degree[];

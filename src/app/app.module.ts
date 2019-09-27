@@ -23,6 +23,10 @@ import {LoginPageModule} from './login-page/login-page.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+// import 'materialize-css';
+// import { MaterializeModule } from "angular2-materialize";
+
+
 
 // Register FR locale.
 registerLocaleData(localeFr);
