@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ApiServiceService } from './api-service.service';
-import { Company } from '../models/company';
+import {ApiServiceService} from './api-service.service';
+import {Person} from '../models/person';
+import {HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyApiServiceService extends ApiServiceService<Company> {
+export class PersonApiService extends ApiServiceService<Person> {
   getAll(params) {
     return this.get('filtered', params);
   }
@@ -17,6 +19,7 @@ export class CompanyApiServiceService extends ApiServiceService<Company> {
   deleteOne(id: number) {
     return this.delete(id);
   }
+
   create(data) {
     return this.post(data);
   }
@@ -26,7 +29,6 @@ export class CompanyApiServiceService extends ApiServiceService<Company> {
   }
 
   protected url(): string {
-    return 'companies';
+    return 'persons';
   }
-
 }

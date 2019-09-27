@@ -26,6 +26,7 @@ import { registerLocaleData } from '@angular/common';
 
 // Register FR locale.
 registerLocaleData(localeFr);
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ registerLocaleData(localeFr);
     NotImplementedComponent,
     AlertComponent,
     RegisterComponent,
+    PersonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
@@ -11,6 +11,9 @@ import {CandidateApiService} from '../../services/candidate-api.service';
   styleUrls: ['./candidate-form.component.css']
 })
 export class CandidateFormComponent implements OnInit {
+
+  @Input()
+  candidate = true;
 
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,

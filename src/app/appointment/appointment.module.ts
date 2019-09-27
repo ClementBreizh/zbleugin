@@ -12,7 +12,7 @@ import {
   MatIconModule,
   MatInputModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSortModule,
-  MatTableModule, MatTabsModule
+  MatTableModule, MatTabsModule, MatListModule, MatSelectModule
 } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -39,8 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
+    MatListModule,
+    MatSelectModule
   ],
   exports: [AppointmentListComponent, AppointmentDetailsComponent, AppointmentFormComponent]
 })
