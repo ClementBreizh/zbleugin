@@ -2,6 +2,11 @@ h2, .status {
   text-align: center;
 }
 
+a {
+  background-color: #5D99C6;
+  margin-left: 10%;
+}
+
 .address, .contact {
   text-decoration: underline;
 }

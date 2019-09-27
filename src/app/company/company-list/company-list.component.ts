@@ -16,17 +16,14 @@ export class CompanyListComponent implements OnInit {
 
   displayedColumns = ['name', 'apeCode', 'mainContact', 'actions'];
 
-  datasource: Company[];
+  dataSource: Company[];
 
   resultNb: number;
 
   companyListForm = this.fb.group({
     name:  '',
-    antennaName: '',
     siret: '',
-    apecode: '',
-    contacts: '',
-    address: Address,
+    apeCode: '',
     page: 0,
     size: 20,
     sort: ''
@@ -54,16 +51,16 @@ export class CompanyListComponent implements OnInit {
     this.refresh();
   }
 
-  drawMainContact(company: Company) {
-    let result = '';
-    const contact = company.contacts ? company.contacts.find(e => e.mainContact) || null : null;
+  // drawMainContact(company: Company) {
+  //   let result = '';
+  //   const contact = company.contacts ? company.contacts.find(e => e.mainContact) || null : null;
 
-    if (contact) {
-      result = `${contact.firstname} ${contact.lastname}`;
-    }
+  //   if (contact) {
+  //     result = `${contact.firstname} ${contact.lastname}`;
+  //   }
 
-    return result;
-  }
+  //   return result;
+  // }
 
   onDelete(company: Company): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer ' + company.name)) {
@@ -74,11 +71,16 @@ export class CompanyListComponent implements OnInit {
   }
 
   private refresh() {
-    this.datasource = null;
+    this.dataSource = null;
     this.api
-        .getAll()
-        .subscribe(d => this.datasource = d);
+        .getAll(this.params())
+
+        .subscribe(data => {
+          this.dataSource = data.content;
+          this.resultNb = data.totalElements;
+        });
   }
+
   onSubmit($event) {
     $event.preventDefault();
 
@@ -94,11 +96,11 @@ export class CompanyListComponent implements OnInit {
     $event.preventDefault();
 
     this.companyListForm.patchValue({
-        firstname: '',
-        lastname: '',
-        email: '',
-        cellPhone: '',
-        homePhone: '',
+      name:  '',
+      mainContact: '',
+      siret: '',
+      apeCode: '',
+      address: '',
         page: 0
       }
     );

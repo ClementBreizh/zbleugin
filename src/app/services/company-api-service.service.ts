@@ -6,8 +6,8 @@ import { Company } from '../models/company';
   providedIn: 'root'
 })
 export class CompanyApiServiceService extends ApiServiceService<Company> {
-  getAll() {
-    return this.get('filtered');
+  getAll(params) {
+    return this.get('filtered', params);
   }
 
   getOne(id: number) {
