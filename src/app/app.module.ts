@@ -26,7 +26,7 @@ import { registerLocaleData } from '@angular/common';
 
 // Register FR locale.
 registerLocaleData(localeFr);
-import { PersonComponent } from './person/person.component';
+import { PersonModule } from './person/person.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,6 @@ import { PersonComponent } from './person/person.component';
     NotImplementedComponent,
     AlertComponent,
     RegisterComponent,
-    PersonComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +53,8 @@ import { PersonComponent } from './person/person.component';
     SharedModule,
     AppointmentModule,
     MatSidenavModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PersonModule
   ],
   providers: [
     // Set locate (for date pipe for example).

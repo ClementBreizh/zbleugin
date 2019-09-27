@@ -17,7 +17,7 @@ export class PersonListComponent implements OnInit {
 
   dataSource: Person[];
 
-  // private entityPath = 'persons
+   private entityPath = 'persons';
 
   resultNb: number;
 

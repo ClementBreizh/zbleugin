@@ -12,35 +12,21 @@ import { AuthGuard } from './auth/guard.guard';
 import {NavComponent} from './skeleton/nav/nav.component';
 import { routes as companyRoutes } from './company/company.routing';
 import { routes as candidateRoutes } from './candidate/candidate.routing';
+import { routes as personRoutes } from './person/person-routing';
+import { PersonFormComponent } from './person/person-form/person-form.component';
+import { PersonListComponent } from './person/person-list/person-list.component';
+import { PersonDetailsComponent } from './person/person-details/person-details.component';
 
 const routes: Routes = [
-  {
-    path: 'candidates/list', component: CandidateListComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'home', component: HomeComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'register', component: RegisterComponent
-  },
-  { path: 'company', children: companyRoutes, canActivate: [AuthGuard]
-  },
-  {
-    path: 'appointment', children: appointmentRoutes, canActivate: [AuthGuard]
-  },
-  {
-    path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'candidate/:id', component: CandidateDetailsComponent, canActivate: [AuthGuard]
-  },
-
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
+  { path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]},
   { path: 'candidate', children: candidateRoutes, canActivate: [AuthGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'candidate', children: candidateRoutes},
+  { path: 'person', children: personRoutes, canActivate: [AuthGuard]},
+  { path: 'company', children: companyRoutes, canActivate: [AuthGuard]},
+  { path: 'appointment', children: appointmentRoutes, canActivate: [AuthGuard]},
+  { path: 'register', component: RegisterComponent}
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

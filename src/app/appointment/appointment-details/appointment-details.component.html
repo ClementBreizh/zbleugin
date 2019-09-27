@@ -1,38 +1,23 @@
-<ng-container *ngIf="appointment">
-  <h2>Page du rendez-vous n°{{ appointement.id }}</h2>
 
-  <div class="detailsNav">
-    <button mat-raised-button>Accueil</button>
-    <button mat-raised-button>Candidat</button>
-    <button mat-raised-button>Entreprise</button>
-  </div>
+ <ng-container *ngIf="appointment">
 
-  <br />
-
-  <mat-card class="infoCard">
-    <mat-form-field appearance="outline">
-      <mat-label>Date</mat-label>
-      <input matInput value="{{ appointment.appointmentDate| date: 'dd/MM/yyyy hh:mm'}}">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Organisateur/trice</mat-label>
-      <input matInput value='{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}'>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Type</mat-label>
-      <input matInput value='{{ appointment.appointmentType}}'>
-    </mat-form-field>
-
-  </mat-card>
-
-<h2>Addresse</h2>
-<h2>Informations</h2>
-<h2>Report</h2>
-
-</ng-container>
-
-<ng-container *ngIf="!appointment">
-  <p>Aucun rendez-vous sélectionné</p>
-</ng-container>
+    <h2>Rendez-vous n°{{ appointment.id}}</h2>
+    <a mat-button routerLink="/appointment/list">Retour à la liste</a>
+    <mat-card class="infos">
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile>
+              <mat-list>
+                <mat-list-item class="date" >Date: {{ appointment.appointmentDate| date: 'dd/MM/yyyy hh:mm'}}</mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+            <mat-grid-tile class="div-contact">
+              <mat-list>
+                <mat-list-item class="organizer" >Organisateur/trice: {{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</mat-list-item>
+              </mat-list>
+              <mat-list>
+                  <mat-list-item class="type" >RDV: {{ appointment.appointmentType}}</mat-list-item>
+                </mat-list>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </mat-card>
+  </ng-container>

@@ -52,7 +52,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <app-candidate-form></app-candidate-form>
+      <app-person-form></app-person-form>
 
     </mat-expansion-panel>
   </mat-accordion>
@@ -103,8 +103,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
       <td mat-cell *matCellDef="let person">
-        <a [routerLink]='"/person/" + person.id' title="Voir le dossier"><mat-icon svgIcon="show" class="actions actionShow"></mat-icon></a>
-        <a [routerLink]='"/person/" + person.id + "/edit"'  title="Editer le dossier"><mat-icon svgIcon="edit" class="actions actionEdit"></mat-icon></a>
+        <a [routerLink]="['..', person.id]" title="Voir le dossier"><mat-icon svgIcon="show" class="actions actionShow"></mat-icon></a>
+        <a [routerLink]="['..', person.id, 'edit']" title="Editer le dossier"><mat-icon svgIcon="edit" class="actions actionEdit"></mat-icon></a>
         <a title="Supprimer la personne" (click)="onDelete(person)"><mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon></a>
       </td>
     </ng-container>

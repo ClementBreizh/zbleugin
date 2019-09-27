@@ -42,7 +42,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FormsModule,
     AppRoutingModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    MatListModule
   ],
   exports: [CompanyListComponent, CompanyDetailsComponent, CompanyFormComponent]
 })

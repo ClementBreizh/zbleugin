@@ -50,10 +50,6 @@ export class AppointmentListComponent implements OnInit {
       this.adapter.setLocale('fr');
     }
 
-    someMethodName(event) {
-      console.log(event);
-    }
-
     onDelete(appointment: Appointment): void {
       if (confirm('Êtes-vous sûr de vouloir supprimer ' + appointment.id)) {
         this.api

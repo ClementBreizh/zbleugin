@@ -6,13 +6,13 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatOption } from '@angular/material';
 import {
   MatButtonModule, MatCardModule, MatExpansionModule,
-  MatIconModule,
-  MatInputModule, MatPaginatorModule,
-  MatProgressSpinnerModule, MatSortModule,
-  MatTableModule, MatTabsModule, MatListModule, MatSelectModule
+  MatIconModule, MatInputModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSelectModule, MatSliderModule,
+  MatSortModule, MatTableModule, MatTabsModule, MatListModule,
+  MatGridListModule
 } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSliderModule,
+    MatGridListModule
   ],
   exports: [AppointmentListComponent, AppointmentDetailsComponent, AppointmentFormComponent]
 })
