@@ -15,6 +15,7 @@ import {
 } from '@angular/material';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
 import {DegreeModule} from '../degree/degree.module';
+import {AssessmentModule} from '../assessment/assessment.module';
 
 @NgModule({
   declarations: [CandidateListComponent, CandidateDetailsComponent, CandidateFormComponent],
@@ -42,7 +43,8 @@ import {DegreeModule} from '../degree/degree.module';
     AppRoutingModule,
     MatSelectModule,
     MatSliderModule,
-    DegreeModule
+    DegreeModule,
+    AssessmentModule
   ],
   exports: [
     CandidateListComponent,
