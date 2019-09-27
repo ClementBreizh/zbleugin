@@ -23,7 +23,7 @@ export class DegreeFormComponent implements OnInit {
 
   get name(): AbstractControl { return this.form.controls.name; }
   get level(): AbstractControl { return this.form.controls.level; }
-  get validationDate(): AbstractControl { return this.form.controls.validation_date; }
+  get validationDate(): AbstractControl { return this.form.controls.validationDate; }
 
   candidate: Candidate = null;
   degreeId: number = null;
@@ -32,7 +32,7 @@ export class DegreeFormComponent implements OnInit {
     // id: [''],
     name: ['', Validators.required],
     level: ['', Validators.required],
-    validation_date: ['', Validators.required]
+    validationDate: ['', Validators.required]
   });
 
   ngOnInit() {
