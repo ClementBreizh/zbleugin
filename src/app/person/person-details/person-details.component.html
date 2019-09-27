@@ -1,13 +1,12 @@
 <ng-container *ngIf="person">
-    <h2>{{candidate.firstname}} {{candidate.lastname}}</h2>
     <mat-card class="infos">
         <mat-grid-list cols="2" rowHeight="2:1">
             <mat-grid-tile>
-              <!-- <mat-list>
-                <mat-list-item class="address" >Adresse:</mat-list-item>
-                <mat-list-item >{{candidate.address.street}}</mat-list-item>
-                <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
-              </mat-list> -->
+              <mat-list>
+                <mat-list-item class="address" >Informations :</mat-list-item>
+                <mat-list-item >Prénom: {{person.firstname}}</mat-list-item>
+                <mat-list-item >Nom: {{person.lastname}}</mat-list-item>
+              </mat-list>
             </mat-grid-tile>
             <mat-grid-tile class="div-contact">
               <mat-list>
