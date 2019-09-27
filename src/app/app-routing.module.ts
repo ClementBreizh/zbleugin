@@ -40,10 +40,7 @@ const routes: Routes = [
 
   { path: 'candidate', children: candidateRoutes, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'appointment', component: NotImplementedComponent, canActivate: [AuthGuard] },
-  { path: 'company', children: companyRoutes, canActivate: [AuthGuard] }
+  { path: 'candidate', children: candidateRoutes},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

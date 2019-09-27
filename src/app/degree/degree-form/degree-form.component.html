@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations du diplôme</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input type="text" matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="level" placeholder="Selectionnez un niveau">
+        <mat-option value="Niveau inconnu">Niveau inconnu</mat-option>
+        <mat-option value="CAP, BEP, MC">CAP, BEP, MC</mat-option>
+        <mat-option value="Bac">Bac</mat-option>
+        <mat-option value="Bac+2">Bac+2</mat-option>
+        <mat-option value="Bac+3">Bac+3</mat-option>
+        <mat-option value="Bac+5">Bac+5</mat-option>
+      </mat-select>
+      <mat-hint align="end"></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de validation</mat-label>
+      <input type="text" matInput formControlName="validation_date" required>
+    </mat-form-field>
+
+
+    <mat-card class="actions">
+      <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+    </mat-card>
+  </mat-card>
+
+</form>
