@@ -29,7 +29,10 @@ export class CandidateDetailsComponent implements OnInit {
           .subscribe((value: Candidate) => {
             this.candidate = value;
             this.actualSession = this.candidate.sessions[this.candidate.sessions.length - 1].session;
+            console.log(value);
+
             console.log(this.candidate.appointments[0].organizer)
+            console.log(this.candidate.assessments[0])
           });
       }
     });

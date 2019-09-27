@@ -6,8 +6,8 @@
           <mat-grid-tile>
             <mat-list>
               <mat-list-item class="address" >Adresse:</mat-list-item>
-              <mat-list-item >{{candidate.address_id.street}}</mat-list-item>
-              <mat-list-item >{{candidate.address_id.postalCode}} {{candidate.address_id.city}}</mat-list-item>
+              <mat-list-item >{{candidate.address.street}}</mat-list-item>
+              <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
             </mat-list>
           </mat-grid-tile>
           <mat-grid-tile class="div-contact">
@@ -34,7 +34,7 @@
           <tr *ngFor="let degree of candidate.degrees">
             <td>{{ degree.name }}</td>
             <td>{{ degree.level }}</td>
-            <td>{{ degree.validation_date }}</td>
+            <td>{{ degree.validationDate }}</td>
           </tr>
         </table>
         <h2>Les matières maitrisées</h2>
@@ -47,7 +47,8 @@
     <mat-tab label="Session(s)">
         <h3>Ses sessions de formation</h3>
         <div *ngIf="actualSession; else noSession">
-          <p>{{actualSession.name}} ({{actualSession.startDate | date : "dd-MM-y"}} au {{actualSession.endDate | date : "dd-MM-y"}})</p>
+          <p>Sa dernière session est {{actualSession.name}}</p>
+          <p>Elle se déroule du {{actualSession.startDate | date:'mediumDate' }} au {{actualSession.endDate | date:'mediumDate' }}</p>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -84,6 +85,22 @@
       </mat-card>
     </mat-tab>
 
+    <mat-tab label="Tests">
+      <h2>Tests réalisés</h2>
+      <table>
+        <tr>
+          <th>Thème</th>
+          <th>Score</th>
+          <th>Date de validation</th>
+        </tr>
+        <tr *ngFor="let assessment of candidate.assessments">
+          <td>{{ assessment.category }}</td>
+          <td>{{ assessment.score }}</td>
+          <td>{{ assessment.validationDate|date:'mediumDate' }}</td>
+        </tr>
+      </table>
+    </mat-tab>
+
     <mat-tab label="Informations complémentaires">
      <h2>Situation actuelle</h2>
      <table>
@@ -94,41 +111,20 @@
          <th>Commentaire (nom de l'entreprise)</th>
        </tr>
        <tr>
-         <td>{{ candidate.feedback_id.updated_at }}</td>
-         <td>{{ candidate.feedback_id.typeOfContract }}</td>
-         <td>{{ candidate.feedback_id.durationOfContract }}</td>
-         <td>{{ candidate.feedback_id.comment }}</td>
+         <td>{{ candidate.feedback.updatedAt }}</td>
+         <td>{{ candidate.feedback.typeOfContract }}</td>
+         <td>{{ candidate.feedback.durationOfContract }}</td>
+         <td>{{ candidate.feedback.comment }}</td>
        </tr>
      </table>
      <div>
-        <ul>
-          <li>Avis sur le candidat: {{ candidate.rankingCandidate }}</li>
-          <li>Commentaire: {{ candidate.commentary }}</li>
-       </ul>
-     </div>
-    </mat-tab>
-
-    <mat-tab label="Tests">
-     <h2>Situation actuelle</h2>
-     <table>
-      <tr>
-        <th>Thème</th>
-        <th>Score</th>
-        <th>Date de validation</th>
-      </tr>
-      <tr *ngFor="let assessment of candidate.assessments">
-        <td>{{ assessment.category }}</td>
-        <td>{{ assessment.score }}</td>
-        <td>{{ assessment.validationDate }}</td>
-      </tr>
-     </table>
-     <div>
-        <ul>
-          <li>Avis sur le candidat: {{ candidate.rankingCandidate }}</li>
-          <li>Commentaire: {{ candidate.commentary }}</li>
-          <!-- <li>Statut actuel: {{ candidate.statusCandidate }}</li> -->
-       </ul>
-     </div>
+        <h3>Infos supplémentaires</h3>
+         <ul>
+           <li>Avis sur le candidat: {{ candidate.rankingCandidate }}</li>
+           <li>Commentaire: {{ candidate.commentary }}</li>
+           <!-- <li>Statut actuel: {{ candidate.statusCandidate }}</li> -->
+        </ul>
+      </div>
     </mat-tab>
 
   </mat-tab-group>
