@@ -65,7 +65,7 @@ export class CandidateDetailsComponent implements OnInit {
               this.candidate = e;
               this.candidate.degrees.splice(index, 1);
               this.apiCandidate.edit(this.candidate.id, this.candidate).subscribe();
-              window.location.reload();
+              // window.location.reload();
             });
         }
       });
