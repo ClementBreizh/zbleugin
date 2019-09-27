@@ -29,7 +29,6 @@ export class DegreeFormComponent implements OnInit {
 
   candidate: Candidate = null;
   degreeId: number = null;
-  // editedDegree: Degree;
 
   form = this.fb.group({
     // id: [''],
@@ -42,35 +41,24 @@ export class DegreeFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // const degree = this.form.value;
-
     let request = null;
 
     if (this.isNew) {
-      // request = this.apiDegree.create(degree).subscribe(data => {
-        // this.editedDegree = data;
-        // this.setToCandidate(this.editedDegree);
-        // this.router.navigate([this.router.getCurrentNavigation()]);
-        // TODO: Reload current route
-      // });
-      request =
-        this.route.params
-          .subscribe(params => {
-            // FIXME: Should manage not found (interceptor).
-            if (params.id) {
-              this
-                .apiCandidate
-                .getOne(params.id)
-                .pipe(tap(e => this.candidate = e))
-                .subscribe(e => {
-                  this.candidate = e;
-                  const degree = this.form.value;
-                  this.candidate.degrees.push(degree);
-                  console.log(this.candidate);
-                  this.apiCandidate.edit(this.candidate.id, this.candidate).subscribe();                  }
-                );
-            }
-          });
+      request = this.route.params
+        .subscribe(params => {
+          // FIXME: Should manage not found (interceptor).
+          if (params.id) {
+            this
+              .apiCandidate
+              .getOne(params.id)
+              .pipe(tap(e => this.candidate = e))
+              .subscribe(e => {
+                this.candidate = e;
+                this.setToCandidate(this.candidate.id, this.setDegrees(this.candidate));
+                window.location.reload();
+              });
+          }
+        });
     } else {
       // TODO : Faire fonctionner l'édition
     }
@@ -78,28 +66,13 @@ export class DegreeFormComponent implements OnInit {
     return request;
   }
 
-  /** Initializes from route parameters. */
-  // private setToCandidate(degree) {
-  //   return this.route
-  //     .params
-  //     .subscribe(params => {
-  //       // FIXME: Should manage not found (interceptor).
-  //       if (params.id) {
-  //         this
-  //           .apiCandidate
-  //           .getOne(params.id)
-  //           .pipe(tap(e => this.candidate = e))
-  //           .subscribe(e => {
-  //             this.candidate = e;
-  //             this.editCandidate(degree, this.candidate);
-  //             }
-  //           );
-  //       }
-  //     });
-  // }
+  private setDegrees(candidate) {
+    const degree = this.form.value;
+    candidate.degrees.push(degree);
+    return candidate;
+  }
 
-  // private editCandidate(degree, candidate) {
-  //   candidate.degrees.push(degree);
-  //   this.apiCandidate.edit(candidate.id, candidate).subscribe();
-  // }
+  private setToCandidate(itemId: number, item: Candidate) {
+    this.apiCandidate.edit(itemId, item).subscribe();
+  }
 }
