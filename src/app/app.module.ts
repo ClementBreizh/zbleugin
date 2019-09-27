@@ -21,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppointmentModule } from './appointment/appointment.module';
 import {LoginPageModule} from './login-page/login-page.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     NotImplementedComponent,
     AlertComponent,
     RegisterComponent,
+    PersonComponent,
   ],
   imports: [
     BrowserModule,
