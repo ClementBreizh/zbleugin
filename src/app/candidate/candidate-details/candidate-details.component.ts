@@ -20,7 +20,7 @@ export class CandidateDetailsComponent implements OnInit {
   actualSession: Session;
 
   constructor(private apiCandidate: CandidateApiService, private route: ActivatedRoute, private iconRegistry: MatIconRegistry,
-              private sanitizer: DomSanitizer, private apiDegree: DegreeApiService) {
+              private sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'delete',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
@@ -41,10 +41,6 @@ export class CandidateDetailsComponent implements OnInit {
           .subscribe((value: Candidate) => {
             this.candidate = value;
             this.actualSession = this.candidate.sessions[this.candidate.sessions.length - 1].session;
-            console.log(value);
-
-            console.log(this.candidate.appointments[0].organizer)
-            console.log(this.candidate.assessments[0])
           });
       }
     });
@@ -64,6 +60,27 @@ export class CandidateDetailsComponent implements OnInit {
             .subscribe(e => {
               this.candidate = e;
               this.candidate.degrees.splice(index, 1);
+              this.apiCandidate.edit(this.candidate.id, this.candidate).subscribe();
+              // window.location.reload();
+            });
+        }
+      });
+  }
+
+  onDeleteAssessment(index: number) {
+
+    // TODO: Delete les 2 d'un coup
+    this.route.params
+      .subscribe(params => {
+        // FIXME: Should manage not found (interceptor).
+        if (params.id) {
+          this
+            .apiCandidate
+            .getOne(params.id)
+            .pipe(tap(e => this.candidate = e))
+            .subscribe(e => {
+              this.candidate = e;
+              this.candidate.assessments.splice(index, 1);
               this.apiCandidate.edit(this.candidate.id, this.candidate).subscribe();
               // window.location.reload();
             });

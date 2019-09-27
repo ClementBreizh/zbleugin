@@ -55,7 +55,7 @@ export class AssessmentFormComponent implements OnInit {
                 this.candidate = e;
                 const editedCandidate = this.setAssessment(this.candidate);
                 this.setToCandidate(this.candidate.id, editedCandidate);
-                // window.location.reload();
+                window.location.reload();
               });
           }
         });

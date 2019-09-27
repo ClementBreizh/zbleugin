@@ -107,40 +107,42 @@
     </mat-tab>
 
     <mat-tab label="Tests">
-      <h2>Tests réalisés</h2>
-      <table>
-        <tr>
-          <th>Thème</th>
-          <th>Score</th>
-          <th>Date de validation</th>
-          <th>Action</th>
-        </tr>
-        <tr *ngFor="let assessment of candidate.assessments">
-          <td>{{ assessment.category }}</td>
-          <td>{{ assessment.score }}</td>
-          <td>{{ assessment.validationDate|date:'mediumDate' }}</td>
-          <td>
-            <a title="Supprimer le diplôme" (click)="onDeleteDegree(index)">
-              <mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon>
-            </a>
-          </td>
-        </tr>
-      </table>
+      <mat-card>
+        <h2>Tests réalisés</h2>
+        <table>
+          <tr>
+            <th>Thème</th>
+            <th>Score</th>
+            <th>Date de validation</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let assessment of candidate.assessments; index as index">
+            <td>{{ assessment.category }}</td>
+            <td>{{ assessment.score }}</td>
+            <td>{{ assessment.validationDate|date:'mediumDate' }}</td>
+            <td>
+              <a title="Supprimer le diplôme" (click)="onDeleteAssessment(index)">
+                <mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon>
+              </a>
+            </td>
+          </tr>
+        </table>
 
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon svgIcon="add"></mat-icon> Ajouter un test
-            </mat-panel-title>
-            <mat-panel-description>
-              Cliquez pour ajouter
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon svgIcon="add"></mat-icon> Ajouter un test
+              </mat-panel-title>
+              <mat-panel-description>
+                Cliquez pour ajouter
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-          <app-assessment-form></app-assessment-form>
-        </mat-expansion-panel>
-      </mat-accordion>
+            <app-assessment-form></app-assessment-form>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card>
     </mat-tab>
 
     <mat-tab label="Informations complémentaires">

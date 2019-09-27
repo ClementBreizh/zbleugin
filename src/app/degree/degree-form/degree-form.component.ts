@@ -53,7 +53,7 @@ export class DegreeFormComponent implements OnInit {
               .subscribe(e => {
                 this.candidate = e;
                 this.setToCandidate(this.candidate.id, this.setDegrees(this.candidate));
-                // window.location.reload();
+                window.location.reload();
               });
           }
         });
