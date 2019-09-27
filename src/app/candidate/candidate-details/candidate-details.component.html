@@ -30,12 +30,20 @@
             <th>Intitulé</th>
             <th>Niveau</th>
             <th>Date d'obtention</th>
+            <th>Action</th>
           </tr>
-          <tr *ngFor="let degree of candidate.degrees">
+          <tr *ngFor="let degree of candidate.degrees; index as index">
             <td>{{ degree.name }}</td>
             <td>{{ degree.level }}</td>
             <td>{{ degree.validation_date }}</td>
+            <td>
+              <a title="Supprimer le diplôme" (click)="onDeleteDegree(index)">
+                <mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon>
+              </a>
+            </td>
           </tr>
+        </table>
+
           <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
@@ -50,8 +58,6 @@
               <app-degree-form></app-degree-form>
             </mat-expansion-panel>
           </mat-accordion>
-
-        </table>
         <h2>Les matières maitrisées</h2>
         <ul>
           <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>

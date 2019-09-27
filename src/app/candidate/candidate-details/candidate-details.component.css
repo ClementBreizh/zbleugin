@@ -50,3 +50,16 @@ tr:nth-child(even) {
   flex-direction: column;
 }
 
+.actions {
+  cursor: pointer;
+  transition: all, 0.3s;
+}
+
+.actions:hover {
+  transform: scale(1.2);
+}
+
+.actionDelete:hover {
+  color: red;
+}
+

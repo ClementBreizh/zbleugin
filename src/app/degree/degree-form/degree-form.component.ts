@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Degree} from '../../models/degree';
 import {tap} from 'rxjs/operators';
 import {DegreeApiService} from '../../services/degree-api.service';
 import {CandidateApiService} from '../../services/candidate-api.service';
-import {HttpParams} from '@angular/common/http';
 import {Candidate} from '../../models/candidate';
 
 @Component({
@@ -59,8 +57,6 @@ export class DegreeFormComponent implements OnInit {
               });
           }
         });
-    } else {
-      // TODO : Faire fonctionner l'édition
     }
 
     return request;
