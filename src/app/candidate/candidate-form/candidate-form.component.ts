@@ -32,15 +32,22 @@ export class CandidateFormComponent implements OnInit {
 
   form = this.fb.group({
     // id: [''],
-    sexCandidate: [''],
+    sex: [''],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
     cellPhone: ['', Validators.required],
     homePhone: [''],
     commentary: [''],
-    rankingCandidate: [''],
-    statusCandidate: ['']
+    ranking: [''],
+    status: [''],
+    address: [],
+    comentary: [''],
+    appointments: [],
+    feedback: [],
+    degrees: [],
+    companySession: [],
+    assessments: []
   });
 
   ngOnInit() {
@@ -61,8 +68,11 @@ export class CandidateFormComponent implements OnInit {
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     } else {
+      // TODO: Recupérer le candidat, l'editer, et l'envoyer.
+
       request = this.api.edit(this.id, candidate).subscribe(data => {
         this.editedCandidate = data;
+        console.log(this.editedCandidate);
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     }
