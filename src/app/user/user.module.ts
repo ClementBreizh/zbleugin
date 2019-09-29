@@ -6,6 +6,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { SharedModule } from '../shared/shared.module';
+
 import {
   MatButtonModule, MatCardModule, MatExpansionModule,
   MatIconModule, MatInputModule, MatPaginatorModule,
@@ -38,7 +40,8 @@ import {
     ReactiveFormsModule,
     AppRoutingModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    SharedModule
   ],
   exports: [
     UserListComponent,

@@ -1,3 +1,60 @@
-<p>
-  user-form works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations personnelles</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Login</mat-label>
+      <input type="text" matInput formControlName="login" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Mot de passe</mat-label>
+      <input type="text" matInput formControlName="password" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <mat-error *ngIf="lastname.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="lastname" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Prénom</mat-label>
+      <mat-error *ngIf="firstname.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="firstname" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <mat-error *ngIf="email.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tél. mobile</mat-label>
+      <mat-error *ngIf="cellPhone.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="cellPhone" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tél. fixe</mat-label>
+      <input type="text" matInput formControlName="homePhone">
+    </mat-form-field>
+  </mat-card>
+
+
+  <mat-card *ngIf="user">
+    <mat-card-header>
+      <mat-card-title>Autre</mat-card-title>
+    </mat-card-header>
+
+  </mat-card>
+
+  <mat-card class="actions">
+    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+  </mat-card>
+
+</form>

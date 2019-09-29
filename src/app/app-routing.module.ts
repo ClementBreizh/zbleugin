@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'appointment', component: NotImplementedComponent},
-  { path: 'company', children: companyRoutes}
+  { path: 'company', children: companyRoutes},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]},

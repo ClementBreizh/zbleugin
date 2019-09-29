@@ -1,3 +1,44 @@
-<p>
-  user-details works!
-</p>
+<ng-container *ngIf="user">
+  <h2>{{user.firstname}} {{user.lastname}}</h2>
+  <a mat-button routerLink="/user/list">Retour à la liste</a>
+  <p class="status">Statut actuel: {{ user.statususer }}</p>
+
+  <div class="card row z-depth-1">
+    <div class="col s5 offset-s1">
+      <mat-list>
+        <mat-list-item class="address" >Role</mat-list-item>
+        <mat-list-item >{{user.role}}</mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col s5 offset-s1">
+      <mat-list>
+        <mat-list-item class="contact" >Contact:</mat-list-item>
+        <mat-list-item >Tel mobile: {{user.homePhone}}</mat-list-item>
+        <mat-list-item >Tel fixe: {{user.cellPhone}}</mat-list-item>
+        <mat-list-item >Email: {{user.email}}</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Rendez-vous">
+      <mat-card class="rdv">
+        <h3 class="left-align">Ses Rendez-vous</h3>
+        <table>
+          <tr>
+            <th>Date du rendez-vous</th>
+            <th>Statut</th>
+            <th>Type du rendez-vous</th>
+            <th>Organisateur</th>
+          </tr>
+          <tr *ngFor="let appointment of user.appointments">
+            <td>{{ appointment.appointmentDate}}</td>
+            <td>{{ appointment.status }}</td>
+            <td>{{ appointment.appointmentType }}</td>
+            <td>{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</td>
+          </tr>
+        </table>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

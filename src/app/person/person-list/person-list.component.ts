@@ -17,8 +17,6 @@ export class PersonListComponent implements OnInit {
 
   dataSource: Person[];
 
-   private entityPath = 'persons';
-
   resultNb: number;
 
   personsListForm = this.fb.group({
