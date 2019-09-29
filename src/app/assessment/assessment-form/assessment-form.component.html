@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations personnelles</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Thème</mat-label>
+      <select formControlName="assessmentSubject" matNativeControl>
+        <option value="Culture générale">Culture générale</option>
+        <option value="Culture numérique">Culture numérique</option>
+        <option value="Mathématiques">Mathématiques</option>
+        <option value="Logique">Logique</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Score</mat-label>
+      <mat-error *ngIf="score.invalid">Score requis</mat-error>
+      <input type="number" matInput formControlName="score" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de validation</mat-label>
+      <mat-error *ngIf="validationDate.invalid">Ce champ est requis</mat-error>
+      <input type="date" matInput formControlName="validationDate" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Candidat</mat-label>
+      <mat-error *ngIf="candidat.invalid">Ce champ est requis</mat-error>
+      <input type="text" matInput formControlName="candidat" required>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card class="actions">
+    <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+  </mat-card>
+
+</form>

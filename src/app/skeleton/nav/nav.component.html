@@ -1,15 +1,11 @@
-<div>
-    <mat-toolbar color="primary">
-      <div fxShow="true" fxHide.lt-md="true">
-
-          <a mat-button routerLink="home" title="Accueil">Accueil</a>
-          <a mat-button routerLink="candidate/list" title="Liste des candidats">Candidats</a>
-          <a mat-button routerLink="company/list" title="Liste des entreprises">Entreprises</a>
-          <a mat-button routerLink="appointment/list" title="Liste des rendez-vous">Rendez-vous</a>
-          <a mat-button routerLink="person/list" title="Liste des personnes">Personnes</a>
-
-      </div>
-    </mat-toolbar>
-</div>
-
-
+<nav>
+  <div class="nav-wrapper blue lighten-2 ">
+    <ul class="left hide-on-med-and-down">
+      <li class="active"><a mat-button routerLink="home" title="Accueil">Accueil</a></li>
+      <li><a mat-button routerLink="candidate/list" title="Liste des candidats">Candidats</a></li>
+      <li><a mat-button routerLink="company/list" title="Liste des entreprises">Entreprises</a></li>
+      <li><a mat-button routerLink="appointment/list" title="Liste des rendez-vous">Rendez-vous</a></li>
+      <li><a mat-button routerLink="person/list" title="Liste des personnes">Personnes</a></li>
+    </ul>
+  </div>
+</nav>

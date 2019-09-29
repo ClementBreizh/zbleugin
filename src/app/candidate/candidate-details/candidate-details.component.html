@@ -1,30 +1,30 @@
 <ng-container *ngIf="candidate">
   <h2>{{ candidate.sexCandidate }} {{candidate.firstname}} {{candidate.lastname}}</h2>
+  <a mat-button routerLink="/candidat/list">Retour à la liste</a>
   <p class="status">Statut actuel: {{ candidate.statusCandidate }}</p>
-  <mat-card class="infos">
-      <mat-grid-list cols="2" rowHeight="2:1">
-          <mat-grid-tile>
-            <mat-list>
-              <mat-list-item class="address" >Adresse:</mat-list-item>
-              <mat-list-item >{{candidate.address.street}}</mat-list-item>
-              <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
-            </mat-list>
-          </mat-grid-tile>
-          <mat-grid-tile class="div-contact">
-            <mat-list>
-              <mat-list-item class="contact" >Contact:</mat-list-item>
-              <mat-list-item >Tel mobile: {{candidate.homePhone}}</mat-list-item>
-              <mat-list-item >Tel fixe: {{candidate.cellPhone}}</mat-list-item>
-              <mat-list-item >Email: {{candidate.email}}</mat-list-item>
-            </mat-list>
-          </mat-grid-tile>
-        </mat-grid-list>
-  </mat-card>
+
+  <div class="card row z-depth-1">
+    <div class="col s5 offset-s1">
+      <mat-list>
+        <mat-list-item class="address" >Adresse:</mat-list-item>
+        <mat-list-item >{{candidate.address.street}}</mat-list-item>
+        <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col s5 offset-s1">
+      <mat-list>
+        <mat-list-item class="contact" >Contact:</mat-list-item>
+        <mat-list-item >Tel mobile: {{candidate.homePhone}}</mat-list-item>
+        <mat-list-item >Tel fixe: {{candidate.cellPhone}}</mat-list-item>
+        <mat-list-item >Email: {{candidate.email}}</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
 
   <mat-tab-group>
-    <mat-tab label="Diplômes et matières maitrîsées">
+    <mat-tab label="Diplômes et matières maitrîsées"  class="left-align">
       <mat-card class="detailsCard1">
-        <h2>Ses diplômes</h2>
+        <h3  class="left-align">Ses diplômes</h3>
         <table>
           <tr>
             <th>Intitulé</th>
@@ -58,7 +58,8 @@
               <app-degree-form></app-degree-form>
             </mat-expansion-panel>
           </mat-accordion>
-        <h2>Les matières maitrisées</h2>
+
+        <h3 class="left-align">Les matières maitrisées</h3>
         <ul>
           <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
         </ul>
@@ -66,7 +67,7 @@
     </mat-tab>
 
     <mat-tab label="Session(s)">
-        <h3>Ses sessions de formation</h3>
+        <h3 class="left-align">Ses sessions de formation</h3>
         <div *ngIf="actualSession; else noSession">
           <p>Sa dernière session est {{actualSession.name}}</p>
           <p>Elle se déroule du {{actualSession.startDate | date:'mediumDate' }} au {{actualSession.endDate | date:'mediumDate' }}</p>
@@ -76,8 +77,8 @@
                 Voir les autres sessions
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <ng-container *ngIf="this.candidate.sessions.length > 1">
-              <p *ngFor="let session of this.candidate.sessions ">
+            <ng-container *ngIf="this.candidate.companySession.length > 1">
+              <p *ngFor="let session of this.candidate.companySession ">
                 {{session.name}}
               </p>
             </ng-container>
@@ -88,7 +89,7 @@
 
     <mat-tab label="Rendez-vous">
       <mat-card class="rdv">
-        <h2>Ses Rendez-vous:</h2>
+        <h3 class="left-align">Ses Rendez-vous</h3>
         <table>
           <tr>
             <th>Date du rendez-vous</th>
@@ -146,7 +147,7 @@
     </mat-tab>
 
     <mat-tab label="Informations complémentaires">
-     <h2>Situation actuelle</h2>
+     <h3 class="left-align">Situation actuelle</h3>
      <table>
        <tr>
          <th>Dernière mise à jour</th>
@@ -162,9 +163,9 @@
        </tr>
      </table>
      <div>
-        <h3>Infos supplémentaires</h3>
+        <h3 class="left-align">Infos supplémentaires</h3>
          <ul>
-           <li>Avis sur le candidat: {{ candidate.rankingCandidate }}</li>
+           <li>Avis sur le candidat: {{ candidate.ranking }}</li>
            <li>Commentaire: {{ candidate.commentary }}</li>
            <!-- <li>Statut actuel: {{ candidate.statusCandidate }}</li> -->
         </ul>

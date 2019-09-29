@@ -1,19 +1,17 @@
 #homepage {
-background-color: #CFD8DC;
+/* background-color: #CFD8DC; */
 max-width: 950px;
 margin: auto;
 padding: 15px
 }
-h1 {
-  text-align: center;
-  font-size: 3em;
+
+a {
+  color:inherit;
+  text-decoration: inherit;
 }
 
-.panel {
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 650px;
-  margin: auto;
+h3 {
+  color:#9e9e9e;
 }
 
 .panel>div {

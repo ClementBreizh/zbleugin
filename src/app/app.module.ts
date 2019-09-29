@@ -26,6 +26,9 @@ import { registerLocaleData } from '@angular/common';
 import { PersonModule } from './person/person.module';
 import { LoginWigdetModule } from './login-wigdet/login-wigdet.module';
 import { LoginWigdetComponent } from './login-wigdet/login-wigdet/login-wigdet.component';
+// import 'materialize-css';
+// import { MaterializeModule } from "angular2-materialize";
+
 // Register FR locale.
 registerLocaleData(localeFr);
 

@@ -40,7 +40,8 @@ export class CandidateDetailsComponent implements OnInit {
           .getOne(params.id)
           .subscribe((value: Candidate) => {
             this.candidate = value;
-            this.actualSession = this.candidate.sessions[this.candidate.sessions.length - 1].session;
+            console.log(this.candidate);
+            this.actualSession = this.candidate.companySession[this.candidate.companySession.length - 1].session;
           });
       }
     });

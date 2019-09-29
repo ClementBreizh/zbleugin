@@ -14,13 +14,13 @@ export class Candidate {
   email: string;
   cellPhone: string;
   homePhone: string;
-  rankingCandidate;
+  ranking: string;
   address?: Address;
   commentary?: string;
   degrees?: Degree[];
   feedback?: Feedback;
   matters?: Matter[];
-  sessions?: any;
+  companySession?: any;
   sexCandidate: string;
   statusCandidate: string;
   appointments?: Appointment[];
