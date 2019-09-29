@@ -5,11 +5,13 @@ import { NotImplementedComponent } from './http-error/not-implemented/not-implem
 import { LoginComponent } from './login-page/login/login.component';
 import { routes as companyRoutes } from './company/company.routing';
 import { routes as candidateRoutes } from './candidate/candidate.routing';
+import { routes as userRoutes } from './user/user.routing';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth/guard.guard';
 
 const routes: Routes = [
   { path: 'candidate', children: candidateRoutes},
+  { path: 'user', children: userRoutes},
   // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
