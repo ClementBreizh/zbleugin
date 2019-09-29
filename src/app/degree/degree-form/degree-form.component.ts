@@ -16,8 +16,7 @@ export class DegreeFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,
               private readonly apiDegree: DegreeApiService,
-              private readonly apiCandidate: CandidateApiService,
-              private readonly router: Router) { }
+              private readonly apiCandidate: CandidateApiService) { }
 
   get isNew(): boolean { return this.degreeId === null; }
 

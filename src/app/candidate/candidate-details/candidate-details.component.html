@@ -63,6 +63,21 @@
         <ul>
           <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
         </ul>
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon svgIcon="add"></mat-icon> Ajouter une matière
+              </mat-panel-title>
+              <mat-panel-description>
+                Cliquez pour ajouter
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <app-matter-form></app-matter-form>
+          </mat-expansion-panel>
+        </mat-accordion>
       </mat-card>
     </mat-tab>
 

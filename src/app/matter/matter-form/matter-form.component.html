@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Informations de la matière</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input type="text" matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-card class="actions">
+      <input type="submit" [value]="isNew ? 'Créer' : 'Modifier'" [disabled]="form.invalid">
+    </mat-card>
+  </mat-card>
+
+</form>

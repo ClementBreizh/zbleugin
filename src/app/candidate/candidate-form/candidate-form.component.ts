@@ -47,7 +47,8 @@ export class CandidateFormComponent implements OnInit {
     feedback: [],
     degrees: [],
     companySession: [],
-    assessments: []
+    assessments: [],
+    matters: []
   });
 
   ngOnInit() {
