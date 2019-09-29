@@ -1,6 +1,6 @@
 import { CompanyApiServiceService } from 'src/app/services/company-api-service.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { Company } from 'src/app/models/company';
@@ -13,6 +13,7 @@ import { Company } from 'src/app/models/company';
 export class CompanyFormComponent implements OnInit {
 
   id: number = null;
+  editedCompany: Company;
 
   form = this.fb.group({
     // id: null,
@@ -29,7 +30,8 @@ export class CompanyFormComponent implements OnInit {
   constructor(
       private readonly fb: FormBuilder,
       private readonly route: ActivatedRoute,
-      private readonly api: CompanyApiServiceService) { }
+      private readonly api: CompanyApiServiceService,
+      private readonly router: Router) { }
 
   ngOnInit() {
     this.treatParameters();
@@ -46,9 +48,23 @@ export class CompanyFormComponent implements OnInit {
 
     const company: Company = this.form.value;
 
+    let request = null;
+
     company.siret = company.siret.replace(/\s+/g, '');
 
-    console.log('Valid');
+    if (this.isNew) {
+      request = this.api.create(company).subscribe(data => {
+        this.editedCompany = data;
+        this.router.navigate(['company', this.editedCompany.id]);
+      });
+    } else {
+      request = this.api.edit(this.id, company).subscribe(data => {
+        this.editedCompany = data;
+        this.router.navigate(['company', this.editedCompany.id]);
+      });
+    }
+
+    return request;
   }
 
   /** Initializes from route parameters. */

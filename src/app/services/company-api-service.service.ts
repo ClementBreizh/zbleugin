@@ -6,8 +6,8 @@ import { Company } from '../models/company';
   providedIn: 'root'
 })
 export class CompanyApiServiceService extends ApiServiceService<Company> {
-  getAll() {
-    return this.get('filtered');
+  getAll(params) {
+    return this.get('filtered', params);
   }
 
   getOne(id: number) {
@@ -17,8 +17,16 @@ export class CompanyApiServiceService extends ApiServiceService<Company> {
   deleteOne(id: number) {
     return this.delete(id);
   }
+  create(data) {
+    return this.post(data);
+  }
+
+  edit(id, data) {
+    return this.put(id, data);
+  }
 
   protected url(): string {
     return 'companies';
   }
+
 }

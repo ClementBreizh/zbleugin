@@ -19,17 +19,20 @@ import { MatInputModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSi
 import { SkeletonModule } from './skeleton/skeleton.module';
 import { CompanyModule } from './company/company.module';
 import { SharedModule } from './shared/shared.module';
-import { LoginPageModule } from './login-page/login-page.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AppointmentModule } from './appointment/appointment.module';
+import {LoginPageModule} from './login-page/login-page.module';
+import {ReactiveFormsModule} from '@angular/forms';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { PersonModule } from './person/person.module';
+import { LoginWigdetModule } from './login-wigdet/login-wigdet.module';
+import { LoginWigdetComponent } from './login-wigdet/login-wigdet/login-wigdet.component';
 // import 'materialize-css';
 // import { MaterializeModule } from "angular2-materialize";
 
-
-
 // Register FR locale.
 registerLocaleData(localeFr);
+
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ registerLocaleData(localeFr);
     NotImplementedComponent,
     AlertComponent,
     RegisterComponent,
+    LoginWigdetComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +56,14 @@ registerLocaleData(localeFr);
     UserModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSidenavModule,
     SkeletonModule,
     CompanyModule,
     SharedModule,
+    AppointmentModule,
+    MatSidenavModule,
     ReactiveFormsModule,
+    PersonModule,
+    LoginWigdetModule
   ],
   providers: [
     // Set locate (for date pipe for example).

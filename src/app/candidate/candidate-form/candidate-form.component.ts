@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
@@ -11,6 +11,9 @@ import {CandidateApiService} from '../../services/candidate-api.service';
   styleUrls: ['./candidate-form.component.css']
 })
 export class CandidateFormComponent implements OnInit {
+
+  @Input()
+  candidate = true;
 
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,
@@ -29,15 +32,22 @@ export class CandidateFormComponent implements OnInit {
 
   form = this.fb.group({
     // id: [''],
-    sexCandidate: [''],
+    sex: [''],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
     cellPhone: ['', Validators.required],
     homePhone: [''],
     commentary: [''],
-    rankingCandidate: [''],
-    statusCandidate: ['']
+    ranking: [''],
+    status: [''],
+    address: [],
+    comentary: [''],
+    appointments: [],
+    feedback: [],
+    degrees: [],
+    companySession: [],
+    assessments: []
   });
 
   ngOnInit() {
@@ -58,8 +68,11 @@ export class CandidateFormComponent implements OnInit {
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     } else {
+      // TODO: Recupérer le candidat, l'editer, et l'envoyer.
+
       request = this.api.edit(this.id, candidate).subscribe(data => {
         this.editedCandidate = data;
+        console.log(this.editedCandidate);
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     }

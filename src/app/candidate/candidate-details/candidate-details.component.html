@@ -1,5 +1,6 @@
 <ng-container *ngIf="candidate">
   <h2>{{ candidate.sexCandidate }} {{candidate.firstname}} {{candidate.lastname}}</h2>
+  <a mat-button routerLink="/candidat/list">Retour à la liste</a>
   <p class="status">Statut actuel: {{ candidate.statusCandidate }}</p>
 
   <div class="card row z-depth-1">
@@ -42,7 +43,6 @@
             </td>
           </tr>
         </table>
-        <h3 class="left-align">Les matières maitrisées</h3>
 
           <mat-accordion>
             <mat-expansion-panel>
@@ -58,7 +58,8 @@
               <app-degree-form></app-degree-form>
             </mat-expansion-panel>
           </mat-accordion>
-        <h2>Les matières maitrisées</h2>
+
+        <h3 class="left-align">Les matières maitrisées</h3>
         <ul>
           <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
         </ul>
@@ -76,8 +77,8 @@
                 Voir les autres sessions
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <ng-container *ngIf="this.candidate.sessions.length > 1">
-              <p *ngFor="let session of this.candidate.sessions ">
+            <ng-container *ngIf="this.candidate.companySession.length > 1">
+              <p *ngFor="let session of this.candidate.companySession ">
                 {{session.name}}
               </p>
             </ng-container>

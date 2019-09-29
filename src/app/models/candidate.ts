@@ -20,7 +20,7 @@ export class Candidate {
   degrees?: Degree[];
   feedback?: Feedback;
   matters?: Matter[];
-  sessions?: any;
+  companySession?: any;
   sexCandidate: string;
   statusCandidate: string;
   appointments?: Appointment[];
