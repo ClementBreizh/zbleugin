@@ -1,4 +1,6 @@
 <ng-container *ngIf="person">
+    <h2>Informations sur {{ person.firstname}} {{ person.lastname}}</h2>
+    <a mat-button routerLink="/person/list">Retour à la liste</a>
     <mat-card class="infos">
         <mat-grid-list cols="2" rowHeight="2:1">
             <mat-grid-tile>

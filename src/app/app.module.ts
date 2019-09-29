@@ -23,10 +23,12 @@ import {LoginPageModule} from './login-page/login-page.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
-
+import { PersonModule } from './person/person.module';
+import { LoginWigdetModule } from './login-wigdet/login-wigdet.module';
+import { LoginWigdetComponent } from './login-wigdet/login-wigdet/login-wigdet.component';
 // Register FR locale.
 registerLocaleData(localeFr);
-import { PersonModule } from './person/person.module';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { PersonModule } from './person/person.module';
     NotImplementedComponent,
     AlertComponent,
     RegisterComponent,
+    LoginWigdetComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { PersonModule } from './person/person.module';
     AppointmentModule,
     MatSidenavModule,
     ReactiveFormsModule,
-    PersonModule
+    PersonModule,
+    LoginWigdetModule
   ],
   providers: [
     // Set locate (for date pipe for example).

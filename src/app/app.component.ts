@@ -11,26 +11,28 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: User;
+  // currentUser: User;
 
   constructor(
       private router: Router,
-      private authenticationService: AuthenticationService
-  ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
+      // private authenticationService: AuthenticationService
+   )
+  {
+  //     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  // }
 
-  logout() {
-      this.authenticationService.logout();
-      this.router.navigate(['/login']);
-  }
+  // logout() {
+  //     this.authenticationService.logout();
+  //     this.router.navigate(['/login']);
+  // }
 
   // Method to switch between login/logout button
-  switchButton() {
-    if (this.authenticationService.currentUserValue == null) {
-      return true;
-    } else {
-        return false;
-        }
+  // switchButton() {
+  //   if (this.authenticationService.currentUserValue == null) {
+  //     return true;
+  //   } else {
+  //       return false;
+  //       }
+  // }
   }
 }
