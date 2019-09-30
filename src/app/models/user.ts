@@ -1,3 +1,5 @@
+import {Appointment} from './appointment';
+
 export class User {
   id: number;
   firstname: string;
@@ -6,6 +8,8 @@ export class User {
   cellPhone: string;
   homePhone: string;
   username: string;
+  commentary?: string;
+  appointments?: Appointment[];
   login: string;
   password: string;
   role: string;

@@ -26,10 +26,13 @@ export class UserListComponent implements OnInit {
     role: '',
     email: '',
     cellPhone: '',
+    homePhone: '',
+    commentary: '',
     page: 0,
     size: 20,
     sort: ''
   });
+
 
   constructor(private api: UserApiService, private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer, private fb: FormBuilder) {
@@ -68,6 +71,7 @@ this.api
 .subscribe(data => {
 this.dataSource = data.content;
 this.resultNb = data.totalElements;
+console.log(this.dataSource);
 });
 }
 

@@ -31,7 +31,8 @@ export class UserFormComponent implements OnInit {
   editedUser: User;
 
   form = this.fb.group({
-    sex: [''],
+    login: ['', Validators.required],
+    password: ['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
