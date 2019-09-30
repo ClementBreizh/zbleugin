@@ -18,6 +18,7 @@ import { PersonListComponent } from './person/person-list/person-list.component'
 import { PersonDetailsComponent } from './person/person-details/person-details.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]},
