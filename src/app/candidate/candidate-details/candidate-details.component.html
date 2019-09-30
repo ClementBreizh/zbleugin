@@ -1,14 +1,19 @@
 <ng-container *ngIf="candidate">
   <h2>{{ candidate.sexCandidate }} {{candidate.firstname}} {{candidate.lastname}}</h2>
-  <a mat-button routerLink="/candidat/list">Retour à la liste</a>
-  <p class="status">Statut actuel: {{ candidate.statusCandidate }}</p>
+  <a mat-button [routerLink]='"/candidate/list"'>Retour à la liste</a>
+  <p class="status">Statut actuel: {{ candidate.statusCandidate || "Aucun statut enregistré" }}</p>
 
   <div class="card row z-depth-1">
     <div class="col s5 offset-s1">
       <mat-list>
         <mat-list-item class="address" >Adresse:</mat-list-item>
-        <mat-list-item >{{candidate.address.street}}</mat-list-item>
-        <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
+        <ng-container *ngIf="candidate.address; else noAddress">
+          <mat-list-item >{{candidate.address.street}}</mat-list-item>
+          <mat-list-item >{{candidate.address.postalCode}} {{candidate.address.city}}</mat-list-item>
+        </ng-container>
+        <ng-template #noAddress>
+          <p>Pas d'addresse pour le moment.</p>
+        </ng-template>
       </mat-list>
     </div>
     <div class="col s5 offset-s1">
@@ -25,7 +30,7 @@
     <mat-tab label="Diplômes et matières maitrîsées"  class="left-align">
       <mat-card class="detailsCard1">
         <h3  class="left-align">Ses diplômes</h3>
-        <table>
+        <table *ngIf="candidate.degrees.length > 0; else noDegrees">
           <tr>
             <th>Intitulé</th>
             <th>Niveau</th>
@@ -43,6 +48,9 @@
             </td>
           </tr>
         </table>
+        <ng-template #noDegrees>
+          <p>Pas de diplôme enregistré.</p>
+        </ng-template>
 
           <mat-accordion>
             <mat-expansion-panel>
@@ -60,10 +68,13 @@
           </mat-accordion>
 
         <h3 class="left-align">Les matières maitrisées</h3>
-        <ul>
+        <ul *ngIf="candidate.matters.length > 0; else noMatters">
           <li *ngFor="let aMatter of candidate.matters; index as index">{{ aMatter.matter.name }} <a title="Supprimer la matière" (click)="onDeleteMatter(aMatter.id, index)">
             <mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon></a></li>
         </ul>
+        <ng-template #noMatters>
+          <p>Pas de matières enregistrée.</p>
+        </ng-template>
 
         <mat-accordion>
           <mat-expansion-panel>
@@ -84,7 +95,8 @@
 
     <mat-tab label="Session(s)">
         <h3 class="left-align">Ses sessions de formation</h3>
-        <div *ngIf="actualSession; else noSession">
+      <ng-container *ngIf="candidate.companySession.length > 0; else noSession">
+        <div *ngIf="actualSession; else noActualSession">
           <p>Sa dernière session est {{actualSession.name}}</p>
           <p>Elle se déroule du {{actualSession.startDate | date:'mediumDate' }} au {{actualSession.endDate | date:'mediumDate' }}</p>
           <mat-expansion-panel>
@@ -95,18 +107,20 @@
             </mat-expansion-panel-header>
             <ng-container *ngIf="this.candidate.companySession.length > 1">
               <p *ngFor="let session of this.candidate.companySession ">
-                {{session.name}}
+                {{session.name }}
               </p>
             </ng-container>
           </mat-expansion-panel>
         </div>
-        <ng-template #noSession>Aucune session actuellement</ng-template>
+        <ng-template #noActualSession>Aucune session actuellement</ng-template>
+      </ng-container>
+      <ng-template #noSession>Aucune session enregistrée.</ng-template>
       </mat-tab>
 
     <mat-tab label="Rendez-vous">
       <mat-card class="rdv">
         <h3 class="left-align">Ses Rendez-vous</h3>
-        <table>
+        <table *ngIf="candidate.appointments.length > 0; else noAppointments">
           <tr>
             <th>Date du rendez-vous</th>
             <th>Statut</th>
@@ -120,13 +134,16 @@
             <td>{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</td>
           </tr>
         </table>
+        <ng-template #noAppointments>
+          <p>Pas de rendez-vous à aficher.</p>
+        </ng-template>
       </mat-card>
     </mat-tab>
 
     <mat-tab label="Tests">
       <mat-card>
         <h2>Tests réalisés</h2>
-        <table>
+        <table *ngIf="candidate.assessments.length > 0; else noAssessments">
           <tr>
             <th>Thème</th>
             <th>Score</th>
@@ -144,6 +161,9 @@
             </td>
           </tr>
         </table>
+        <ng-template #noAssessments>
+          <p>Aucun test réalisé.</p>
+        </ng-template>
 
         <mat-accordion>
           <mat-expansion-panel>
@@ -164,7 +184,7 @@
 
     <mat-tab label="Informations complémentaires">
      <h3 class="left-align">Situation actuelle</h3>
-     <table>
+     <table *ngIf="candidate.feedback; else noFeedback">
        <tr>
          <th>Dernière mise à jour</th>
          <th>Type du contrat</th>
@@ -178,13 +198,20 @@
          <td>{{ candidate.feedback.comment }}</td>
        </tr>
      </table>
+      <ng-template #noFeedback>
+        <p>Aucun suivi réalisé pour le moment.</p>
+      </ng-template>
      <div>
         <h3 class="left-align">Infos supplémentaires</h3>
          <ul>
-           <li>Avis sur le candidat: {{ candidate.ranking }}</li>
-           <li>Commentaire: {{ candidate.commentary }}</li>
-           <!-- <li>Statut actuel: {{ candidate.statusCandidate }}</li> -->
-        </ul>
+           <li *ngIf="candidate.ranking; else noRanking">Rang du candidat: {{ candidate.ranking }}</li>
+           <ng-template #noRanking>
+             <li>Aucun rang</li>
+           </ng-template>
+           <li *ngIf="candidate.commentary; else noCommentary">Commentaire: {{ candidate.commentary }}</li>
+           <ng-template #noCommentary>
+             <li>Aucun commentaire</li>
+           </ng-template>        </ul>
       </div>
     </mat-tab>
 

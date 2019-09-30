@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Candidate} from '../../models/candidate';
-import {Session} from '../../models/session';
 import {CandidateApiService} from '../../services/candidate-api.service';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tap} from 'rxjs/operators';
 import {AcquiredMatterApiService} from '../../services/acquired-matter-api.service';
+import {Session} from '../../models/session';
 
 @Component({
   selector: 'app-candidate-details',
@@ -40,7 +40,9 @@ export class CandidateDetailsComponent implements OnInit {
           .getOne(params.id)
           .subscribe((value: Candidate) => {
             this.candidate = value;
-            this.actualSession = this.candidate.companySession[this.candidate.companySession.length - 1].session;
+            if (this.candidate.companySession.length > 0) {
+              this.actualSession = this.candidate.companySession[this.candidate.companySession.length - 1].session;
+            }
           });
       }
     });
