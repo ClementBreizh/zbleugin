@@ -27,6 +27,6 @@ export class AcquiredMatterApiService extends ApiServiceService<AcquiredMatter> 
   }
 
   protected url(): string {
-    return 'matters';
+    return 'acquiredmatters';
   }
 }

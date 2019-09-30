@@ -1,9 +1,9 @@
 import {Address} from './address';
 import {Degree} from './degree';
 import {Feedback} from './feedback';
-import {Matter} from './matter';
 import {Appointment} from './appointment';
 import {Assessment} from './assessment';
+import {AcquiredMatter} from './acquiredMatter';
 
 
 // Candidate model
@@ -19,7 +19,7 @@ export class Candidate {
   commentary?: string;
   degrees?: Degree[];
   feedback?: Feedback;
-  matters?: Matter[];
+  matters?: AcquiredMatter[];
   companySession?: any;
   sexCandidate: string;
   statusCandidate: string;

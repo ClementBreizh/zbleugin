@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatterFormComponent } from './matter-form/matter-form.component';
-import {MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatCardModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -11,7 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule
   ],
   exports: [MatterFormComponent]
 })

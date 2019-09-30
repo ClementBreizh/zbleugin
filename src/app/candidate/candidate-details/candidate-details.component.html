@@ -61,7 +61,8 @@
 
         <h3 class="left-align">Les matières maitrisées</h3>
         <ul>
-          <li *ngFor="let matter of candidate.matters">{{ matter.name }}</li>
+          <li *ngFor="let aMatter of candidate.matters; index as index">{{ aMatter.matter.name }} <a title="Supprimer la matière" (click)="onDeleteMatter(aMatter.id, index)">
+            <mat-icon svgIcon="delete" class="actions actionDelete"></mat-icon></a></li>
         </ul>
 
         <mat-accordion>
@@ -75,7 +76,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
 
-            <app-matter-form></app-matter-form>
+            <app-matter-form [candidate]="candidate" (create)="addAcquiredMatter($event)"></app-matter-form>
           </mat-expansion-panel>
         </mat-accordion>
       </mat-card>

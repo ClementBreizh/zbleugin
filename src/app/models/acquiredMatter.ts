@@ -1,6 +1,6 @@
 import {Matter} from './matter';
 
 export class AcquiredMatter {
-  id?: number;
+  id: number;
   matter: Matter;
 }
