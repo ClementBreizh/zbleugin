@@ -25,14 +25,24 @@
 
       <mat-form-field>
         <mat-label>Organisateur/trice</mat-label>
-        <input type="text" matInput formControlName="organizer">
+        <input type="text" matInput formControlName="organizer" [matAutocomplete]="organizer">
+        <mat-hint *ngIf="data">{{ data.totalElements }} éléments</mat-hint>
     </mat-form-field>
+
+    <mat-autocomplete #organizer="matAutocomplete">
+      <<ng-container *ngIf="data">
+        <!-- Utiliser un champs unique pour value. -->
+        <mat-option *ngFor="let option of data.content" [value]="option.email">
+          {{option.firstname}} {{option.lastname}} -- {{option.email}}
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
 
     <br>
 
       <mat-form-field>
         <mat-label>Personnes</mat-label>
-        <input type="text" matInput formControlName="persons">
+        <input type="text" matInput>
       </mat-form-field>
     </mat-card>
 

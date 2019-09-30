@@ -28,6 +28,10 @@ export class PersonApiService extends ApiServiceService<Person> {
     return this.put(id, data);
   }
 
+  find(value: string) {
+    return this.get('autocomplete', {value, types: 'User,Person'} as any);
+  }
+
   protected url(): string {
     return 'persons';
   }

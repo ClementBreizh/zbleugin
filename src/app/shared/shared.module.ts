@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatInputModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSortModule,
-  MatTableModule
+  MatTableModule, MatAutocompleteModule
 } from '@angular/material';
 import { LoaderComponent } from './loader/loader.component';
 import { PersonPipe } from './person/person.pipe';
@@ -27,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatExpansionModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatFormFieldModule,
@@ -42,7 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     LoaderComponent,
     PersonPipe,
-    AddressComponent
+    AddressComponent,
+    MatAutocompleteModule
   ]
 })
 export class SharedModule { }

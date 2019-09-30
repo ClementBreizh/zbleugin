@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Person } from 'src/app/models/person';
 import { Address } from 'src/app/models/address';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentApiService } from 'src/app/services/appointment-api.service';
 import { Appointment } from 'src/app/models/appointment';
 import { tap } from 'rxjs/operators';
-
+import { PersonApiService } from 'src/app/services/person-api.service';
 
 @Component({
   selector: 'app-appointment-form',
@@ -16,6 +16,8 @@ import { tap } from 'rxjs/operators';
 export class AppointmentFormComponent implements OnInit {
 
   id: number = null;
+  organizerChoice: Person[] = [];
+  editedAppointment: Appointment;
 
   form = this.fb.group({
     // id: null,
@@ -27,28 +29,55 @@ export class AppointmentFormComponent implements OnInit {
     address: Address
   });
 
+  private time;
+  data: {content: any[], totalElements: number} = null;
 
   constructor(
       private readonly fb: FormBuilder,
       private readonly route: ActivatedRoute,
-      private readonly api: AppointmentApiService) { }
+      private readonly api: AppointmentApiService,
+      private readonly papi: PersonApiService,
+      private readonly router: Router) { }
 
   ngOnInit() {
     this.treatParameters();
+
+    this.form.get('organizer')
+        .valueChanges
+        .subscribe(value => {
+          this.data = null;
+          if (this.time) { window.clearTimeout(this.time); }
+
+          this.time = window.setTimeout(() => {
+            this.papi
+                .find(value)
+                .subscribe(d => this.data = d);
+          }, 1500);
+        });
   }
 
   get isNew(): boolean { return this.id === null; }
 
-  get name(): AbstractControl { return this.form.controls.name; }
-  get siret(): AbstractControl { return this.form.controls.siret; }
-
   onSubmit() {
-    // TODO: determine post/put
-    // TODO: send api
-
     const appointment: Appointment = this.form.value;
 
-    console.log('Valid');
+    let request = null;
+
+    if (this.isNew) {
+      request = this.api.create(appointment).subscribe(data => {
+        this.editedAppointment = data;
+        this.router.navigate(['appointment', this.editedAppointment.id]);
+      });
+    } else {
+      // TODO: Recupérer le candidat, l'editer, et l'envoyer.
+
+      request = this.api.edit(this.id, appointment).subscribe(data => {
+        this.editedAppointment = data;
+        console.log(this.editedAppointment);
+        this.router.navigate(['appointment', this.editedAppointment.id]);
+      });
+    }
+
   }
 
   /** Initializes from route parameters. */
