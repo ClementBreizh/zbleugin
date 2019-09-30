@@ -121,9 +121,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
       <td mat-cell *matCellDef="let candidate">
-        <a [routerLink]='"/candidate/" + candidate.id' title="Voir le dossier"><i class="small material-icons">account_box</i></a>
-        <a [routerLink]='"/candidate/" + candidate.id + "/edit"'  title="Editer le dossier"><i class="small material-icons">mode_edit</i></a>
-        <a title="Supprimer le candidat" (click)="onDelete(candidate)"><i class="small material-icons">delete_forever</i></a>
+        <a [routerLink]='"/candidate/" + candidate.id' title="Voir le dossier" class="actions actionShow"><i class="small material-icons">account_box</i></a>
+        <a [routerLink]='"/candidate/" + candidate.id + "/edit"'  title="Editer le dossier" class="actions actionEdit"><i class="small material-icons">mode_edit</i></a>
+        <a title="Supprimer le candidat" (click)="onDelete(candidate)" class="actions actionDelete"><i class="small material-icons">delete_forever</i></a>
       </td>
     </ng-container>
 

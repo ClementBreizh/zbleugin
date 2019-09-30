@@ -2,7 +2,7 @@ h2, .status {
   text-align: center;
 }
 a {
-  background-color: #5D99C6;
+  color: black;
   margin-left: 10%;
 }
 .address, .contact {
@@ -59,7 +59,7 @@ tr:nth-child(even) {
 }
 
 .actions:hover {
-  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .actionDelete:hover {
