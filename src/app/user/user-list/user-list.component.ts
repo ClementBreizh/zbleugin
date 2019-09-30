@@ -13,7 +13,7 @@ import {UserApiService} from '../../services/user-api.service';
 })
 export class UserListComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'login', 'role', 'email', 'cellPhone', 'actions'];
+  displayedColumns: string[] = ['login', 'firstname', 'lastname', 'role', 'email', 'cellPhone', 'actions'];
 
   dataSource: User[];
 
@@ -36,44 +36,44 @@ export class UserListComponent implements OnInit {
 
   constructor(private api: UserApiService, private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer, private fb: FormBuilder) {
-iconRegistry.addSvgIcon(
-'search',
-sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
-iconRegistry.addSvgIcon(
-'show',
-sanitizer.bypassSecurityTrustResourceUrl('assets/icons/show.svg'));
-iconRegistry.addSvgIcon(
-'edit',
-sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'));
-iconRegistry.addSvgIcon(
-'delete',
-sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
-iconRegistry.addSvgIcon(
-'add',
-sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
+    iconRegistry.addSvgIcon(
+    'search',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
+    iconRegistry.addSvgIcon(
+    'show',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/show.svg'));
+    iconRegistry.addSvgIcon(
+    'edit',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'));
+    iconRegistry.addSvgIcon(
+    'delete',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
+    iconRegistry.addSvgIcon(
+    'add',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
 }
 
 ngOnInit() {
 this.refresh();
 }
 
-onDelete(user: User): void {
-if (confirm('Êtes-vous sûr de vouloir supprimer ' + user.firstname + ' ' + user.lastname + '?')) {
-this.api
-.deleteOne(user.id)
-.subscribe(_ => this.refresh()); // TODO: Use notification to show success OR failure.
-}
-}
+  onDelete(user: User): void {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ' + user.firstname + ' ' + user.lastname + '?')) {
+      this.api
+      .deleteOne(user.id)
+      .subscribe(_ => this.refresh());
+    }
+  }
 
-private refresh() {
-this.api
-.getAll(this.params())
-.subscribe(data => {
-this.dataSource = data.content;
-this.resultNb = data.totalElements;
-console.log(this.dataSource);
-});
-}
+  private refresh() {
+  this.api
+  .getAll(this.params())
+  .subscribe(data => {
+  this.dataSource = data.content;
+  this.resultNb = data.totalElements;
+  console.log(this.dataSource);
+  });
+  }
 
 onSubmit($event) {
 $event.preventDefault();

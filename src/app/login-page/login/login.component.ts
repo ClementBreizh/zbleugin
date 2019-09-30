@@ -1,8 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/services/authentification.service';
+import { AuthenticationService } from '../../services/authentification.service';
 import { AlertService } from 'src/app/services/alert.service';
 
 
@@ -41,14 +41,16 @@ export class LoginComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get f(): {[key: string]: AbstractControl} { return this.loginForm.controls; }
 
     onSubmit() {
+console.log('Submit', this.loginForm) // TODO: Remove!
         this.submitted = true;
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {
-            return;
+          console.error('Invalid form');
+          return;
         }
 
         this.loading = true;

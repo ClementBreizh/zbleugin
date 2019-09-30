@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import {CandidateListComponent} from './candidate-list/candidate-list.component';
-import {CandidateFormComponent} from './candidate-form/candidate-form.component';
-import {CandidateDetailsComponent} from './candidate-details/candidate-details.component';
+import { CandidateListComponent } from './candidate-list/candidate-list.component';
+import { CandidateFormComponent } from './candidate-form/candidate-form.component';
+import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 
 export const routes: Routes = [{
   path: 'list',

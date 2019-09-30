@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiServiceService} from './api-service.service';
 import {Person} from '../models/person';
-import {HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

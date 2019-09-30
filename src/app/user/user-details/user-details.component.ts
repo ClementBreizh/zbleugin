@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {User} from '../../models/user';
-import {UserApiService} from '../../services/user-api.service';
-
+import { User } from '../../models/user';
+import { UserApiService } from '../../services/user-api.service';
 
 
 @Component({
@@ -12,9 +11,12 @@ import {UserApiService} from '../../services/user-api.service';
 })
 export class UserDetailsComponent implements OnInit {
 
+
   user: User;
 
-  constructor(private apiUser: UserApiService, private route: ActivatedRoute) {
+  constructor(
+    private apiUser: UserApiService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
