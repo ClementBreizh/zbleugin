@@ -29,4 +29,9 @@ button{
     font-size: 200%;
     text-align: center;
 }
+@media only screen and (max-width: 992px) {
+.hide-on-med-and-down {
+    display: initial !important;
+}
+}
 
