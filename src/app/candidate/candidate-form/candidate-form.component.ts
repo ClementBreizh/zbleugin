@@ -42,12 +42,12 @@ export class CandidateFormComponent implements OnInit {
     ranking: [''],
     status: [''],
     address: [],
-    comentary: [''],
     appointments: [],
     feedback: [],
     degrees: [],
     companySession: [],
-    assessments: []
+    assessments: [],
+    matters: []
   });
 
   ngOnInit() {

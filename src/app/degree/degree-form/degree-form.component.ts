@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
@@ -16,8 +16,7 @@ export class DegreeFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,
               private readonly apiDegree: DegreeApiService,
-              private readonly apiCandidate: CandidateApiService,
-              private readonly router: Router) { }
+              private readonly apiCandidate: CandidateApiService) { }
 
   get isNew(): boolean { return this.degreeId === null; }
 

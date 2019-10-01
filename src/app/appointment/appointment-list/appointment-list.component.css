@@ -33,11 +33,6 @@ mat-card {
 
 .actions {
   cursor: pointer;
-  transition: all, 0.3s;
-}
-
-.actions:hover {
-  transform: scale(1.2);
 }
 
 .actionShow:hover {
