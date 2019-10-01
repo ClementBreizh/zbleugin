@@ -25,7 +25,6 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { PersonModule } from './person/person.module';
 import { LoginWigdetModule } from './login-wigdet/login-wigdet.module';
-import { LoginWigdetComponent } from './login-wigdet/login-wigdet/login-wigdet.component';
 // import 'materialize-css';
 // import { MaterializeModule } from "angular2-materialize";
 
@@ -39,8 +38,7 @@ registerLocaleData(localeFr);
     HomeComponent,
     NotImplementedComponent,
     AlertComponent,
-    RegisterComponent,
-    LoginWigdetComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -65,14 +63,15 @@ registerLocaleData(localeFr);
   ],
   providers: [
     // Set locate (for date pipe for example).
-    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
 
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
-        // provider used to create fake backend
+    // provider used to create fake backend
     fakeBackendProvider
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

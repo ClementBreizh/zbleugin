@@ -5,6 +5,7 @@ table {
 th.mat-header-cell{
   text-align: center;
 }
+
 td.mat-cell{
   text-align: center;
 }
@@ -19,16 +20,6 @@ th {
 
 mat-card {
   margin: 0 0 20px 0;
-}
-
-.candidate-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.formField {
-  width: 100%;
 }
 
 .actions {
@@ -56,3 +47,15 @@ a:visited {
 a:hover {
   text-decoration: underline;
 }
+
+mat-panel-title {
+  width: 200px !important;
+}
+
+.undecorated {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+

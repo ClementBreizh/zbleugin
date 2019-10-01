@@ -13,7 +13,7 @@ import {CandidateApiService} from '../../services/candidate-api.service';
 export class CandidateListComponent implements OnInit {
 
   displayedColumns: string[] = ['sexCandidate', 'firstname',
-    'lastname', 'email', 'cellPhone', 'homePhone', 'rankingCandidate', 'statusCandidate', 'actions'];
+    'lastname', 'email', 'phones', 'rankingCandidate', 'statusCandidate', 'actions'];
 
   dataSource: Candidate[];
 

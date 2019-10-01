@@ -55,9 +55,6 @@ export class CandidateFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: determine post/put
-    // TODO: send api
-
     const candidate = this.form.value;
 
     let request = null;
@@ -68,11 +65,8 @@ export class CandidateFormComponent implements OnInit {
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     } else {
-      // TODO: Recupérer le candidat, l'editer, et l'envoyer.
-
       request = this.api.edit(this.id, candidate).subscribe(data => {
         this.editedCandidate = data;
-        console.log(this.editedCandidate);
         this.router.navigate(['candidate', this.editedCandidate.id]);
       });
     }

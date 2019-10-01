@@ -1,49 +1,79 @@
+/*!**/
+/*#homepage {*/
+/*max-width: 950px;*/
+/*margin: auto;*/
+/*padding: 15px;*/
+/*}*/
+
+/*a {*/
+/*  color:inherit;*/
+/*  text-decoration: inherit;*/
+/*}*/
+
+/*h3 {*/
+/*  color:#9e9e9e;*/
+/*}*/
+
+/*.panel>div {*/
+/*  !* Should add rules for specific browsers. *!*/
+/*  display: flex;*/
+/*  cursor: pointer;*/
+/*  width: 200px;*/
+/*  height: 200px;*/
+/*  margin: 20px;*/
+/*  font-size: 2em;*/
+/*  text-align: center;*/
+/*  padding: 5px;*/
+/*  text-transform: uppercase;*/
+/*  border: 1px solid black;*/
+/*  border-radius: 10px;*/
+/*  flex-grow: 1;*/
+/*  background-color: #5D99C6;*/
+/*  box-shadow: 10px 10px 5px grey;*/
+/*}*/
+
+/*mat-card {*/
+/*  color: #5e5e5e;*/
+/*  font-size: 1.6em;*/
+/*  padding: 15px 0 !important;*/
+
+/*}*/
+
+/*mat-card:hover {*/
+/*  color: white;*/
+/*  background-color: #64B5F6;*/
+/*  cursor: pointer;*/
+/*}*/
+/**!*/
+
 #homepage {
-/* background-color: #CFD8DC; */
-max-width: 950px;
-margin: auto;
-padding: 15px;
-}
-
-a {
-  color:inherit;
-  text-decoration: inherit;
-}
-
-h3 {
-  color:#9e9e9e;
-}
-
-.panel>div {
-  /* Should add rules for specific browsers. */
+  width: 100%;
   display: flex;
-  cursor: pointer;
-  width: 200px;
-  height: 200px;
-  margin: 20px;
-  font-size: 2em;
-  text-align: center;
-  padding: 5px;
-  text-transform: uppercase;
-  border: 1px solid black;
-  border-radius: 10px;
-  flex-grow: 1;
-  background-color: #5D99C6;
-  box-shadow: 10px 10px 5px grey;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 mat-card {
-  color: #5e5e5e;
-  font-size: 1.6em;
-  padding: 15px 0 !important;
-
+  width: 40%;
+  margin: 0 0 20px 0;
+  text-align: center;
+  height: 75px;
+  vertical-align:middle;
+  line-height: 75px;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px rgba(128, 128, 128, 0.2);
 }
 
 mat-card:hover {
-  color: white;
-  background-color: #64B5F6;
-  cursor: pointer;
+  background-color: rgba(42, 175, 233, 0.26);
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.61);
 }
 
+.admin:hover {
+  background-color: rgba(255, 73, 39, 0.18);
+  color: red;
+}
 
-
+p {
+  font-weight: bold;
+}

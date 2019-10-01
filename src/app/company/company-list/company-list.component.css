@@ -22,22 +22,6 @@ mat-card {
   margin: 0 0 20px 0;
 }
 
-.mat-sort-header-container {
-  padding-right: 30px;
-  align-items: center;
-}
-
-td a,
-td a:visited {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-}
-
-td a:hover {
-  text-decoration: underline;
-}
-
 .actions {
   cursor: pointer;
 }
@@ -52,4 +36,18 @@ td a:hover {
 
 .actionDelete:hover {
   color: red;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+mat-panel-title {
+  width: 200px !important;
 }
