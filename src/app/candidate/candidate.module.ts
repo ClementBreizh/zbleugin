@@ -16,6 +16,7 @@ import {
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
 import {DegreeModule} from '../degree/degree.module';
 import {AssessmentModule} from '../assessment/assessment.module';
+import {MatterModule} from '../matter/matter.module';
 
 @NgModule({
   declarations: [CandidateListComponent, CandidateDetailsComponent, CandidateFormComponent],
@@ -44,7 +45,8 @@ import {AssessmentModule} from '../assessment/assessment.module';
     MatSelectModule,
     MatSliderModule,
     DegreeModule,
-    AssessmentModule
+    AssessmentModule,
+    MatterModule
   ],
   exports: [
     CandidateListComponent,

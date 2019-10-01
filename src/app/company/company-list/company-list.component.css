@@ -37,3 +37,19 @@ td a:visited {
 td a:hover {
   text-decoration: underline;
 }
+
+.actions {
+  cursor: pointer;
+}
+
+.actionShow:hover {
+  color: green;
+}
+
+.actionEdit:hover {
+  color: orange;
+}
+
+.actionDelete:hover {
+  color: red;
+}
