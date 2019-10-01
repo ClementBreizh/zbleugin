@@ -14,10 +14,11 @@
 
       <mat-form-field>
         <mat-label>Type</mat-label>
-          <mat-select formControlName="type" placeholder="Type de rendez-vous">
+          <mat-select formControlName="appointmentType" placeholder="Type de rendez-vous">
             <mat-option value="Téléphonique">Téléphonique</mat-option>
-            <mat-option value="Physique formation">TactFactory</mat-option>
-            <mat-option value="Physique Entreprise">Entreprise</mat-option>
+            <mat-option value="Physique">Physique</mat-option>
+            <mat-option value="Skype">Skype</mat-option>
+            <mat-option value="Physique avec tests">Physique avec tests</mat-option>
           </mat-select>
       </mat-form-field>
 
@@ -34,14 +35,6 @@
         <mat-label>Personnes</mat-label>
         <input type="text" matInput formControlName="persons">
       </mat-form-field>
-    </mat-card>
-
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Adresse</mat-card-title>
-      </mat-card-header>
-
-      <app-address formControlName="address"></app-address>
     </mat-card>
 
     <mat-card class="actions">

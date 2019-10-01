@@ -31,7 +31,6 @@ id: number = null;
 editedPerson: Person;
 
 form = this.fb.group({
-// id: [''],
 sexCandidate: [''],
 firstname: ['', Validators.required],
 lastname: ['', Validators.required],
@@ -47,9 +46,6 @@ ngOnInit() {
 }
 
 onSubmit() {
-// TODO: determine post/put
-// TODO: send api
-
 const person = this.form.value;
 
 let request = null;
@@ -69,12 +65,10 @@ this.router.navigate(['person', this.editedPerson.id]);
 return request;
 }
 
-  /** Initializes from route parameters. */
   private treatParameters() {
     this.route
     .params
     .subscribe(params => {
-    // FIXME: Should manage not found (interceptor).
     if (params.id) {
       this
       .api

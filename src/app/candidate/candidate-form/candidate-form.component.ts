@@ -31,7 +31,6 @@ export class CandidateFormComponent implements OnInit {
   editedCandidate: Candidate;
 
   form = this.fb.group({
-    // id: [''],
     sex: [''],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],

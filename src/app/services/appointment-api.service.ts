@@ -7,7 +7,7 @@ import { ApiServiceService } from './api-service.service';
 })
 export class AppointmentApiService extends ApiServiceService<Appointment> {
   getAll(params) {
-    return this.get('filtered', params);
+    return this.get('', params);
   }
 
   getOne(id: number) {

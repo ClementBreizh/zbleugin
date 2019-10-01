@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
 import { AppointmentApiService } from 'src/app/services/appointment-api.service';
-import { map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder } from '@angular/forms';
 import { MatIconRegistry, Sort, PageEvent, DateAdapter } from '@angular/material';
@@ -127,7 +126,6 @@ export class AppointmentListComponent implements OnInit {
       this.refresh();
     }
 
-    /** Returns ISO string (ignoring timezone). */
     private convertDate(date: Date): string {
       return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
     }

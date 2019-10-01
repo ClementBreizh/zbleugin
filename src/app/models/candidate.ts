@@ -7,7 +7,6 @@ import {AcquiredMatter} from './acquiredMatter';
 import {CompanySession} from './companySession';
 
 
-// Candidate model
 export class Candidate {
   id: number;
   firstname: string;
