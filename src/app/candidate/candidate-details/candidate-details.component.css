@@ -23,8 +23,10 @@ a {
 }
 
 mat-tab-group {
+  z-index: -1;
   margin: 3em;
 }
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -64,5 +66,15 @@ tr:nth-child(even) {
 
 .actionDelete:hover {
   color: red;
+}
+
+.mainCard {
+  display: flex;
+  justify-content: space-around;
+}
+
+.return {
+  color: white;
+  margin-bottom: 10px;
 }
 

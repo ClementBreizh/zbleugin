@@ -52,7 +52,10 @@ mat-panel-title {
   width: 200px !important;
 }
 
-.return {
-  color: white;
-  margin-bottom: 10px;
+.undecorated {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
+

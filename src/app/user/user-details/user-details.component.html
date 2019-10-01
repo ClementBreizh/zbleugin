@@ -1,0 +1,48 @@
+<ng-container *ngIf="user">
+  <mat-card>
+    <h2>{{user.firstname}} {{user.lastname}}</h2>
+    <button class="return" mat-raised-button color="primary" routerLink="/user/list">Retour</button>
+
+    <div class="mainCard">
+      <mat-card class="col s5 offset-s1">
+        <mat-list>
+          <mat-list-item class="address">Role</mat-list-item>
+          <mat-list-item>{{user.role}}</mat-list-item>
+        </mat-list>
+      </mat-card>
+      <mat-card class="col s5 offset-s1">
+        <mat-list>
+          <mat-list-item class="contact">Contact:</mat-list-item>
+          <mat-list-item>Tel mobile: {{user.homePhone}}</mat-list-item>
+          <mat-list-item>Tel fixe: {{user.cellPhone}}</mat-list-item>
+          <mat-list-item>Email: {{user.email}}</mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="Rendez-vous">
+        <mat-card class="rdv">
+          <h3 class="left-align">Ses Rendez-vous</h3>
+          <table *ngIf="user.appointments.length > 0; else noApp">
+            <tr>
+              <th>Date du rendez-vous</th>
+              <th>Statut</th>
+              <th>Type du rendez-vous</th>
+              <th>Organisateur</th>
+            </tr>
+            <tr *ngFor="let appointment of user.appointments">
+              <td>{{ appointment.appointmentDate}}</td>
+              <td>{{ appointment.status }}</td>
+              <td>{{ appointment.appointmentType }}</td>
+              <td>{{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</td>
+            </tr>
+          </table>
+          <ng-template #noApp>
+            <p>Aucun rendez-vous prévu.</p>
+          </ng-template>
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</ng-container>

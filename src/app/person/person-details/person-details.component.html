@@ -1,23 +1,25 @@
 <ng-container *ngIf="person">
+  <mat-card>
     <h2>Informations sur {{ person.firstname}} {{ person.lastname}}</h2>
-    <a mat-button routerLink="/person/list">Retour à la liste</a>
+    <a mat-button mat-raised-button class="return" routerLink="/person/list">Retour</a>
     <mat-card class="infos">
-        <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile>
-              <mat-list>
-                <mat-list-item class="address" >Informations :</mat-list-item>
-                <mat-list-item >Prénom: {{person.firstname}}</mat-list-item>
-                <mat-list-item >Nom: {{person.lastname}}</mat-list-item>
-              </mat-list>
-            </mat-grid-tile>
-            <mat-grid-tile class="div-contact">
-              <mat-list>
-                <mat-list-item class="contact" >Contact:</mat-list-item>
-                <mat-list-item >Tel mobile: {{person.homePhone}}</mat-list-item>
-                <mat-list-item >Tel fixe: {{person.cellPhone}}</mat-list-item>
-                <mat-list-item >Email: {{person.email}}</mat-list-item>
-              </mat-list>
-            </mat-grid-tile>
-          </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item class="address">Informations :</mat-list-item>
+            <mat-list-item>Prénom: {{person.firstname}}</mat-list-item>
+            <mat-list-item>Nom: {{person.lastname}}</mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="div-contact">
+          <mat-list>
+            <mat-list-item class="contact">Contact:</mat-list-item>
+            <mat-list-item>Tel mobile: {{person.homePhone}}</mat-list-item>
+            <mat-list-item>Tel fixe: {{person.cellPhone}}</mat-list-item>
+            <mat-list-item>Email: {{person.email}}</mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card>
-  </ng-container>
+  </mat-card>
+</ng-container>

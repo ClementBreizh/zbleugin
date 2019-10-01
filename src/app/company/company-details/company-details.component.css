@@ -55,3 +55,7 @@ tr:nth-child(even) {
   flex-direction: column;
 }
 
+.return {
+  color: white;
+}
+

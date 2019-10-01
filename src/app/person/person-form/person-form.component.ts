@@ -44,28 +44,23 @@ export class PersonFormComponent implements OnInit {
   id: number = null;
   editedPerson: Person;
 
-  form = this.fb.group({
-// id: [''],
-    sexCandidate: [''],
-    firstname: ['', Validators.required],
-    lastname: ['', Validators.required],
-    email: ['', Validators.required],
-    cellPhone: ['', Validators.required],
-    homePhone: [''],
-    commentary: [''],
-    rankingCandidate: [''],
-    statusCandidate: ['']
-  });
+form = this.fb.group({
+sexCandidate: [''],
+firstname: ['', Validators.required],
+lastname: ['', Validators.required],
+email: ['', Validators.required],
+cellPhone: ['', Validators.required],
+homePhone: [''],
+commentary: [''],
+type: ['']
+});
 
   ngOnInit() {
     this.treatParameters();
   }
 
-  onSubmit() {
-// TODO: determine post/put
-// TODO: send api
-
-    const person = this.form.value;
+onSubmit() {
+const person = this.form.value;
 
     let request = null;
 
@@ -84,20 +79,18 @@ export class PersonFormComponent implements OnInit {
     return request;
   }
 
-  /** Initializes from route parameters. */
   private treatParameters() {
     this.route
-      .params
-      .subscribe(params => {
-        // FIXME: Should manage not found (interceptor).
-        if (params.id) {
-          this
-            .api
-            .getOne(params.id)
-            .pipe(tap(e => this.id = e.id))
-            .subscribe(e => this.form.patchValue(e));
-        }
-      });
+    .params
+    .subscribe(params => {
+    if (params.id) {
+      this
+      .api
+      .getOne(params.id)
+      .pipe(tap(e => this.id = e.id))
+      .subscribe(e => this.form.patchValue(e));
+    }
+    });
   }
 }
 

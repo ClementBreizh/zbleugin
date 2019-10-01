@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CandidateModule } from './candidate/candidate.module';
+import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { NotImplementedComponent } from './http-error/not-implemented/not-implemented.component';
@@ -50,6 +51,7 @@ registerLocaleData(localeFr);
     MatButtonModule,
     HttpClientModule,
     CandidateModule,
+    UserModule,
     MatFormFieldModule,
     MatInputModule,
     SkeletonModule,

@@ -2,22 +2,22 @@ import { Component, OnInit, Input } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
-import {Candidate} from '../../models/candidate';
-import {CandidateApiService} from '../../services/candidate-api.service';
+import {User} from '../../models/user';
+import {UserApiService} from '../../services/user-api.service';
 
 @Component({
-  selector: 'app-candidate-form',
-  templateUrl: './candidate-form.component.html',
-  styleUrls: ['./candidate-form.component.css']
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.css']
 })
-export class CandidateFormComponent implements OnInit {
+export class UserFormComponent implements OnInit {
 
   @Input()
-  candidate = true;
+  user = true;
 
   constructor(private readonly fb: FormBuilder,
               private readonly route: ActivatedRoute,
-              private readonly api: CandidateApiService,
+              private readonly api: UserApiService,
               private readonly router: Router) { }
 
   get isNew(): boolean { return this.id === null; }
@@ -28,25 +28,17 @@ export class CandidateFormComponent implements OnInit {
   get cellPhone(): AbstractControl { return this.form.controls.cellPhone; }
 
   id: number = null;
-  editedCandidate: Candidate;
+  editedUser: User;
 
   form = this.fb.group({
-    sex: [''],
+    login: ['', Validators.required],
+    password: ['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
     cellPhone: ['', Validators.required],
     homePhone: [''],
-    commentary: [''],
-    ranking: ['0 - statut non déterminé'],
-    status: [''],
-    address: [],
-    appointments: [],
-    feedback: [],
-    degrees: [],
-    companySession: [],
-    assessments: [],
-    matters: []
+    type: ['USER']
   });
 
   ngOnInit() {
@@ -54,19 +46,21 @@ export class CandidateFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const candidate = this.form.value;
+
+    const user = this.form.value;
 
     let request = null;
 
     if (this.isNew) {
-      request = this.api.create(candidate).subscribe(data => {
-        this.editedCandidate = data;
-        this.router.navigate(['candidate', this.editedCandidate.id]);
+      request = this.api.create(user).subscribe(data => {
+        this.editedUser = data;
+        this.router.navigate(['user', this.editedUser.id]);
       });
     } else {
-      request = this.api.edit(this.id, candidate).subscribe(data => {
-        this.editedCandidate = data;
-        this.router.navigate(['candidate', this.editedCandidate.id]);
+      request = this.api.edit(this.id, user).subscribe(data => {
+        this.editedUser = data;
+        console.log(this.editedUser);
+        this.router.navigate(['user', this.editedUser.id]);
       });
     }
 
@@ -89,3 +83,4 @@ export class CandidateFormComponent implements OnInit {
       });
   }
 }
+

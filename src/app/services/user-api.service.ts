@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
 import {ApiServiceService} from './api-service.service';
-import {Person} from '../models/person';
+import {User} from '../models/user';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class PersonApiService extends ApiServiceService<Person> {
+export class UserApiService extends ApiServiceService<User> {
   getAll(params) {
     return this.get('filtered', params);
   }
 
+  // getOne(id: number) {
+  //   return this.get(id)
+  // }
+
   getOne(id: number) {
-    return this.get(id);
+    return this.get(id)
+      .pipe(map((u: User) => {
+        return u;
+      }));
   }
 
   deleteOne(id: number) {
@@ -27,6 +36,6 @@ export class PersonApiService extends ApiServiceService<Person> {
   }
 
   protected url(): string {
-    return 'persons';
+    return 'users';
   }
 }

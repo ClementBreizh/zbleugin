@@ -1,24 +1,28 @@
 <ng-container *ngIf="company">
-
+  <mat-card>
     <h2>{{ company.name}}</h2>
-    <a mat-button routerLink="/company/list">Retour à la liste</a>
+    <a mat-button mat-raised-button class="return" routerLink="/company/list">Retour</a>
     <mat-card class="infos">
-        <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile>
-              <mat-list>
-                <mat-list-item class="address" >Adresse:</mat-list-item>
-                <mat-list-item >{{company.address.street}}</mat-list-item>
-                <mat-list-item >{{company.address.postalCode}} {{company.address.city}}</mat-list-item>
-              </mat-list>
-            </mat-grid-tile>
-            <mat-grid-tile class="div-contact">
-              <mat-list>
-                <mat-list-item class="contact" >Contact:</mat-list-item>
-                <mat-list-item >Tel mobile: {{company.name}}</mat-list-item>
-                <mat-list-item >Tel fixe: {{company.name}}</mat-list-item>
-                <mat-list-item >Email: {{company.name}}</mat-list-item>
-              </mat-list>
-            </mat-grid-tile>
-          </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item class="address">Adresse:</mat-list-item>
+            <mat-list-item>{{company.address.street}} {{company.address.postalCode}} {{company.address.city}}</mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="div-contact">
+          <mat-list>
+            <mat-list-item class="contact">Contact(s):</mat-list-item>
+            <ng-container *ngFor="let contact of company.contacts; index as index">
+              <mat-list-item>{{ contact.firstname }} {{ contact.lastname }}: {{ contact.cellPhone }}</mat-list-item>
+            </ng-container>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card>
-  </ng-container>
+  </mat-card>
+</ng-container>
+
+
+
+

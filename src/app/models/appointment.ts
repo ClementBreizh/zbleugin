@@ -3,10 +3,10 @@ import {Person} from './person';
 export class Appointment {
   id: number;
   appointmentDate: Date;
-  appointmentType;
+  appointmentType: string;
   informations: string;
   report: string;
   status: boolean;
-  persons: Person[];
+  persons?: Person[];
   organizer: Person;
 }

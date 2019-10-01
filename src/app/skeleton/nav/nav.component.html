@@ -1,23 +1,10 @@
-<!--<nav>-->
-<!--  <mat-toolbar>-->
-<!--    <ul class="left hide-on-med-and-down">-->
-<!--      <li class="active"><a mat-button routerLink="home" title="Accueil">Accueil</a></li>-->
-<!--      <li><a mat-button routerLink="candidate/list" title="Liste des candidats">Candidats</a></li>-->
-<!--      <li><a mat-button routerLink="company/list" title="Liste des entreprises">Entreprises</a></li>-->
-<!--      <li><a mat-button routerLink="appointment/list" title="Liste des rendez-vous">Rendez-vous</a></li>-->
-<!--      <li><a mat-button routerLink="person/list" title="Liste des personnes">Personnes</a></li>-->
-<!--    </ul>-->
-<!--    <app-login-wigdet></app-login-wigdet>-->
-<!--  </mat-toolbar>>-->
-<!--</nav>-->
-
 <mat-toolbar>
   <nav>
     <button routerLink="home" mat-button>Accueil</button>
     <button routerLink="candidate/list" mat-button>Candidats</button>
     <button routerLink="company/list" mat-button>Entreprises</button>
     <button routerLink="appointment/list" mat-button>Rendez-vous</button>
-    <button routerLink="person/list" mat-button>Personnes</button>
+    <button routerLink="contact/list" mat-button>Contacts</button>
     <button mat-button [matMenuTriggerFor]="menu" class="admin">Administration</button>
     <mat-menu #menu="matMenu">
       <button routerLink="user/list"mat-menu-item>Utilisateurs</button>

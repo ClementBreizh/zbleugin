@@ -8,5 +8,5 @@ export class Company {
   siret: string;
   apeCode: string;
   contacts: Person[];
-  address: Address;
+  address?: Address;
 }

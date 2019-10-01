@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, AbstractControl } from '@angular/forms';
-import { Person } from 'src/app/models/person';
-import { Address } from 'src/app/models/address';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentApiService } from 'src/app/services/appointment-api.service';
 import { Appointment } from 'src/app/models/appointment';
@@ -18,13 +16,13 @@ export class AppointmentFormComponent implements OnInit {
   id: number = null;
 
   form = this.fb.group({
-    // id: null,
-    date: ['', Validators.required],
-    type: '',
-    organizer: ['', Validators.required],
-    apeCode: '',
-    //Persons: Person[],
-    address: Address
+    appointmentDate: ['', Validators.required],
+    appointmentType: '',
+    informations: '',
+    report:'',
+    status:'',
+    persons: [],
+    organizer: ['', Validators.required]
   });
 
 
@@ -43,20 +41,15 @@ export class AppointmentFormComponent implements OnInit {
   get siret(): AbstractControl { return this.form.controls.siret; }
 
   onSubmit() {
-    // TODO: determine post/put
-    // TODO: send api
-
     const appointment: Appointment = this.form.value;
 
     console.log('Valid');
   }
 
-  /** Initializes from route parameters. */
   private treatParameters() {
     this.route
       .params
       .subscribe(params => {
-        // FIXME: Should manage not found (interceptor).
         if (params.id) {
           this
             .api

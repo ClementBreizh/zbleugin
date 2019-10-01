@@ -2,9 +2,13 @@ import {Appointment} from './appointment';
 
 export class Person {
   id: number;
-  lastname: string;
   firstname: string;
+  lastname: string;
   email: string;
+  cellPhone: string;
+  homePhone: string;
+  commentary?: string;
   mainContact: boolean;
   appointments?: Appointment[];
+  type: string;
 }

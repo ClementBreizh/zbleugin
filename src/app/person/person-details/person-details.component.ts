@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Person } from 'src/app/models/person';
 import { PersonApiService } from 'src/app/services/person-api.service';
 

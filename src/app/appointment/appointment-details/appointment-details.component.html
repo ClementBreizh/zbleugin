@@ -1,23 +1,24 @@
-
- <ng-container *ngIf="appointment">
-
+<ng-container *ngIf="appointment">
+  <mat-card>
     <h2>Rendez-vous n°{{ appointment.id}}</h2>
-    <a mat-button routerLink="/appointment/list">Retour à la liste</a>
+    <a mat-button mat-raised-button class="return" routerLink="/appointment/list">Retour</a>
     <mat-card class="infos">
-        <mat-grid-list cols="2" rowHeight="2:1">
-            <mat-grid-tile>
-              <mat-list>
-                <mat-list-item class="date" >Date: {{ appointment.appointmentDate| date: 'dd/MM/yyyy hh:mm'}}</mat-list-item>
-              </mat-list>
-            </mat-grid-tile>
-            <mat-grid-tile class="div-contact">
-              <mat-list>
-                <mat-list-item class="organizer" >Organisateur/trice: {{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</mat-list-item>
-              </mat-list>
-              <mat-list>
-                  <mat-list-item class="type" >RDV: {{ appointment.appointmentType}}</mat-list-item>
-                </mat-list>
-            </mat-grid-tile>
-          </mat-grid-list>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item class="date">Date: {{ appointment.appointmentDate| date: 'dd/MM/yyyy hh:mm'}}</mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="div-contact">
+          <mat-list>
+            <mat-list-item class="organizer">
+              Organisateur/trice: {{ appointment.organizer.firstname }} {{ appointment.organizer.lastname }}</mat-list-item>
+          </mat-list>
+          <mat-list>
+            <mat-list-item class="type">RDV: {{ appointment.appointmentType}}</mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card>
-  </ng-container>
+  </mat-card>
+</ng-container>
