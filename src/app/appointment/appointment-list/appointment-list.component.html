@@ -11,12 +11,12 @@
       <mat-panel-title>
         <mat-icon svgIcon="search"></mat-icon> Recherche
       </mat-panel-title>
+      <mat-panel-description>
+        Cliquez pour accéder à la zone de recherche.
+      </mat-panel-description>
     </mat-expansion-panel-header>
 
     <form [formGroup]="appointmentsListForm" class="appointment-form" (ngSubmit)="onSubmit($event)">
-      <!-- <mat-form-field class="formField">
-        <input matInput placeholder="Date" type="datetime" name="date" formControlName="appointmentDate">
-      </mat-form-field> -->
 
       <mat-form-field class="example-full-width">
         <input matInput [matDatepicker]="picker" formControlName="appointmentDate" placeholder="Choisir une date" >
@@ -41,6 +41,9 @@
         <mat-panel-title>
           <mat-icon svgIcon="add"></mat-icon> Ajouter un rendez-vous
         </mat-panel-title>
+        <mat-panel-description>
+            Cliquez pour accéder à l'ajout d'un rendez-vous.
+          </mat-panel-description>
       </mat-expansion-panel-header>
 
       <app-appointment-form></app-appointment-form>
@@ -48,30 +51,24 @@
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
-
 <mat-card>
   <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource; else loading" (matSortChange)="sortData($event)">
 
-    <!-- Gender Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="date" class="sortedHeader"> Date </th>
       <td mat-cell *matCellDef="let appointment"><a [routerLink]='"/appointment/" + appointment.id' title="Accèder au dossier">{{appointment.appointmentDate| date: 'dd-MM-yyyy hh:mm'}}</a></td>
     </ng-container>
 
-    <!-- Firstname Column -->
     <ng-container matColumnDef="organizer">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="organizer" class="sortedHeader"> Organisateur/trice</th>
       <td mat-cell *matCellDef="let appointment"> <a [routerLink]='"/appointment/" + appointment.id' title="Accèder au dossier">{{ appointment.organizer.firstname }}</a> </td>
     </ng-container>
 
-
-    <!-- Lastname Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="type" class="sortedHeader"> Type</th>
       <td mat-cell *matCellDef="let appointment"> <a [routerLink]='"/appointment/" + appointment.id' title="Accèder au dossier">{{ appointment.appointmentType }}</a> </td>
     </ng-container>
 
-    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions</th>
       <td mat-cell *matCellDef="let appointment">

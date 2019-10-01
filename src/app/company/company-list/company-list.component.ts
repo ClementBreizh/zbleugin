@@ -14,7 +14,7 @@ import { Address } from 'src/app/models/address';
 })
 export class CompanyListComponent implements OnInit {
 
-  displayedColumns = ['name', 'apeCode', 'mainContact', 'actions'];
+  displayedColumns = ['name', 'apeCode', 'address', 'actions'];
 
   dataSource: Company[];
 
@@ -50,17 +50,6 @@ export class CompanyListComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
-
-  // drawMainContact(company: Company) {
-  //   let result = '';
-  //   const contact = company.contacts ? company.contacts.find(e => e.mainContact) || null : null;
-
-  //   if (contact) {
-  //     result = `${contact.firstname} ${contact.lastname}`;
-  //   }
-
-  //   return result;
-  // }
 
   onDelete(company: Company): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer ' + company.name)) {

@@ -15,12 +15,7 @@ import { routes as personRoutes } from './person/person-routing';
 const routes: Routes = [
   { path: 'candidate', children: candidateRoutes},
   { path: 'user', children: userRoutes, canActivate: [AuthGuard]},
-  // { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'appointment', component: NotImplementedComponent},
-  { path: 'company', children: companyRoutes},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'adminpanel', component: NotImplementedComponent, canActivate: [AuthGuard]},

@@ -1,8 +1,9 @@
 <!-- <div id="homepage"> -->
   <div id="homepage" class="row">
-    <div class="card col s12 center-align"><h3><a routerLink="../candidate/list">Candidats</a></h3></div>
-    <div class="card col s12 center-align"><h3><a routerLink="../company/list">Entreprises</a></h3></div>
-    <div class="card col s12 center-align"><h3><a routerLink="../appointment">Rendez-vous</a></h3></div>
-    <div class="card col s12 center-align"><h3 class="red-text"><a routerLink="../adminpanel" *ngIf="!last || user.admin">Administration</a></h3></div>
+    <mat-card class="card col s12 center-align" routerLink="../candidate/list"><p>Candidats</p></mat-card>
+    <mat-card class="card col s12 center-align" routerLink="../company/list"><p>Entreprises</p></mat-card>
+    <mat-card class="card col s12 center-align" routerLink="../appointment"><p>Rendez-vous</p></mat-card>
+    <mat-card class="card col s12 center-align" routerLink="../person/list"><p>Personnes</p></mat-card>
+    <mat-card class="card col s12 center-align" routerLink="../adminpanel" *ngIf="!last || user.admin"><p class="red-text">Administration</p></mat-card>
   </div>
 <!-- </div> -->

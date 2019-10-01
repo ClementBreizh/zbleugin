@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Candidate} from '../../models/candidate';
-import {Session} from '../../models/session';
 import {CandidateApiService} from '../../services/candidate-api.service';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {DegreeApiService} from '../../services/degree-api.service';
 import {tap} from 'rxjs/operators';
+import {AcquiredMatterApiService} from '../../services/acquired-matter-api.service';
+import {Session} from '../../models/session';
 
 @Component({
   selector: 'app-candidate-details',
@@ -20,7 +20,7 @@ export class CandidateDetailsComponent implements OnInit {
   actualSession: Session;
 
   constructor(private apiCandidate: CandidateApiService, private route: ActivatedRoute, private iconRegistry: MatIconRegistry,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer, private apiAm: AcquiredMatterApiService) {
     iconRegistry.addSvgIcon(
       'delete',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
@@ -40,7 +40,9 @@ export class CandidateDetailsComponent implements OnInit {
           .getOne(params.id)
           .subscribe((value: Candidate) => {
             this.candidate = value;
-            this.actualSession = this.candidate.companySession[this.candidate.companySession.length - 1].session;
+            if (this.candidate.companySession.length > 0) {
+              this.actualSession = this.candidate.companySession[this.candidate.companySession.length - 1].session;
+            }
           });
       }
     });
@@ -86,5 +88,15 @@ export class CandidateDetailsComponent implements OnInit {
             });
         }
       });
+  }
+
+  addAcquiredMatter($event) {
+    console.log($event);
+    this.candidate.matters.push($event);
+  }
+
+  onDeleteMatter(id: number, index: number) {
+    this.candidate.matters.splice(index, 1);
+    return this.apiAm.deleteOne(id).subscribe();
   }
 }

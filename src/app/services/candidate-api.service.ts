@@ -47,4 +47,8 @@ export class CandidateApiService extends ApiServiceService<Candidate> {
   protected url(): string {
     return 'candidates';
   }
+
+  createMatter(id: number, value: {name: string, score?: number, validationDate?: Date}) {
+    return this.post(value, `${id}/matter`);
+  }
 }

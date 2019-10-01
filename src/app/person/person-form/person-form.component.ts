@@ -39,8 +39,7 @@ email: ['', Validators.required],
 cellPhone: ['', Validators.required],
 homePhone: [''],
 commentary: [''],
-rankingCandidate: [''],
-statusCandidate: ['']
+type: ['']
 });
 
 ngOnInit() {
