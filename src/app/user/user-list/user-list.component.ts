@@ -13,7 +13,7 @@ import {UserApiService} from '../../services/user-api.service';
 })
 export class UserListComponent implements OnInit {
 
-  displayedColumns: string[] = ['login', 'firstname', 'lastname', 'role', 'email', 'cellPhone', 'actions'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'login',  'role', 'email', 'cellPhone', 'actions'];
 
   dataSource: User[];
 
