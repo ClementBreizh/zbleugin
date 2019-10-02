@@ -38,7 +38,7 @@ export class CandidateFormComponent implements OnInit {
     cellPhone: ['', Validators.required],
     homePhone: [''],
     commentary: [''],
-    ranking: ['0 - statut non déterminé'],
+    ranking: ['N/A'],
     status: [''],
     address: [],
     appointments: [],

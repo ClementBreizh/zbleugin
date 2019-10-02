@@ -44,35 +44,35 @@ export class PersonFormComponent implements OnInit {
   id: number = null;
   editedPerson: Person;
 
-form = this.fb.group({
-sexCandidate: [''],
-firstname: ['', Validators.required],
-lastname: ['', Validators.required],
-email: ['', Validators.required],
-cellPhone: ['', Validators.required],
-homePhone: [''],
-commentary: [''],
-type: ['']
-});
+  form = this.fb.group({
+    sexCandidate: [''],
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    email: ['', Validators.required],
+    cellPhone: ['', Validators.required],
+    homePhone: [''],
+    commentary: [''],
+    type: ['']
+  });
 
   ngOnInit() {
     this.treatParameters();
   }
 
-onSubmit() {
-const person = this.form.value;
+  onSubmit() {
+    const person = this.form.value;
 
     let request = null;
 
     if (this.isNew) {
       request = this.api.create(person).subscribe(data => {
         this.editedPerson = data;
-        this.router.navigate(['person', this.editedPerson.id]);
+        this.router.navigate(['contact', this.editedPerson.id]);
       });
     } else {
       request = this.api.edit(this.id, person).subscribe(data => {
         this.editedPerson = data;
-        this.router.navigate(['person', this.editedPerson.id]);
+        this.router.navigate(['contact', this.editedPerson.id]);
       });
     }
 
@@ -81,16 +81,16 @@ const person = this.form.value;
 
   private treatParameters() {
     this.route
-    .params
-    .subscribe(params => {
-    if (params.id) {
-      this
-      .api
-      .getOne(params.id)
-      .pipe(tap(e => this.id = e.id))
-      .subscribe(e => this.form.patchValue(e));
-    }
-    });
+      .params
+      .subscribe(params => {
+        if (params.id) {
+          this
+            .api
+            .getOne(params.id)
+            .pipe(tap(e => this.id = e.id))
+            .subscribe(e => this.form.patchValue(e));
+        }
+      });
   }
 }
 

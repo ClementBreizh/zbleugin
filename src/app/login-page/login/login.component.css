@@ -1,9 +1,14 @@
 form > div > input {
-    border: 1px solid black;
-    margin-bottom: 10px;
-  }
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
 
-  button {
-    display: flex;
-    border: 1px solid black;
-  }
+button {
+  display: flex;
+  border: 1px solid black;
+}
+
+mat-form-field {
+  display: block;
+  width: 250px;
+}

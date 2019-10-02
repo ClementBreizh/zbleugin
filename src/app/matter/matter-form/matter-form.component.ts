@@ -34,7 +34,6 @@ export class MatterFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
     this.apiCandidate.createMatter(this.candidate.id, this.form.value)
         .subscribe(data => this.create.emit(data));
     this.form.patchValue({

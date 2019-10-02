@@ -5,10 +5,12 @@
     <button routerLink="company/list" mat-button>Entreprises</button>
     <button routerLink="appointment/list" mat-button>Rendez-vous</button>
     <button routerLink="contact/list" mat-button>Contacts</button>
-    <button mat-button [matMenuTriggerFor]="menu" class="admin">Administration</button>
+    <button mat-button [matMenuTriggerFor]="menu" class="admin" *ngIf="user && user.username === 'admin'">Administration</button>
     <mat-menu #menu="matMenu">
       <button routerLink="user/list"mat-menu-item>Utilisateurs</button>
     </mat-menu>
+    <app-login-wigdet class="widget"></app-login-wigdet>
   </nav>
 
 </mat-toolbar>
+

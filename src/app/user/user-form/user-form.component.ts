@@ -59,7 +59,6 @@ export class UserFormComponent implements OnInit {
     } else {
       request = this.api.edit(this.id, user).subscribe(data => {
         this.editedUser = data;
-        console.log(this.editedUser);
         this.router.navigate(['user', this.editedUser.id]);
       });
     }

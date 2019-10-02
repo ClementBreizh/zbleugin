@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {MatIconRegistry, PageEvent, Sort} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -13,14 +13,14 @@ import {UserApiService} from '../../services/user-api.service';
 })
 export class UserListComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'login',  'role', 'email', 'cellPhone', 'actions'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'login', 'role', 'email', 'cellPhone', 'actions'];
 
   dataSource: User[];
 
   resultNb: number;
 
   usersListForm = this.fb.group({
-    firstname:  '',
+    firstname: '',
     lastname: '',
     login: '',
     role: '',
@@ -35,99 +35,99 @@ export class UserListComponent implements OnInit {
 
 
   constructor(private api: UserApiService, private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer, private fb: FormBuilder) {
+              private sanitizer: DomSanitizer, private fb: FormBuilder) {
     iconRegistry.addSvgIcon(
-    'search',
-    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
+      'search',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/search.svg'));
     iconRegistry.addSvgIcon(
-    'show',
-    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/show.svg'));
+      'show',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/show.svg'));
     iconRegistry.addSvgIcon(
-    'edit',
-    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'));
+      'edit',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/edit.svg'));
     iconRegistry.addSvgIcon(
-    'delete',
-    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
+      'delete',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/delete.svg'));
     iconRegistry.addSvgIcon(
-    'add',
-    sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
-}
+      'add',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add.svg'));
+  }
 
-ngOnInit() {
-this.refresh();
-}
+  ngOnInit() {
+    this.refresh();
+  }
 
   onDelete(user: User): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer ' + user.firstname + ' ' + user.lastname + '?')) {
       this.api
-      .deleteOne(user.id)
-      .subscribe(_ => this.refresh());
+        .deleteOne(user.id)
+        .subscribe(_ => this.refresh());
     }
   }
 
   private refresh() {
-  this.api
-  .getAll(this.params())
-  .subscribe(data => {
-  this.dataSource = data.content;
-  this.resultNb = data.totalElements;
-  });
+    this.api
+      .getAll(this.params())
+      .subscribe(data => {
+        this.dataSource = data.content;
+        this.resultNb = data.totalElements;
+      });
   }
 
-onSubmit($event) {
-$event.preventDefault();
+  onSubmit($event) {
+    $event.preventDefault();
 
-this.usersListForm.patchValue({
-page: 0
-});
+    this.usersListForm.patchValue({
+      page: 0
+    });
 
-return this.refresh();
-}
+    return this.refresh();
+  }
 
-onReset($event) {
-$event.preventDefault();
+  onReset($event) {
+    $event.preventDefault();
 
-this.usersListForm.patchValue({
-firstname:  '',
-lastname: '',
-login: '',
-role: '',
-email: '',
-cellPhone: '',
-page: 0
-}
-);
+    this.usersListForm.patchValue({
+        firstname: '',
+        lastname: '',
+        login: '',
+        role: '',
+        email: '',
+        cellPhone: '',
+        page: 0
+      }
+    );
 
-this.refresh();
-}
+    this.refresh();
+  }
 
-pageEvent($event: PageEvent) {
-this.usersListForm.patchValue({
-page: $event.pageIndex,
-size: $event.pageSize
-});
+  pageEvent($event: PageEvent) {
+    this.usersListForm.patchValue({
+      page: $event.pageIndex,
+      size: $event.pageSize
+    });
 
-this.refresh();
-}
+    this.refresh();
+  }
 
-params() {
-return Object.keys(this.usersListForm.controls)
-.filter(k => this.usersListForm.value[k] !== '')
-.reduce((acc, k) => ({...acc, [k]: this.usersListForm.value[k]}), {});
-}
+  params() {
+    return Object.keys(this.usersListForm.controls)
+      .filter(k => this.usersListForm.value[k] !== '')
+      .reduce((acc, k) => ({...acc, [k]: this.usersListForm.value[k]}), {});
+  }
 
-sortData($event: Sort) {
-if ($event.direction === '') {
-this.usersListForm.patchValue({
-sort: ''
-});
-} else {
-this.usersListForm.patchValue({
-sort: $event.active + ',' + $event.direction
-});
-}
+  sortData($event: Sort) {
+    if ($event.direction === '') {
+      this.usersListForm.patchValue({
+        sort: ''
+      });
+    } else {
+      this.usersListForm.patchValue({
+        sort: $event.active + ',' + $event.direction
+      });
+    }
 
-this.refresh();
-}
+    this.refresh();
+  }
 
 }

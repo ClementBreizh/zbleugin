@@ -32,6 +32,8 @@
 
 nav {
   margin: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 mat-button {

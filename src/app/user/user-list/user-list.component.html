@@ -107,10 +107,10 @@
         <th mat-header-cell *matHeaderCellDef> Actions</th>
         <td mat-cell *matCellDef="let user">
           <a [routerLink]='"/user/" + user.id' title="Voir le dossier"><i
-            class="small material-icons">account_box</i></a>
-          <a [routerLink]='"/user/" + user.id + "/edit"' title="Editer le dossier"><i class="small material-icons">mode_edit</i></a>
+            class="small material-icons actions actionShow">account_box</i></a>
+          <a [routerLink]='"/user/" + user.id + "/edit"' title="Editer le dossier"><i class="small actions actionEdit material-icons">mode_edit</i></a>
           <a title="Supprimer le candidat" (click)="onDelete(user)"><i
-            class="small material-icons">delete_forever</i></a>
+            class="small material-icons actions actionDelete">delete_forever</i></a>
         </td>
       </ng-container>
 

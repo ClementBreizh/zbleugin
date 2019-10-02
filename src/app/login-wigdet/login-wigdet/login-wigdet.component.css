@@ -1,6 +1,7 @@
 #login,
 #logout {
   cursor: pointer;
+  font-size: 0.8em;
 }
 
 #login {
@@ -9,4 +10,15 @@
 
 #logout {
   color: red;
+}
+
+.icon {
+  position: relative;
+  top: 7px;
+  margin-left: 5px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
 }
