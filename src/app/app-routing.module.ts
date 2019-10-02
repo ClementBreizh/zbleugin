@@ -13,7 +13,7 @@ import { routes as personRoutes } from './person/person-routing';
 
 
 const routes: Routes = [
-  { path: 'candidate', children: candidateRoutes},
+  { path: 'candidate', children: candidateRoutes, canActivate: [AuthGuard]},
   { path: 'user', children: userRoutes, canActivate: [AuthGuard]},
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
